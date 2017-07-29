@@ -1,0 +1,37 @@
+.index-nav{
+  border-radius: 0 0 0.5rem 0.5rem;
+  height: 2.24rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+}
+.index-nav__list{
+  height: 100%;
+  text-align: center;
+  line-height: 2rem;
+}
+.index-nav__list li{
+  background-color: rgba(#09B19E, 1);
+  min-width: 10%;
+  color: #fff;
+  font-size: 0.8rem;
+  float: left;
+  height: 100%;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(#09B19E, 0.5);
+  }
+}
+.index-nav__item-works{
+  width: 42%;
+}
+.index-nav__item-about{
+  border-right: 0.1rem solid;
+  border-left: 0.1rem solid;
+  border-color: rgba(#fff, 0.6);
+  width: 32%;
+}
+.index-nav__item-blog{
+  width: 26%;
+}

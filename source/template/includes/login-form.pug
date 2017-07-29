@@ -1,0 +1,23 @@
+.login-wrapper
+  .login-box
+    h1.login-box__header Авторизуйтесь
+    form.loginform
+      .loginform__login
+        label(for="login")
+        input#login(type="text")
+      .loginform__password
+        label(for="password")
+        input#password(type="text")
+      p
+        input(type="checkbox" id="loginform_check")
+        label(name="loginform_check") Я человек
+      .loginform__radio
+        p Вы точно не робот?
+        input(type="radio" name="answer" value="true")
+        span.loginform__radio-button Да
+        input(type="radio" name="answer"  value="false")
+        span.loginform__radio-button Не уверен
+  nav.login-nav
+    ul.login-nav__list
+      li.login-nav__enter На главную
+      li.login-nav__to-main Войти

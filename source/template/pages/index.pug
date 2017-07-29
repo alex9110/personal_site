@@ -2,39 +2,14 @@ extends ../_template
 
 block variables
   - var title = 'Welcome'
-
 block content
-  <?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none" ><symbol viewBox="0 0 26 22" id="git_icon" xmlns="http://www.w3.org/2000/svg"><path class="ast0" d="M25 17.4c-2 4.2-7.7 4.6-11.7 4.6-4.2 0-10.2-.4-12.3-4.6-.8-1.6-1-3.4-1-5.2 0-2.2.6-4.4 2.1-6.1-.3-.9-.4-1.8-.4-2.7 0-1.2.3-2.3.8-3.4 2.5 0 4 1.1 5.9 2.5 1.6-.3 3.2-.5 4.9-.5 1.5 0 3 .2 4.4.5C19.5 1 21.1 0 23.5 0c.5 1.1.8 2.2.8 3.4 0 .9-.1 1.8-.4 2.6 1.5 1.8 2.1 4 2.1 6.2 0 1.8-.2 3.6-1 5.2zm-6.5-6.9c-1 0-2 .2-3 .3-.9.2-1.7.2-2.5.2s-1.6 0-2.5-.2c-1-.1-2-.3-3-.3-2.5 0-4 2.1-4 4.5 0 4.8 4.4 5.5 8.2 5.5h2.6c3.8 0 8.2-.7 8.2-5.5 0-2.4-1.5-4.5-4-4.5zM8 18c-1.4 0-2-1.9-2-3s.6-3 2-3 2 1.9 2 3-.6 3-2 3zm10 0c-1.4 0-2-1.9-2-3s.6-3 2-3 2 1.9 2 3-.6 3-2 3z"/></symbol><symbol viewBox="0 0 24 22.9" id="in_icon" xmlns="http://www.w3.org/2000/svg"><path class="bst0" d="M2.9 5.3C1.1 5.3 0 4.2 0 2.7S1.2 0 2.9 0c1.8 0 2.9 1.2 2.9 2.7 0 1.5-1.1 2.6-2.9 2.6zm2.6 17.6H.3V7.5h5.2v15.4zm18.5 0h-5.1v-8.3c0-2.1-.8-3.5-2.6-3.5-1.4 0-2.3 1-2.6 1.9-.1.3-.2.8-.2 1.3v8.6H8.3c.1-14 0-15.5 0-15.5h5.1v2.3c.7-1.1 1.9-2.6 4.7-2.6 3.4 0 5.9 2.2 5.9 7v8.8z"/></symbol><symbol viewBox="0 0 30 28.7" id="vk_icon" xmlns="http://www.w3.org/2000/svg"><path class="cst0" d="M27.6 13.4c-3 4-3.4 3.7-.9 6 2.4 2.2 2.9 3.3 3 3.5 0 0 1 1.8-1.1 1.8l-4 .1c-.9.2-2-.6-2-.6-1.5-1-2.9-3.7-4-3.4 0 0-1.1.4-1.1 2.8 0 .5-.2.8-.2.8s-.3.3-.8.3h-1.8c-4 .3-7.4-3.4-7.4-3.4S3.4 17.2.1 9.4c-.2-.5 0-.8 0-.8s.2-.3.9-.3h4.3c.4 0 .7.3.7.3s.3.2.4.5C7 10.8 8 12.4 8 12.4c1.6 3.2 2.6 3.8 3.2 3.4 0 0 .8-.5.6-4.4-.1-1.4-.5-2-.5-2-.4-.5-1-.6-1.3-.7-.2 0 .2-.6.7-.8.8-.4 2.1-.4 3.7-.4 1.3 0 1.6.1 2.1.2 1.5.4 1 1.7 1 5 0 1.1-.2 2.5.6 3 .3.2 1.1 0 3.1-3.4 0 0 .9-1.6 1.7-3.5.1-.3.4-.5.4-.5s.3-.1.6-.1h4.5c1.3-.1 1.6.6 1.6.6.2.6-.5 2.1-2.4 4.6z"/></symbol></svg>
+ 
   .index-wrapper
     header.header
-      .authorization
+      .authorization-button
         p Авторизоваться
     .index-content
-      .index-content-box
-        .index-content-main
-          .ava
-            img.ava__img(src="/assets/img/ava.jpg", alt="avatar")
-          .autor
-            h1.autor__name Лычик Александр
-            h3.autor__description Личный сайт веб разработчика
-          .social
-            ul.social__list
-              li.social__item
-                svg
-                  use(xlink:href="#vk_icon")
-              li.social__item 
-                svg
-                  use(xlink:href="#git_icon")
-              li.social__item
-                svg
-                  use(xlink:href="#in_icon")
-        nav.nav
-          ul.nav__list
-            li.nav__item-works Мои работы 
-            li.nav__item-about Обо мне
-            li.nav__item-blog Блог
+      include ../includes/index-content.pug
+      include ../includes/login-form.pug
     .index-footer 
       p.index-footer__autor © Лычик Александр | создано с любовью LoftSchool | 2017
-
-
-

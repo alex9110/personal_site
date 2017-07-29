@@ -1,0 +1,27 @@
+.ava{
+  //background-color: rgba(#fff, 0.8);
+  border-radius:  50%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  width: 7rem;
+  height: 7rem;
+  overflow: hidden; 
+}
+.ava__img{
+  width: 100%;
+  height: auto;
+}
+.autor__name, .autor__description{
+  line-height: 0.75;
+
+}
+.autor__name{
+  font-size: 1.1rem;
+  letter-spacing: 0.08rem;
+  color: #455B66;
+}
+.autor__description{
+   font-size: 0.8rem;
+   color: #7A8486;
+}

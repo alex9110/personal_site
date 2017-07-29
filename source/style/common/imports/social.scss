@@ -1,0 +1,26 @@
+.social{
+  text-align: center;
+  margin-top: 1.7rem;
+}
+.social__list{
+  display: inline-block;
+  font-size: 0;
+}
+.social__list li{
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 0.5rem;
+}
+.social__item svg{
+  fill: #09B09E;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  color:#286F85;
+  &:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+}

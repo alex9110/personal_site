@@ -1,0 +1,19 @@
+.login-wrapper{
+  @extend .index-content-box;
+}
+.login-box{
+   @extend .index-content-main;
+}
+.login-nav{
+  @extend .index-nav;
+}
+.login-nav__list{
+  @extend .index-nav__list;
+  & li{
+    width: 50%;
+  }
+}
+ .login-nav__enter{
+   border-right: 0.08rem solid;
+   border-color: rgba(#fff, 0.6);
+ }

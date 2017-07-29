@@ -1,0 +1,18 @@
+.index-content-box{
+  border-radius: 0.2rem;
+  display: inline-block;
+  width: 19rem;
+ 
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+}
+.index-content-main{
+  background-color: rgba(#fff, 0.75);
+  height: 17.7rem;
+  margin-bottom: 2.24rem;
+  overflow: hidden;
+}
+@import'autor.scss';
+@import'social.scss';
+@import'index-nav.scss';

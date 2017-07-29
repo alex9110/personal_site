@@ -8,23 +8,24 @@ module.exports = function() {
           pretty: true
         }
       }))
+      .pipe($.gp.replace('&gt;', '>'))
+      .pipe($.gp.svgSprite({
+        mode: {
+          symbol: {
+            sprite: "../sprite.html"
+          }
+        }
+      }))
       .pipe($.gp.cheerio({
         run: function ($) {
           $('[fill]').removeAttr('fill');
           $('[stroke]').removeAttr('stroke');
           $('[style]').removeAttr('style');
           $('style').remove();
+          $('svg').attr({'display':'none'});
         },
         parserOptions: { xmlMode: true }
       }))
-      .pipe($.gp.replace('&gt;', '>'))
-      .pipe($.gp.svgSprite({
-        mode: {
-          symbol: {
-            sprite: "../sprite.svg"
-          }
-        }
-      }))
-      .pipe($.gulp.dest($.config.root + '/assets/img'))
+      .pipe($.gulp.dest('./source/template/common/img'))
   })
 };
