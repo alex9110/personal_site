@@ -1,0 +1,62 @@
+@font-face{
+  font-family: Roboto;
+  src: local('Roboto-Regular'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Regular.ttf'),/*если нет то подгрузим свой*/ 
+  sans-serif;
+}
+@font-face{
+  font-family: Roboto-Bold;
+  src: local('Roboto-Bold'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Bold.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Roboto-Italic;
+  src: local('Roboto-Italic'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Italic.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Roboto-Light;
+  src: local('Roboto-Italic'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Light.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Roboto-LightItalic;
+  src: local('Roboto-LightItalic'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Italic.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Roboto-Medium;
+  src: local(' Roboto-Medium'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Light.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Roboto-MediumItalic;
+  src: local('Roboto-MediumItalic'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/roboto/Roboto-Italic.ttf');/*если нет то подгрузим свой*/ 
+}
+@font-face{
+  font-family: Bernier-Regular;
+  src: local('Bernier-Regular'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/bernier/regular/bernierregular-regular.ttf'),/*если нет то подгрузим свой*/ 
+  url('/assets/fonts/bernier/regular/bernierregular-regular.woof'),
+  url('/assets/fonts/bernier/regular/bernierregular-regular.woof2'),
+  url('/assets/fonts/bernier/regular/bernierregular-regular.eot'),
+  url('/assets/fonts/bernier/regular/bernierregular-regular.otf');
+  font-weight: normal;        /* тоже можно указать*/ 
+}
+@font-face{
+  font-family: Bernier-Distressed;
+  src: local('Bernier-Distressed'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/bernier/distressed/bernierdistressed-Regular.ttf'); /*если нет то подгрузим свой*/
+  font-weight: normal;        /* тоже можно указать*/ 
+}
+@font-face{
+  font-family: Bernier-Shade;
+  src: local('Bernier-Regular'), /*провериместь ли шрифт в системе*/
+  url('/assets/fonts/bernier/shade/berniershade-regular.ttf'),/*если нет то подгрузим свой*/ 
+  url('/assets/fonts/bernier/shade/berniershade-regular.woof'),
+  url('/assets/fonts/bernier/shade/berniershade-regular.woof2'),
+  url('/assets/fonts/bernier/shade/berniershade-regular.eot'),
+  url('/assets/fonts/bernier/shade/berniershade-regular.otf');
+  font-weight: normal;        /* тоже можно указать*/ 
+}

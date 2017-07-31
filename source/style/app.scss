@@ -1,3 +1,4 @@
+@import'common/imports/fonts.scss';
 html {
 	box-sizing: border-box;
   font-size: 16px;
@@ -6,6 +7,7 @@ html {
 }
 *, *:before, *:after { 
 	box-sizing: inherit;
+ font-family: Roboto;
 } 
 ul{
    list-style: none;

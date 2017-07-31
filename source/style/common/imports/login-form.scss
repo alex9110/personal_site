@@ -1,8 +1,126 @@
+$radius: 0.3rem; //радиус полей форм
 .login-wrapper{
   @extend .index-content-box;
 }
 .login-box{
    @extend .index-content-main;
+}
+.login-form__header{
+  font-family: Bernier-Regular;
+  color: #455962;
+  font-size: 1.7rem;
+  font-weight: normal;
+  text-transform: uppercase;
+    &::before, &::after{
+      content: "";
+      background-color: #D1D1D1;
+      display: inline-block;
+      position: relative;
+      transform: translate(-0.5rem, -0.5rem);
+      width: 5%;
+      height: 0.16rem;
+    }
+  &::after{
+    transform: translate(0.5rem, -0.5rem);
+  }
+}
+.login-form__login{
+  text-align: center;
+  svg{
+    width: 40%;
+    fill: #C5CBCE;
+    height: 40%;
+    position: relative;
+    top: 0.5rem;
+    cursor: pointer;
+  }
+  border-radius: $radius;
+  overflow: hidden;
+  display: inline-block;
+  width: 90%;
+}
+.login-form__password{
+  @extend .login-form__login;
+  margin-top: 1rem;
+}
+.login-form__login label, .login-form__password label{
+  border-radius:$radius 0 0 $radius;
+  display: block;
+  position: absolute;
+  background-color: #F0EFE8;
+  width: 2rem;
+  height: 2rem;
+}
+#login, #password{
+  border: none;
+  padding-left: 3rem;
+  width: 100%;
+  height: 2rem;
+  font-size: 0.8rem;
+  color: #B0B6B9;
+  letter-spacing: 0.6px;
+  background-color: #fff;
+  &:active, &:hover, &:focus{
+    outline: 0;
+  }
+}
+.checkbox-box{
+  input{
+    display: none;
+  }
+  font-size: 0.9rem;
+  color: #64757E;
+  label{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.8;
+    &::before{
+      border-radius: 0.16rem;
+      content: "";
+      display: inline-block;
+      background-color: #09B09E;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+#loginform_check{
+  &:checked + label::before{
+    content: "\2713";
+    text-align: center;
+    color: #fff;
+  }
+}
+.login-form__radio{
+  span{
+    display: inline-block;
+    width: 2.5rem;
+  }
+  @extend .checkbox-box;
+    label{
+     &::before{
+      border: 1px solid rgba(#94A0A6, 0.8);
+      border-radius: 50%;
+      background-color: #fff;
+     }
+   }
+  p{
+    font-weight: bold;
+  }
+}
+#radio_yes, #radio_no{
+  &:checked + label::before{
+    text-align: center;
+    font-size: 1.85rem;
+    line-height: 0.55;
+    content: "\2022";
+    color: #09B09E;
+  }
 }
 .login-nav{
   @extend .index-nav;
@@ -14,6 +132,6 @@
   }
 }
  .login-nav__enter{
-   border-right: 0.08rem solid;
-   border-color: rgba(#fff, 0.6);
+  border-right: 0.08rem solid;
+  border-color: rgba(#fff, 0.6);
  }

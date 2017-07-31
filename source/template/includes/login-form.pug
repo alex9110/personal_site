@@ -1,22 +1,27 @@
 .login-wrapper
   .login-box
-    h1.login-box__header Авторизуйтесь
-    form.loginform
-      .loginform__login
+    form.login-form
+      h1.login-form__header Авторизуйтесь
+      .login-form__login
         label(for="login")
-        input#login(type="text")
-      .loginform__password
+          svg
+            use(xlink:href="#login_icon")
+        input#login(type="text" placeholder="Логин")
+      .login-form__password
         label(for="password")
-        input#password(type="text")
-      p
+          svg
+            use(xlink:href="#password_icon")
+        input#password(type="text" placeholder="Пароль")
+      p.checkbox-box
         input(type="checkbox" id="loginform_check")
-        label(name="loginform_check") Я человек
-      .loginform__radio
+        label(for="loginform_check") Я человек
+      .login-form__radio
         p Вы точно не робот?
-        input(type="radio" name="answer" value="true")
-        span.loginform__radio-button Да
-        input(type="radio" name="answer"  value="false")
-        span.loginform__radio-button Не уверен
+        input(type="radio" id="radio_yes" name="answer" value="true")
+        label(for="radio_yes") Да
+          span
+        input(type="radio" id="radio_no" name="answer"  value="false")
+        label(for="radio_no") Не уверен
   nav.login-nav
     ul.login-nav__list
       li.login-nav__enter На главную
