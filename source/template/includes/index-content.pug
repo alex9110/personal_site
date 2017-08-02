@@ -6,18 +6,13 @@
       h1.autor__name Лычик Александр
       h3.autor__description Личный сайт веб разработчика
     .social
-      ul.social__list
-        li.social__item
-          svg
-            use(xlink:href="#vk_icon")
-        li.social__item 
-          svg
-            use(xlink:href="#git_icon")
-        li.social__item
-          svg
-            use(xlink:href="#in_icon")
+      include social.pug
+      socal.pug 
   nav.index-nav
     ul.index-nav__list
-      li.index-nav__item-works Мои работы 
+      li.index-nav__item-works Мои работы
+        a(href="works.html")
       li.index-nav__item-about Обо мне
+        a(href="about.html")
       li.index-nav__item-blog Блог
+        a(href="blog.html")

@@ -1,6 +1,7 @@
 .index-wrapper{
   height: 100vh;
   background-image: url(/assets/img/bg.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   text-align: center;
@@ -31,13 +32,17 @@
 }
 .index-content{
   position: relative;
-  height: 100%;
-
-  &:before {
-    content: " ";
+  height: 90%;
+  user-select:text;
+  &::before{
+    content: "";
     display: inline-block;
     height: 100%;
+    width: 0;
     vertical-align: middle;
+   }
+   &::selection{
+    background-color: transparent;
    }
 }
 @import'imports/index-content-box.scss';

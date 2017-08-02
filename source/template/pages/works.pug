@@ -1,0 +1,38 @@
+extends ../_template
+
+block variables
+  - var title = 'Welcome'
+block content
+  .works-wrapper
+    header.works-header
+      .bg2
+      .social.white
+        include ../includes/social.pug
+      span.menu-button
+        svg
+          use(xlink:href="#menu_icon")
+      .index-content
+        .index-content-box
+          .index-content-main.index-content-main_transparent
+            .ava.ava_bigger
+              img.ava__img(src="/assets/img/ava.jpg", alt="avatar")
+            .autor
+              h1.autor__name Лычик Александр
+              h3.autor__description Личный сайт веб разработчика
+    .section-works
+      .section-works__title
+        h2 Мои работы
+      .works-box
+        .work-description
+          .work-description-box
+            .work-description__title Сайт школы онлайн образования
+            .work-description__technologies html, css, javascript
+            .work-description__botton Посмотреть сайт
+        .slider
+          .slider__image
+          .slider__buttons
+            .slider__buttons-bottom
+            .slider__buttons-top
+
+
+
