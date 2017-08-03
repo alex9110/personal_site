@@ -4,8 +4,12 @@ block variables
   - var title = 'Welcome'
 block content
   .works-wrapper
-    header.works-header
-      .bg2
+    header.portfolio_header
+      .portfolio_header_bg
+        .portfolio_header_bg1
+        .portfolio_header_bg2
+          .portfolio_header_bg2__works
+
       .social.white
         include ../includes/social.pug
       span.menu-button
@@ -19,20 +23,34 @@ block content
             .autor
               h1.autor__name Лычик Александр
               h3.autor__description Личный сайт веб разработчика
+            .arrow-down
+              a#show-works(href="#hidden-link-work")
+                svg
+                  use(xlink:href="#arrow_down_icon")
+    a(name="hidden-link-work")
     .section-works
       .section-works__title
         h2 Мои работы
       .works-box
         .work-description
           .work-description-box
-            .work-description__title Сайт школы онлайн образования
+            .work-description__title 
+              h2 Сайт школы онлайн образования
             .work-description__technologies html, css, javascript
             .work-description__botton Посмотреть сайт
+              svg
+                use(xlink:href="#link_icon")
         .slider
           .slider__image
           .slider__buttons
             .slider__buttons-bottom
+              span.icon.left
+                svg
+                  use(xlink:href="#arrow_down_icon")
             .slider__buttons-top
+              span.icon.right
+                svg
+                  use(xlink:href="#arrow_down_icon")
 
 
 
