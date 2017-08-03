@@ -4,13 +4,13 @@ block variables
   - var title = 'Welcome'
 block content
   .works-wrapper
+    a(name="hidden-link-top")
     header.portfolio_header
       .portfolio_header_bg
         .portfolio_header_bg1
         .portfolio_header_bg2
           .portfolio_header_bg2__works
-
-      .social.white
+      .social.social-white
         include ../includes/social.pug
       span.menu-button
         svg
@@ -51,6 +51,40 @@ block content
               span.icon.right
                 svg
                   use(xlink:href="#arrow_down_icon")
+    .section-contact-form
+      .contact-form-box
+        form.contact-form
+          .contact-form__header Связаться со мной
+          input#name(type="text" name="name" placeholder="Имя")
+          input#mail(type="email" name="mail" placeholder="Email")
+          textarea#message(type="text" name="message" placeholder="Ваше сообщение")
+        .contact-form__buttons   
+          input#send-message(type="button" value="Отправить")
+          input#reset(type="reset" value="Очистить")
+        .blur
+      .arrow-top
+        a#show-works(href="#hidden-link-top")
+          svg
+            use(xlink:href="#arrow_down_icon")
+      footer.footer
+        .footer-box
+          .footer-menu
+            nav.footer-nav
+              ul.footer-nav__list
+                li.footer-nav__item 
+                  a(href="works.html") Мои работы
+                li.footer-nav__item 
+                   a(href="about.html") Обо мне
+                li.footer-nav__item 
+                  a(href="blog.html") Блог
+            .footer-social
+              .social.social-in-circle
+                include ../includes/social.pug
+          .footer-copyright
+            .footer-copyright__left Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur
+            .footer-copyright__right  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, 
+
+
 
 
 
