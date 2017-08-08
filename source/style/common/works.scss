@@ -1,7 +1,9 @@
-@mixin two-strips($width:1rem, $height: 0.16rem, $top_position:1rem, $before_left:-1rem, $after_right:1rem){
+$footer_height:6rem;
+$works__title:25vh;
+@mixin two-strips($width:1.3vw, $height: 0.3vw, $top_position: 1.7vw, $before_left:-3vw, $after_right:2.5vw, $color:#3E4446){
     &::before, &::after{
       content: "";
-      background-color: #D1D1D1;
+      background-color: rgba($color, 0.5);
       display: inline-block;
       position: absolute;
       top: 0;
@@ -12,147 +14,65 @@
     }
   &::after{
     left: 100%;
+    $after_right:($after_right - $width);
     transform: translate($after_right, $top_position);
   }
 }
 .works-wrapper{
+  overflow: hidden;
    color: #373F42;
 }
-.portfolio_header{
-  @extend .index-wrapper;
+.section-header{
   position: relative;
-  overflow: visible;
+  height: 100vh;
 }
-.portfolio_header_bg{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.portfolio_header_bg1{
-  background-image: url(/assets/img/svg/portfolio_header.svg);
-  background-repeat: no-repeat;
-  background-position: center 30%;
-  background-size: contain;
-  opacity: 0.1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.portfolio_header_bg2{
-  background-image: url(/assets/img/svg/bg.svg);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: auto 60%;
-  position: absolute;
-  bottom: -25vh;
-  width: 100%;
-  height: 100%;
-}
-.portfolio_header_bg2__works{
-  background-image: url(/assets/img/svg/works_header.svg);
-  background-repeat: no-repeat;
-  background-position: center 95%;
-  background-size: auto 28%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.1;
-}
-.social-white{
-  margin: 0;
-  position: absolute;
-  left: 2rem;
-  top: 2rem;
-  z-index: 10;
-  svg{
-    fill:#fff;
-  }
-}
-.menu-button{
-  display: block;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-  z-index: 10;
-  svg{
-    width: 100%;
-    height: 100%;
-    fill:#fff;
-  }
-}
-.index-content-box{
-  overflow: visible;
-}
-.index-content-main_transparent{
-  background-color: transparent;
-  .autor__name,.autor__description{
-    font-weight: normal;
-    font-size: 1.6rem;
-    color: #fff;
-  }
-  .autor__description{
-    font-weight: 100;
-    font-size: 0.8rem;
-    opacity: 0.7;
-  }
-}
-.ava_bigger{
-  margin-top: 0;
-  width: 9rem;
-  height: 9rem;
-}
-.arrow-down{
-  height: 1rem;
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  bottom: -6rem;
-  left: 0;
-  a{
-    display: inline-block;
-    width: 2rem;
-    height: 100%;
-    cursor: pointer;
-    transition: 200ms;
-    opacity: 0.7;
-    &:hover{
-      opacity: 1;
-    }
-  }
-  svg{
-    height: 100%;
-    width: 100%;
-    fill:#fff;
-  }
-}
+@import 'imports/portfolio_header';
+
 .section-works{
-  height: 125vh;
-  padding-top: 25vh;
+  height: 100 + $works__title;
+  padding-top: $works__title;
   position: relative;
 }
+
 .section-works__title{
   width: 100%;
-  height: 25vh;
+  height: $works__title;
   position: absolute;
   top: 0;
   text-align: center;
-  z-index: 10;
+  z-index: 0;
   h2{
     position: absolute;
     display: inline-block;
     top: 50%;
     transform:translate(-50%, -50%);
     margin: 0;
-    font-size: 4rem;
+    font-size: 9vh;
     font-weight: normal;
     font-family: Bernier-Regular;
-      @include two-strips(1.5rem, 0.32rem, 2rem, -2.5rem, 1rem);
+      @include two-strips(4vh, 1vh, 4.5vh, -7vh, 6.5vh);
   }
+}
+.works__title_bg{
+  background-image: url(/assets/img/svg/bg.svg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200%;
+}
+.works__title_bg2{
+ background-image: url(/assets/img/svg/works_header.svg);
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  background-size: auto 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  opacity: 0.1;
 }
 .works-box{
   background-color: #EFEBE0;
@@ -166,7 +86,6 @@
   float: left;
 }
 .work-description-box{
-  //background-color: #ccc;
   min-height: 10%;
   width: 70%;
   text-align: center;
@@ -179,22 +98,20 @@
   display: inline-block;
   h2{
     margin:0;
-    font-size: 2.5rem;
+    font-size: 6vh;
     font-family: Bernier-Regular;
     font-weight: normal;
     position: relative;
-    max-width: 20rem;
-    @include two-strips(1rem, 0.26rem, 1.2rem, -1rem, 0.3rem);
+    @include two-strips(3vh, 0.8vh, 2.9vh, -5vh, 4vh);
   }  
   text-align: center;
 }
 .work-description__technologies{
- // background-color: #ccc;
-  margin: 2rem 0 3rem 0;
+  margin: 5vh 0 8vh 0;
   padding: 1rem 0;
   color: #01BFA5;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 2.5vh;
   font-weight: bold;
   position: relative;
   &::before, &::after{
@@ -213,19 +130,18 @@
   }
 }
 .work-description__botton{
-  border-radius: 0.32rem;
+  border-radius: 0.5vh;
   background-color:  #05BCA5;
   display: inline-block;
   position: relative;
-  font-size: 1rem;
+  font-size: 2.7vh;
   color: #fff;
-  min-width: 11rem;
-  height: 2.8rem;
-  padding: 0.67rem 0.5rem 0.5rem 2rem;
+  min-width: 10vh;
+  padding: 2vh 1vh 2vh 5vh;
   cursor: pointer;
    svg{
     position: absolute;
-    left: 0.5rem;
+    left: 1.3vh;
     top: 0;
     bottom: 0;
     height: 100%;
@@ -246,7 +162,6 @@
   height: 25%;
   position: relative;
   &::before{
-    //background-color: red;
     content: "";
     position: absolute;
     width: 10%;
@@ -266,8 +181,8 @@
   text-align: center;
   .icon{
     display:inline-block;
-    height: 2rem;
-    width: 2rem;
+    height: 4vh;
+    width: 4vh;
     overflow: hidden;
     position: absolute;
     top: 50%;
@@ -309,111 +224,10 @@
   background-position: center 70%;
   background-size: cover;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  padding-bottom:$footer_height;
 }
 
 @import'imports/contact-form-box.scss';
-
-.arrow-top{
-  // @extend .arrow-down;
-  position: absolute;
-  width: 2rem;
-  height: 0.8rem;
-  bottom: 9.5rem;
-  left: 50%;
-  transform:translateX(-50%);
-  opacity: 0.8;
-  transition:200ms;
-  &:hover{
-    opacity: 1;
-    transform:translate(-50%, -0.2rem);
-  }
-  svg{
-    width: 100%;
-    height: 100%;
-    fill:#fff;
-    transform:rotate(180deg);
-  }
-}
-.footer{
-  background-color: rgba(#2F4246, 0.9);
-  overflow: hidden;
-  &::after{
-    content: "";
-    background-color: rgba(#fff, 0.2);
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-  }
-}
-.footer-box{
-  padding: 0 1%;
-  height: 100%;
-}
-.footer-menu{
-  height: 50%;
-  width: 100%;
-  position: relative;
-}
-nav.footer-nav{
-  float: left;
-  height: 100%;
-}
-.footer-nav__list{
-   margin-top: 0.8rem;
-}
-.footer-nav__item{
-  display: inline-block;
-  margin-right: 2rem;
-  a{
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: #fff;
-    cursor: pointer;
-  }
-}
-.social-in-circle{
-  float: right;
-  margin: 0.4rem 0rem;
-  .social__item{
-    border: 1px solid rgba(#fff, 0.4);
-    border-radius: 50%;
-    width: 1.8rem;
-    height: 1.8rem; 
-    margin: 0.20rem;
-    cursor: pointer;
-    svg{
-      fill:#fff;
-      padding: 0.32rem;
-    }
-    &:hover{
-      background-color: #fff;
-    }
-     &:hover svg{
-      fill: #2F4246;
-    }   
-  }
-}
-.footer-copyright{
-  height: 50%;
-  width: 100%;
-  padding-top: 0.5rem;
-}
-.footer-copyright__left, .footer-copyright__right {
-  display: inline-block;
-  height: 100%;
-  width: 42%;
-  color: #90999C;
-  font-size: 0.8rem;
-  float: left;
-}
-.footer-copyright__right{
-  float: right;
-  text-align: right;
-}
+@import 'imports/footer'

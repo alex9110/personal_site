@@ -1,0 +1,21 @@
+header.portfolio_header
+  .portfolio_header_bg
+    .portfolio_header_bg1
+    .portfolio_header_bg2
+  .social.social-white
+    include ../includes/social.pug
+  span.menu-button
+    svg
+      use(xlink:href="#menu_icon")
+  .index-content
+    .index-content-box
+      .index-content-main.index-content-main_transparent
+        .ava.ava_bigger
+          img.ava__img(src="/assets/img/ava.jpg", alt="avatar")
+        .autor
+          h1.autor__name Александр Лычик
+          h3.autor__description Личный сайт веб разработчика
+.arrow-down
+  a#show-works(href="#second-section")
+    svg
+      use(xlink:href="#arrow_down_icon")

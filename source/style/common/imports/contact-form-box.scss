@@ -10,14 +10,17 @@ $button_size: 2.5rem;
   overflow: hidden; 
 }
 .blur{
-  background-color: rgba(#fff, 0.7);
-  filter:blur(100px);
+  background-image: url(/assets/img/form_bg.jpg);
+  background-repeat: no-repeat;
+  filter:blur(4px);
+  background-size: 100% 100%;
+  opacity: 0.85;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -10;
 }
 .contact-form{
  //background-color: #ccc;
@@ -43,7 +46,7 @@ $button_size: 2.5rem;
   font-size: 2rem;
   position: relative;
   text-align: center;
-  @include two-strips(1rem, 0.16rem, 1rem, -1.7rem, 1rem);
+  @include two-strips(1rem, 0.32rem, 1rem, -1.7rem, 1rem);
 }
 #message{
   height: 7rem;
@@ -74,11 +77,4 @@ $button_size: 2.5rem;
     left: 50%;
     top: 0;
   }
-}
-.footer{
-  background-color: #2E4247;
-  height: 6rem;
-  width: 100%;
-  position: absolute;
-  bottom:0rem;
 }

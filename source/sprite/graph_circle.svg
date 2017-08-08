@@ -1,0 +1,4 @@
+<svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+  <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
+  <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
+</svg>

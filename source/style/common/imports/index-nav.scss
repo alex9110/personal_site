@@ -1,10 +1,10 @@
 .index-nav{
-  border-radius: 0 0 0.5rem 0.5rem;
-  height: 2.24rem;
+  border-radius: 0 0 $br_radius $br_radius;
+  height: $nav_size;
   width: 100%;
   position: absolute;
   bottom: 0;
-
+  overflow: hidden;
 }
 .index-nav__list{
   height: 100%;

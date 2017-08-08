@@ -1,16 +1,18 @@
+$br_radius:0.3rem;
+$box_size:19rem;
+$nav_size:2.24rem;
 .index-content-box{
-  border-radius: 0.3rem;
   display: inline-block;
-  width: 19rem;
- 
   vertical-align: middle;
   position: relative;
   overflow: hidden;
 }
 .index-content-main{
-  background-color: rgba(#F6F6F6, 0.80);
-  height: 17.7rem;
-  margin-bottom: 2.24rem;
+  border-radius: $br_radius $br_radius 0 0;
+  background-color: rgba(#fff, 0.80);
+  width: $box_size;
+  height: $box_size - $nav_size;
+  margin-bottom: $nav_size;
   overflow: hidden;
 }
 @import'autor.scss';

@@ -1,0 +1,77 @@
+extends ../_template
+
+mixin circle_svg(scill_name)
+  <svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+    <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
+    <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
+  </svg>
+  span #{scill_name}
+
+block variables
+  - var title = 'About'
+block content
+  .about-wrapper
+    .section-header
+      a(name="hidden-link-top")
+      include ../includes/portfolio_header.pug
+    .section-about
+      .about-me
+        a(name="second-section")
+        .about-me__title
+          h2 Обо мне
+        .about-me-description-box
+          .about-me-center-box 
+            .about-me-photo
+              img.ava__img(src="/assets/img/ava.jpg", alt="avatar")
+            .about-me-description
+              h2 Кто я
+              p Я веб разработчик. мне 25 лет. Я занимаюсь разработкой современных веб приложений. Мне нравится делать интересные и современные проэкты.
+              p Этот сайт я сделал в рамках обучения в школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!
+      .my-skills
+        .my-skills__title
+          h2 Чем я могу быть вам <br> полезен
+        .my-skills__desk
+          p Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+        .my-skills-box
+          .my-skills-box-ceenter
+            .my-skills-list-box
+              h3 Frontend
+              ul.my-skills-list
+                li.my-skills__item
+                  +circle_svg('HTML 5')
+                li.my-skills__item
+                  +circle_svg('CSS3')
+                li.my-skills__item
+                  +circle_svg('JavaScript & jQuery')
+            .my-skills-list-box
+              h3 Backend
+              ul.my-skills-list
+                li.my-skills__item
+                  +circle_svg('php')
+                li.my-skills__item
+                  +circle_svg('mySQL')
+                li.my-skills__item
+                  +circle_svg('Node JS & npm')
+                li.my-skills__item
+                  +circle_svg('Mongo.db')
+            .my-skills-list-box
+              h3 WorkFlow
+              ul.my-skills-list
+                li.my-skills__item
+                  +circle_svg('Git')
+                li.my-skills__item
+                  +circle_svg('Gulp')
+                li.my-skills__item
+                  +circle_svg('Bower')   
+    .section-contacts
+      .contacts
+        .contacts__title
+          h3 Контакты
+        ul.contacts__list
+          li.contacts__item skype
+          li.contacts__item some_my.gmail.com
+          li.contacts__item +380960834315
+          li.contacts__item Адрес
+    include ../includes/footer.pug
+
+
