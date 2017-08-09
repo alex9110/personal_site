@@ -10,9 +10,10 @@ $title_height:11vh;
 }
 .about-me__title, .my-skills__title{
   margin-top: $title_margin_top;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   height: $title_height;
+  position: relative;
   h2{
     display: inline-block;
     position: relative;
@@ -27,6 +28,20 @@ $title_height:11vh;
     font-size: 3.5vw;
     @include two-strips();
   }
+  &::after{
+    background-image: url(/assets/img/svg/about_header.svg);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    bottom: 0;
+    left: 0;
+    display: block;
+    opacity: 0.1;
+  }
 }
 .about-me, .my-skills{
   background-image: url(/assets/img/svg/about_bg_left.svg);
@@ -39,19 +54,17 @@ $title_height:11vh;
   float: left;
   text-align: center;
 }
+
 .about-me-description-box{
   height: 100-$title_height;
   position: relative;
 }
 .about-me-center-box{
   display: inline-block;
-  //width: 50%;
   position: absolute;
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-
-
 }
 .about-me-description{
   h2{
@@ -149,6 +162,11 @@ $skills_list:7vw;
 
   }
 }
+
+svg{
+  width: 100%;
+  height: 100%;
+}
 .g-circles {
       fill: none;
       stroke-width: 55;
@@ -156,26 +174,22 @@ $skills_list:7vw;
 .sector {
   stroke-dasharray:361 722;
   transition: all 1s;
-  // fill:#000;
 }
+
 .section-contacts{
-  padding-bottom: $footer_height;
-}
-svg{
-  width: 100%;
-  height: 100%;
-}
-.section-contacts{
-  background-color: #60D8C7;
+  background-color: rgba(#60D8C7, 0.2);
   height: 100vh;
   position: relative;
 }
+
+//////////////////////////////////////////////////
 .contacts{
   border-radius: 0.5vh;
   background-color: rgba(#fff, 0.7);
   position: absolute;
-  width: 40vh; 
-  height: 30vh;
+  width: 32vh; 
+  //height: 35vh;
+  padding-bottom: 4vh;
   left: 50%;
   top:50%;
   transform:translate(-50%, -50%);
@@ -200,5 +214,17 @@ svg{
   text-align: left;
 }
 li.contacts__item{
-  height: 4vh;
+  position: relative;
+  //outline: 1px solid #000;
+  padding: 1vh 1vh 1vh 4vh;
+  color: #6F8185;
+  font-size: 2vh;
+  svg{
+    position: absolute;
+    left: 0.2vh;
+    top:1vh;
+    fill:#02BDA1;
+    width: 2.5vh;
+    height: 2.5vh;
+  }
 }

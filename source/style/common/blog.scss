@@ -1,0 +1,114 @@
+.blog-wrapper{
+  .portfolio_header_bg1{
+    &::after{
+      background-image: url(/assets/img/svg/blog_header.svg);
+      background-size: 30%;
+      background-position: center 65%;
+    }
+  }
+  .autor__name, .autor__description{
+    display: none;
+  }
+  h3, p{
+    margin: 0;
+  }
+}
+.section-articles{
+  background-color: #fff;
+  padding-top: 4vw;
+  position: relative;
+  padding-bottom: $footer_height;
+  color: #4E5962;
+  &::after{
+    content: "";
+    background-image: url(/assets/img/svg/bg_white.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    position: absolute;
+    top:-25vh;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    z-index: -1;
+  }
+}
+.section-articles-box{
+  display: flex;
+  min-height: 100vh;
+}
+.nav_articles{
+  //background-color: red;
+  flex:1 ;
+  text-align: right;
+}
+.nav_articles__list{
+  display: inline-block;
+  width: 90%;
+  margin-left: 15%;
+}
+.nav_articles__item{
+  padding: 0.5rem 1rem;
+  position: relative;
+  line-height: 1.5;
+ 
+  &.active{
+    color: #02BFA4;
+    font-weight: bold;
+    &::after{
+      background-color: #02BFA4;
+      position: absolute;
+      content: "";
+      width: 3px;
+      height: 100%;
+      right: 0;
+      top:0;
+    }
+  }
+}
+.articles-list{
+  flex:3 ;
+  //background-color: #ccc;
+  text-align: center;
+}
+.article-list-box{
+  display: inline-block;
+  width: 80%;
+  text-align: left;
+}
+.article{
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  &::after{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #F1F1F3;
+    bottom: 0;
+    left: 0;
+  }
+}
+.article__header{
+  margin-bottom: 1rem;
+  width:60%; 
+  h3{
+     font-family: Bernier-Regular;
+     font-size: 1.8rem;
+     font-weight: normal;
+     color: #455964;
+  }
+}
+.article__data{
+  margin-bottom: 1rem;
+  color: #02BFA4;
+}
+.article__text{
+  line-height: 1.5;
+  p{
+    text-indent: 1rem;
+    margin-top: 0.5rem;
+  }
+}

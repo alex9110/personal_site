@@ -16,16 +16,20 @@
   position: absolute;
   width: 100%;
   height: 100%;
-}
-.portfolio_header_bg2{
-  background-image: url(/assets/img/svg/portfolio_header.svg);
-  background-repeat: no-repeat;
-  background-position: center 30%;
-  background-size: contain;
-  opacity: 0.1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  &::after{
+    background-image: url(/assets/img/svg/portfolio_header.svg);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height:100%;
+    bottom: 0;
+    left: 0;
+    display: block;
+    opacity: 0.1;
+  }
 }
 .social-white{
   margin: 0;

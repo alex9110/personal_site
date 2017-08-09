@@ -64,14 +64,23 @@ block content
                 li.my-skills__item
                   +circle_svg('Bower')   
     .section-contacts
+     <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d5116.803838198446!2d26.82925597357176!3d50.1162006624248!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1502274700595" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
       .contacts
         .contacts__title
           h3 Контакты
         ul.contacts__list
           li.contacts__item skype
+            svg
+              use(xlink:href="#skype_icon")
           li.contacts__item some_my.gmail.com
+            svg
+              use(xlink:href="#envelope_icon")
           li.contacts__item +380960834315
+            svg
+              use(xlink:href="#phone_icon")
           li.contacts__item Адрес
+            svg
+              use(xlink:href="#map_marker_icon")
     include ../includes/footer.pug
 
 

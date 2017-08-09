@@ -1,4 +1,4 @@
-$footer_height:6rem;
+$footer_height:15vh;
 $works__title:25vh;
 @mixin two-strips($width:1.3vw, $height: 0.3vw, $top_position: 1.7vw, $before_left:-3vw, $after_right:2.5vw, $color:#3E4446){
     &::before, &::after{
@@ -41,6 +41,34 @@ $works__title:25vh;
   top: 0;
   text-align: center;
   z-index: 0;
+  &::before{
+    content: "";
+    background-image: url(/assets/img/svg/bg.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 50vh;
+    z-index: -1;
+  }
+  &::after{
+    background-image: url(/assets/img/svg/works_header.svg);
+    background-size: auto 95%;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height:100%;
+    bottom: 0;
+    left: 0;
+    display: block;
+    opacity: 0.1;
+    z-index: -1;
+  }
   h2{
     position: absolute;
     display: inline-block;
@@ -52,27 +80,6 @@ $works__title:25vh;
     font-family: Bernier-Regular;
       @include two-strips(4vh, 1vh, 4.5vh, -7vh, 6.5vh);
   }
-}
-.works__title_bg{
-  background-image: url(/assets/img/svg/bg.svg);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: cover;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 200%;
-}
-.works__title_bg2{
- background-image: url(/assets/img/svg/works_header.svg);
-  background-repeat: no-repeat;
-  background-position: center 40%;
-  background-size: auto 100%;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50%;
-  opacity: 0.1;
 }
 .works-box{
   background-color: #EFEBE0;
