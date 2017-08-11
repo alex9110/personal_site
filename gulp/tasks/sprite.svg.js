@@ -12,7 +12,7 @@ module.exports = function() {
       .pipe($.gp.svgSprite({
         mode: {
           symbol: {
-            sprite: "../sprite.html"
+            sprite: "../sprite.svg"
           }
         }
       }))

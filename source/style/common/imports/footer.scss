@@ -20,7 +20,7 @@
   bottom: 2 + $footer_height;
   //top: -6vh;
   &:hover{
-    transform:translate(-50%, -0.2rem);
+    transform:translateY(-0.2rem);
   }
   svg{
     transform:rotate(180deg);

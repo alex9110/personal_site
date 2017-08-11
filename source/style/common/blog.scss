@@ -39,13 +39,13 @@
 }
 .nav_articles{
   //background-color: red;
-  flex:1 ;
+  width: 25vw;
   text-align: right;
 }
 .nav_articles__list{
   display: inline-block;
-  width: 90%;
-  margin-left: 15%;
+  width: 24vw;
+ // margin-left: 2.5vw;
 }
 .nav_articles__item{
   padding: 0.5rem 1rem;
@@ -67,7 +67,7 @@
   }
 }
 .articles-list{
-  flex:3 ;
+  width: 75vw;
   //background-color: #ccc;
   text-align: center;
 }
@@ -110,5 +110,21 @@
   p{
     text-indent: 1rem;
     margin-top: 0.5rem;
+  }
+}
+.blog-wrapper .footer{
+  .arrow-top{
+    display: none;
+    position: fixed;
+    left:100%;
+    bottom: 25%;
+    transform: translateX(-100%);
+    
+   &:hover{
+     bottom: 25.7%;
+   }
+    svg{
+      fill:#565B5F;
+    }
   }
 }
