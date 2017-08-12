@@ -1,17 +1,20 @@
 $footer_height:15vh;
 $works__title:25vh;
-@mixin two-strips($width:1.3vw, $height: 0.3vw, $top_position: 1.7vw, $before_left:-3vw, $after_right:2.5vw, $color:#3E4446){
+@mixin two-strips($width:1.3vw, $height: 0.3vw, $top_position: 1.7vw, $before_left:-3vw, $after_right:2.5vw, $color:rgba(#3E4446, 0.5)){
     &::before, &::after{
+      border-radius: 2px;
       content: "";
-      background-color: rgba($color, 0.5);
-      display: inline-block;
+      background-color: $color;
+      display: block;
       position: absolute;
       top: 0;
-      left: 0;
-      transform: translate($before_left, $top_position);
       width: $width;
       height: $height;
     }
+  &::before{
+    left: 0;
+    transform: translate($before_left, $top_position);
+  }
   &::after{
     left: 100%;
     $after_right:($after_right - $width);

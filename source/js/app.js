@@ -68,4 +68,51 @@ $(function() {
       $(nav_items[currentIndexNumber]).addClass('active');
     }
   }
+  ///////////////////////portfolio header///////////////////////////
+  // var transition = parseFloat($('.curtain-left').css('transition').replace('all','')) *1000 ;
+  var transition = 300;
+  $('#menu-button').click(function(){
+  //получим значения transition сделаем с ним нужные манипуляцыи что бы получить его в милисекундах
+    var close = $('.curtain-left').hasClass('closeCurtainsL');
+   // console.log(close);
+    if(close){
+      close_menu();
+    }else{
+      show_menu();
+    }
+  });
+  function close_menu(){
+    $('.curtain-left, .curtain-right, #main-nav, .main-nav-list-item').css({'opacity':0});
+    setTimeout(function(){
+      $('.curtain-left').removeClass('closeCurtainsL');
+      $('.curtain-right').removeClass('closeCurtainsR');
+      $('#main-nav').removeClass('block');
+      setTimeout(function(){
+        $('.curtain-left, .curtain-right, #main-nav').css({'opacity':1});
+      }, transition); 
+    }, transition);
+  }
+
+  function show_menu(){
+    var arr = $('.main-nav-list-item');
+    var arr_length = arr.length;
+    var current = 0;
+    $('.curtain-left').addClass('closeCurtainsL');
+    $('.curtain-right').addClass('closeCurtainsR');
+    setTimeout(function(){
+      $('#main-nav').addClass('block');
+      var timerId = setInterval(function(){
+        $(arr[current]).css({'opacity': 1});
+         // console.log(arr[current], arr_length);   
+        if (current >= arr_length-1) {
+          clearTimeout(timerId);
+        }
+        current++;
+      }, transition); 
+
+    }, transition);
+  }
+
+
+  ///////////////////////portfolio header///////////////////////////
 });

@@ -21,6 +21,13 @@ ul{
 body {
   margin: 0;
 }
+a{
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
 
 @import 'common/index';
 @import 'common/works';
