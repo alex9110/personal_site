@@ -5,9 +5,27 @@ block variables
 block content
  
   .index-wrapper
-    span.authorization-button Авторизоваться
+    span#authorization-button Авторизоваться
     .index-content
-      include ../includes/index-content.pug
-      include ../includes/login-form.pug
-    .index-copyright
-      p.index-copyright__autor © Александр Лычик | создано с любовью. LoftSchool 2017
+      .plate#plate
+        .index-content-box.plate-front
+          .index-content-main
+            .ava
+              img.ava__img(src="/assets/img/ava.jpg", alt="avatar")
+            .autor
+              h1.autor__name Александр Лычик
+              h3.autor__description Личный сайт веб разработчика
+            .social
+              include ../includes/social.pug
+              socal.pug 
+          nav.index-nav
+            ul.index-nav__list
+              li.index-nav__item-works Мои работы
+                a(href="works.html")
+              li.index-nav__item-about Обо мне
+                a(href="about.html")
+              li.index-nav__item-blog Блог
+                a(href="blog.html")
+        include ../includes/login-form.pug
+      .index-copyright
+        p.index-copyright__autor © Александр Лычик | создано с любовью. LoftSchool 2017

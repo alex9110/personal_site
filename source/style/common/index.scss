@@ -8,7 +8,7 @@
   overflow: hidden;
   
 }
-.authorization-button{
+#authorization-button{
   border: 1px solid rgba(#fff, 0.6);
   border-radius: 0.5vw;
   display: inline-block;
@@ -23,25 +23,70 @@
   z-index: 100;
 }
 .index-content{
-  position: relative;
-  height: 90%;
-  user-select:text;
-  &::before{
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 0;
-    vertical-align: middle;
-   }
-   &::selection{
-    background-color: transparent;
-   }
+ position: absolute;
+ width: 100%;
+ left: 0;
+ top:50%;
+ transform:translateY(-50%);
+ text-align: center;
 }
-@import'imports/index-content-box.scss';
+
+$br_radius:0.3rem;
+$box_size:19rem;
+$nav_size:2.24rem;
+.index-content-box{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+}
+.index-content-main{
+  border-radius: $br_radius $br_radius 0 0;
+  background-color: rgba(#fff, 0.80);
+  width: $box_size;
+  height: $box_size - $nav_size;
+  margin-bottom: $nav_size;
+  overflow: hidden;
+}
+@import'imports/autor.scss';
+@import'imports/social.scss';
+@import'imports/index-nav.scss';
+
 @import'imports/login-form.scss';
+
+
+.plate{
+  display: inline-block;
+  perspective: 1000;
+  &.plate-front{
+    & .plate-front{
+      transform: rotateY(180deg);
+    }
+    & .plate-back{
+      transform: rotateY(360deg);
+    }
+  }
+}
+.plate-front, .plate-back{
+  transition: 0.6s;
+  transform-style:preserve-3d;
+  backface-visibility: hidden;
+}
+.plate-back{
+  position: absolute;
+  left: 0;
+  top:0;
+  transform: rotateY(180deg);
+
+}
+
+
 .index-copyright{
-  height: 5rem;
-  margin-top: -1vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30%;
   color: #fff;
   font-size: 0.7rem;
+  text-align: center;
 }

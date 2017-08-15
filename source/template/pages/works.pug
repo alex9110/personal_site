@@ -4,12 +4,12 @@ block variables
   - var title = 'Works'
 block content
   .works-wrapper
-    .section-header
+    section.section-header
       a(name="hidden-link-top")
       include ../includes/portfolio_header.pug   
     a(name="second-section")
-    .section-works
-      .section-works__title
+    section.section-works
+      section.section-works__title
         h2 Мои работы
       .works-box
         .work-description
@@ -18,20 +18,55 @@ block content
               h2 Сайт школы онлайн <br>образования
             .work-description__technologies html, css, javascript
             .work-description__botton Посмотреть сайт
+              a(href="#")
               svg
                 use(xlink:href="#link_icon")
         .slider
-          .slider__image
+          .slider__image-box
+            ul.slider__images-list
+              li.slider__images-item
+                h1 0
+                img(src="/assets/img/works_image/work_0.jpg", alt="work_0")
+              li.slider__images-item
+                h1 1
+                img(src="/assets/img/works_image/work_1.jpg", alt="work_1")
+              li.slider__images-item
+                h1 2
+                img(src="/assets/img/works_image/work_2.jpg", alt="work_2")
+              li.slider__images-item
+                h1 3
+                img(src="/assets/img/works_image/work_3.jpg", alt="work_3")
+              li.slider__images-item
+                h1 4
+                img(src="/assets/img/works_image/work_0.jpg", alt="work_0")
+              li.slider__images-item
+                h1 5
+                img(src="/assets/img/works_image/work_3.jpg", alt="work_3")
           .slider__buttons
             .slider__buttons-bottom
+              ul.slider__bottom-preview
+                li
+                  h1 5
+                  img(src="/assets/img/works_image/work_3.jpg", alt="work_3")
+                li
+                  h1 4
+                  img(src="/assets/img/works_image/work_3.jpg", alt="work_2")
               span.icon.left
                 svg
                   use(xlink:href="#arrow_down_icon")
             .slider__buttons-top
+              ul.slider__top-preview
+                li
+                  h1 1
+                  img(src="/assets/img/works_image/work_1.jpg", alt="work_1")
+                li
+                  h1 2
+                  img(src="/assets/img/works_image/work_1.jpg", alt="work_2")
+             
               span.icon.right
                 svg
                   use(xlink:href="#arrow_down_icon")
-    .section-contact-form
+    section.section-contact-form
       .contact-form-box
         form.contact-form
           .contact-form__header Связаться со мной

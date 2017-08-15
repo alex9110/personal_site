@@ -108,20 +108,20 @@ $works__title:25vh;
   display: inline-block;
   h2{
     margin:0;
-    font-size: 6vh;
+    font-size: 2.5rem;
     font-family: Bernier-Regular;
     font-weight: normal;
     position: relative;
-    @include two-strips(3vh, 0.8vh, 2.9vh, -5vh, 4vh);
+    @include two-strips(1.3rem, 0.4rem, 1.2rem, -2.5rem, 2rem);
   }  
   text-align: center;
 }
 .work-description__technologies{
-  margin: 5vh 0 8vh 0;
+  margin: 3rem 0 5rem 0;
   padding: 1rem 0;
   color: #01BFA5;
   text-transform: uppercase;
-  font-size: 2.5vh;
+  font-size: 1rem;
   font-weight: bold;
   position: relative;
   &::before, &::after{
@@ -140,95 +140,35 @@ $works__title:25vh;
   }
 }
 .work-description__botton{
-  border-radius: 0.5vh;
+  border-radius: 0.32rem;
   background-color:  #05BCA5;
   display: inline-block;
   position: relative;
-  font-size: 2.7vh;
+  font-size: 1rem;
   color: #fff;
   min-width: 10vh;
-  padding: 2vh 1vh 2vh 5vh;
+  padding: 0.64rem 0.64rem 0.74rem 2rem;
   cursor: pointer;
    svg{
     position: absolute;
-    left: 1.3vh;
+    left: 0.5rem;
     top: 0;
     bottom: 0;
     height: 100%;
     width: 10%;
     fill:#fff;
   }
-}
-.slider{
-  height: 100%;
-  width: 50%;
-  float: right;
-}
-.slider__image{
-  background-color: #EFEBE0;
-  height: 75%;
-}
-.slider__buttons{
-  height: 25%;
-  position: relative;
-  &::before{
-    content: "";
+  a{
     position: absolute;
-    width: 10%;
-    height: 100%;
-    left:45%;
-    z-index: 10;
+    left:0;
+    top:0;
+    bottom: 0;
+    right: 0;
   }
 }
-.slider__buttons-bottom, .slider__buttons-top{
-  background-color: rgba(#C9C8C3, 0.3);
-  //outline: 1px solid #000;
-  position: relative;
-  width: 50%;
-  height: 100%;
-  float: left;
-  cursor: pointer;
-  text-align: center;
-  .icon{
-    display:inline-block;
-    height: 4vh;
-    width: 4vh;
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    transition:200ms;
-  }
-  svg{
-    fill:#fff;
-    height: 100%;
-    width: 100%;
-    opacity: 0.7;
-  } 
-}
-.slider__buttons-bottom{
-   &:hover .left{
-    top: 60%;
-  }
-  &:hover svg{
-    opacity: 1;
-  }
-}
-.slider__buttons-top{
-  svg{
-    fill:#fff;
-    height: 100%;
-    width: 100%;
-    transform:rotate(180deg);
-  }
-   &:hover .right{
-    top: 40%;
-  }
-  &:hover svg{
-    opacity: 1;
-  }
-}
+
+@import 'imports/slider.scss';
+
 .section-contact-form{
   background-image: url(/assets/img/bg_bot.jpg);
   background-position: center 70%;

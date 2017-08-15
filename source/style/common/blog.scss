@@ -6,12 +6,7 @@
       background-position: center 65%;
     }
   }
-  .autor__name, .autor__description{
-    display: none;
-  }
-  h3, p{
-    margin: 0;
-  }
+ 
 }
 .section-articles{
   background-color: #fff;
@@ -19,6 +14,9 @@
   position: relative;
   padding-bottom: $footer_height;
   color: #4E5962;
+  h3, p{
+    margin: 0;
+  }
   &::after{
     content: "";
     background-image: url(/assets/img/svg/bg_white.svg);
@@ -37,17 +35,17 @@
   display: flex;
   min-height: 100vh;
 }
-.nav_articles{
+.blog_aside{
   //background-color: red;
   width: 25vw;
   text-align: right;
 }
-.nav_articles__list{
+.blog_aside__list{
   display: inline-block;
   width: 24vw;
  // margin-left: 2.5vw;
 }
-.nav_articles__item{
+.blog_aside__item{
   padding: 0.5rem 1rem;
   position: relative;
   line-height: 1.5;
