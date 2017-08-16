@@ -14,12 +14,10 @@ $(function() {
   var winHeight = $(window).height();
   var winScrollTop = '';
   $(window).on('scroll', function(){
-
     winScrollTop = $(window).scrollTop();
     fixet_nav();
     inWindow(articles, asideItem);
     showArrow();
-    
   });
   //позыцыонирование навигации
   function fixet_nav(){
@@ -52,22 +50,18 @@ $(function() {
   var savedIndexNumber = 0;
   var currentIndexNumber = 0;
   function inWindow(articles, asideItem){
-
     var indent = parseInt( $(articles[0]).css('margin-bottom') );
     var currentEls = $(articles);
     var result = [];
     var offsetTop;
-
     currentEls.each(function(){
       var element = $(this);
       offsetTop = element.offset().top;
       offsetTop = parseInt(offsetTop);
-      
       if( winScrollTop+indent*2 > offsetTop ){
         result.push(this);
         currentIndexNumber = result.length - 1;
       }
-
     });
     if ( savedIndexNumber !== currentIndexNumber) {
       savedIndexNumber = currentIndexNumber;
@@ -76,12 +70,9 @@ $(function() {
     }
   }
   ///////////////////////start portfolio header///////////////////////////
-  // var transition = parseFloat($('.curtain-left').css('transition').replace('all','')) *1000 ;
   var transition = 300;
   $('#menu-button').click(function(){
-  //получим значения transition сделаем с ним нужные манипуляцыи что бы получить его в милисекундах
     var close = $('.curtain-left').hasClass('closeCurtainsL');
-   // console.log(close);
     if(close){
       close_menu();
     }else{
@@ -100,11 +91,13 @@ $(function() {
       }, transition); 
     }, transition);
   }
-
+ 
+  var arr = $('.main-nav-list-item');
+  var arr_length = arr.length;
+  var fontSize = $(arr[0]).css('font-size');
   function show_menu(){
     $('#menu-button').addClass('menu-button-close');
-    var arr = $('.main-nav-list-item');
-    var arr_length = arr.length;
+    $(arr).find('a').css('font-size', '0');
     var current = 0;
     $('.curtain-left').addClass('closeCurtainsL');
     $('.curtain-right').addClass('closeCurtainsR');
@@ -112,6 +105,10 @@ $(function() {
       $('#main-nav').addClass('block');
       var timerId = setInterval(function(){
         $(arr[current]).css({'opacity': 1});
+        var a = $(arr[current]).find('a');
+        a.animate({'font-size':fontSize}, {
+          duration:transition
+        });
         if (current >= arr_length-1) {
           clearTimeout(timerId);
         }
@@ -136,20 +133,16 @@ $(function() {
       buttons.on('click', function(evt){slider(evt);});
     },timeout); 
   });
-
   function slider(evt){
-   
-    var botton = $(evt.currentTarget).attr('class');
-    var images = $('li.slider__images-item');
-    var arrLenght = images.length;
-    var imageList = $('.slider__images-list');
-    var prev1Left = $('.slider__bottom-preview li:last-child');
-    var prev2Left = $('.slider__bottom-preview li:first-child');
-    var prev1Right = $('.slider__top-preview li:last-child');
-    var prev2Right = $('.slider__top-preview li:first-child');
-    var currentLeftLi, nextLeftLi;
-    var currentRightLi, nextRightLi;
-
+    var botton     = $(evt.currentTarget).attr('class'),
+      images     = $('li.slider__images-item'),
+      arrLenght  = images.length,
+      imageList  = $('.slider__images-list'),
+      prev1Left  = $('.slider__bottom-preview li:last-child'),
+      prev2Left  = $('.slider__bottom-preview li:first-child'),
+      prev1Right = $('.slider__top-preview li:last-child'),
+      prev2Right = $('.slider__top-preview li:first-child'),
+      currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
     //узнаем текущий и следующий елементы, текущий тот что видим, а следующийелемент тот что пока что скрыт
     if ( parseInt(prev1Left.css('top')) > parseInt(prev2Left.css('top'))) {
       currentLeftLi = prev1Left;
