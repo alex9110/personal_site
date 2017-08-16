@@ -123,11 +123,22 @@ $(function() {
   ///////////////////////end portfolio header///////////////////////////
 
   /////////////////////////start slider/////////////////////////////////
-  var timeout = 300;
-  $('.slider__bottom-preview li, .slider__top-preview li, .slider__images-list').css({ 'transition':timeout+'ms'});
+  var timeout = 500;
+  $('.slider__bottom-preview li, .slider__top-preview li, .slider__images-list').css({'transition':timeout+'ms'});
   $('.slider__images-list').css({ 'transition':timeout/2+'ms'});
- 
-  $('.slider__buttons-bottom, .slider__buttons-top').on('click', function(evt){
+  var buttons = $('.slider__buttons-bottom, .slider__buttons-top');
+  buttons.on('click', function(evt){
+    //удалим обработчик
+    buttons.off();
+    slider(evt);
+    setTimeout(function(){
+      //вернём обработчик
+      buttons.on('click', function(evt){slider(evt);});
+    },timeout); 
+  });
+
+  function slider(evt){
+   
     var botton = $(evt.currentTarget).attr('class');
     var images = $('li.slider__images-item');
     var arrLenght = images.length;
@@ -136,98 +147,117 @@ $(function() {
     var prev2Left = $('.slider__bottom-preview li:first-child');
     var prev1Right = $('.slider__top-preview li:last-child');
     var prev2Right = $('.slider__top-preview li:first-child');
-   
-//если нажал кнопку назад то есть в низ
+    var currentLeftLi, nextLeftLi;
+    var currentRightLi, nextRightLi;
+
+    //узнаем текущий и следующий елементы, текущий тот что видим, а следующийелемент тот что пока что скрыт
+    if ( parseInt(prev1Left.css('top')) > parseInt(prev2Left.css('top'))) {
+      currentLeftLi = prev1Left;
+      nextLeftLi = prev2Left;
+    }else{
+      currentLeftLi = prev2Left;
+      nextLeftLi = prev1Left;
+    }
+    //Следующий елемент с лева значение по умолчанию
+    nextLeftLi = newSrc(nextLeftLi, images[arrLenght-2]);
+    //если нажал кнопку назад она же в низ
     function back(){
-     
       setTimeout(function(){
+        //перекинем изображение с кона в начало
         imageList.prepend(images[arrLenght-1]);
         imageList.toggleClass('opacity');
       }, timeout/2);
- 
-      var prev1TopLeft = parseInt(prev1Left.css('top'));
-      var prev2TopLeft = parseInt(prev2Left.css('top'));
-
-      if (prev1TopLeft>prev2TopLeft) {
-        prev2Left.css({'transition':timeout+'ms'});
-        changePreview(prev1Left, prev2Left, 'bottom');
-      }else{
-        prev1Left.css({'transition':timeout+'ms'});
-        changePreview(prev2Left, prev1Left, 'bottom');
-      }
+      changePreview(currentLeftLi, nextLeftLi, 'bottom', images[arrLenght-3]);
     }
-//если нажал впеёд то есть вверх
+    //узнаем текущий и следующий елементы, текущий тот который на виду, а следующийелемент тот что пока что скрыт
+    if (parseInt(prev1Right.css('top')) < parseInt(prev2Right.css('top'))) {
+      currentRightLi = prev1Right;
+      nextRightLi = prev2Right;
+    }else{
+      currentRightLi = prev2Right;
+      nextRightLi = prev1Right;
+    }
+    //Следующий елемент с права значение по умолчанию
+    nextRightLi = newSrc(nextRightLi, images[2]);
+    //если нажал впеёд она же вверх
     function forward(){
       setTimeout(function(){
+        //перекинем изображение с начала в конец
         imageList.append(images[0]);
         imageList.toggleClass('opacity');
       }, timeout/2);
-      var prev1TopRight = parseInt(prev1Right.css('top'));
-      var prev2TopRight = parseInt(prev2Right.css('top'));
-
-      if (prev1TopRight<prev2TopRight) {
-        prev2Right.css({'transition':timeout+'ms'});
-        changePreview(prev1Right, prev2Right, 'top');
-      }else{
-        prev1Right.css({'transition':timeout+'ms'});
-        changePreview(prev2Right, prev1Right, 'top');
-      }
-    }
- //левые превюхи
-    
+      changePreview(currentRightLi, nextRightLi, 'top', images[3]);
+    }   
 //меняем главное изображение
     function changeMainImage(){
       imageList.toggleClass('opacity');
-
       if (botton == 'slider__buttons-bottom') {
         back();  
       }else{
         forward();
       } 
     }  
-//меням превюху
-    function changePreview(currentLi, nextLi, direction){ 
+//меням превюху параметры: текущая ли, следующая та на которую сечас заменется текущая, направление движения анимацыи,
+//новая ли тоесть с новым изображением и возможно описанием она заменет ту ли которую мы сдвиним из зоны видимости
+    function changePreview(currentLi, nextLi, direction, newLi){  
       if (direction == 'bottom') {
-        currentLi.css({'top':'200%'});
-        nextLi.css({'top':'100%'});
-
-        setTimeout( function(){
-          var tmpSrc = $(images[arrLenght-3]).find('img').attr('src');
-          var tmpH1 = $(images[arrLenght-3]).find('h1').html();
-          
-          //заменим адрес к картинке
-          currentLi.find('img').attr({'src':tmpSrc});
-          //заменим контент в h1
-          currentLi.find('h1').html(tmpH1);
-
-          currentLi.css({'transition':'0ms', 'top':'0'});
-
-        }, timeout);
+        move('bot');
+        prewBack('left');
+         // кликнули по левой кнопке значит меняем значения по умолчанию для следующиго елемента правой кнопке
+        nextRightLi = newSrc(nextRightLi, images[0]);
+        move('top', currentRightLi, nextRightLi);
+        prewBack('right', currentRightLi);
       }
       if (direction == 'top') {
-        currentLi.css({'top': '-100%'});
-        nextLi.css({'top':'0'});
-
+        move('top');
+        prewBack('right');
+        // кликнули по правой кнопке значит меняем значения по умолчанию для следующиго елемента на левой кнопке
+        nextLeftLi = newSrc(nextLeftLi, images[0]);
+        move('bot', currentLeftLi, nextLeftLi);
+        prewBack('left', currentLeftLi);
+      }
+      //возврвщает скрытое превю на стартовою позицыю, параметры какое превью левое или правое, и не обезательный текущийэлемнт
+      function prewBack(prev, currentElement){
+        if (currentElement === undefined) {
+          currentElement = currentLi;
+        }
         setTimeout( function(){
-          var tmpSrc = $(images[3]).find('img').attr('src');
-          var tmpH1 = $(images[3]).find('h1').html();
-         
-          //заменим адрес к картинке
-          currentLi.find('img').attr({'src':tmpSrc});
-          //заменим контент в h1
-          currentLi.find('h1').html(tmpH1);
-        
-          currentLi.css({'transition':'0ms', 'top':'200%'});
-          $(currentLi).css({'transition':'0ms', 'top':'200%'});
-    
+          if (prev == 'left') {
+            currentElement = newSrc(currentElement, newLi);
+            currentElement.css({'transition':'0ms', 'top':'0'});
+          }else if (prev == 'right') {
+            currentElement = newSrc(currentElement, newLi);
+            currentElement.css({'transition':'0ms', 'top':'100%'});
+          }
         }, timeout);
-      }  
+      }
+      function move(direction, currentElement, nextElement){
+        if (currentElement === undefined || nextElement === undefined) {
+          currentElement = currentLi;
+          nextElement = nextLi;
+        }
+        nextElement.css({'transition':timeout+'ms'});
+        if (direction == 'bot') {
+          currentElement.css({'top':'200%'});
+          nextElement.css({'top':'100%'});
+        }else if(direction == 'top'){
+          currentElement.css({'top': '-100%'});
+          nextElement.css({'top':'0'});  
+        } 
+      }
     }
-
+//функцbя меняет катринку и h1 в li элементте
+    function newSrc(oldLi, newLi){
+      var tmpSrc = $(newLi).find('img').attr('src');
+      var tmpH1 = $(newLi).find('h1').html();
+      
+      //заменим адрес к картинке
+      oldLi.find('img').attr({'src':tmpSrc});
+      //заменим контент в h1
+      oldLi.find('h1').html(tmpH1);
+      return oldLi;
+    }
     changeMainImage();
-    
-  });
-
-
+  } 
    ////////////////////////end slider/////////////////////////////////
 });
