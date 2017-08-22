@@ -1,0 +1,27 @@
+.letter {
+  opacity: 0;
+}
+.showLetter {
+  display: inline-block;
+  animation-name:textAnimation;
+  opacity: 1;
+  animation-duration:500ms;
+  animation-timing-function:linear;
+}
+@keyframes textAnimation{
+  0%{
+    opacity: 0;
+    transform:scale(0);
+  }
+  40%{
+    transform:scale(1.2);
+    opacity: 0.5;
+    
+  }
+  80%{
+    transform:scale(0.8);
+  }
+  100%{
+    transform:scale(1);
+  }
+}

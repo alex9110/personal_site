@@ -1,5 +1,14 @@
-$(function() {
-////////////////////////flip over//////////////////////////////////
+'use strict';
+$(document).ready(function () {
+  ////////////////// плавный скрол ///////////////////////////
+  $('a[href^="#"]').click(function(){
+    var elementClick = $(this).attr('href');
+    var destination = $(elementClick).offset().top;  //узнаем место назначения 
+    $('html, body').animate({scrollTop: destination}, 1000);  //двигаем к ниму
+    return false;                     
+  });
+  ////////////////// плавный скрол ///////////////////////////
+  ////////////////////////flip over//////////////////////////////////
   $('#to-main-but, #authorization-button').on('click',function(){
     $('#plate').toggleClass('plate-front');
   });
@@ -81,7 +90,7 @@ $(function() {
   });
   function close_menu(){
     $('#menu-button').removeClass('menu-button-close');
-    $('.curtain-left, .curtain-right, #main-nav, .main-nav-list-item').css({'opacity':0});
+    $('.curtain-left, .curtain-right, #main-nav').css({'opacity':0});
     setTimeout(function(){
       $('.curtain-left').removeClass('closeCurtainsL');
       $('.curtain-right').removeClass('closeCurtainsR');
@@ -104,7 +113,6 @@ $(function() {
     setTimeout(function(){
       $('#main-nav').addClass('block');
       var timerId = setInterval(function(){
-        $(arr[current]).css({'opacity': 1});
         var a = $(arr[current]).find('a');
         a.animate({'font-size':fontSize}, {
           duration:transition
@@ -119,8 +127,52 @@ $(function() {
   }
   ///////////////////////end portfolio header///////////////////////////
 
+   /////////////////////////////анимирования текста в слайдере///////////////////////////////
+  var timeout = 1000;
+  function textAnimate(){
+    $.fn.animateText = function() {
+      return this.each(function(){
+        var $this = $(this);
+        var string = $this.text();
+        $this.html(string.replace(/./g, '<span class="letter">$&</span>'));
+        showText($this);
+      });
+      
+    };
+    function showText($this){
+
+      var letterList = $this.find('.letter');
+
+      var listLength = letterList.length;
+      var i = 0;
+      function showLetter(){
+        var currentLetter = $(letterList[i]).html();
+       //если это пробел зададим ему фиксированную ширину иначе потом он сплющиться 
+        if (currentLetter === ' ') {
+          var letterWidth = $(letterList[i]).width();
+        //если ширина пробела = 0, значит это конец строки и нужно вставить елемент переноса строки
+          if (letterWidth == 0) {
+            $(letterList[i]).after('<br>');
+          }
+          $(letterList[i]).width(letterWidth);
+        }
+        //добавим клас с анимацией
+        $(letterList[i]).addClass('showLetter');
+        i++;
+        setTimeout(function(){
+          if (i < listLength) {
+            showLetter();
+          } 
+        }, timeout/listLength/2);
+      }
+      showLetter();
+    }
+    $('.animateText').animateText();
+  }
+   /////////////////////////////конец анимирования текста в слайдере///////////////////////////////
+
   /////////////////////////start slider/////////////////////////////////
-  var timeout = 500;
+  
   $('.slider__bottom-preview li, .slider__top-preview li, .slider__images-list').css({'transition':timeout+'ms'});
   $('.slider__images-list').css({ 'transition':timeout/2+'ms'});
   var buttons = $('.slider__buttons-bottom, .slider__buttons-top');
@@ -133,6 +185,14 @@ $(function() {
       buttons.on('click', function(evt){slider(evt);});
     },timeout); 
   });
+  function changeDescription(i){
+    var desc = $('.slider__image-description').clone();
+    var title = $(desc[i]).find('h2').addClass('animateText');
+    var technologies = $(desc[i]).find('p').addClass('animateText');
+    $('.work-description__title h2').replaceWith(title);
+    $('.work-description__technologies p').replaceWith(technologies);
+    textAnimate();
+  }
   function slider(evt){
     var botton     = $(evt.currentTarget).attr('class'),
       images     = $('li.slider__images-item'),
@@ -143,7 +203,7 @@ $(function() {
       prev1Right = $('.slider__top-preview li:last-child'),
       prev2Right = $('.slider__top-preview li:first-child'),
       currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
-    //узнаем текущий и следующий елементы, текущий тот что видим, а следующийелемент тот что пока что скрыт
+    //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следующийелемент тот что пока что скрыт 
     if ( parseInt(prev1Left.css('top')) > parseInt(prev2Left.css('top'))) {
       currentLeftLi = prev1Left;
       nextLeftLi = prev2Left;
@@ -162,7 +222,7 @@ $(function() {
       }, timeout/2);
       changePreview(currentLeftLi, nextLeftLi, 'bottom', images[arrLenght-3]);
     }
-    //узнаем текущий и следующий елементы, текущий тот который на виду, а следующийелемент тот что пока что скрыт
+    //узнаем текущий и следующий елементы превьюх, текущий тот который на виду, а следующийелемент тот что пока что скрыт
     if (parseInt(prev1Right.css('top')) < parseInt(prev2Right.css('top'))) {
       currentRightLi = prev1Right;
       nextRightLi = prev2Right;
@@ -185,9 +245,11 @@ $(function() {
     function changeMainImage(){
       imageList.toggleClass('opacity');
       if (botton == 'slider__buttons-bottom') {
-        back();  
+        back();
+        changeDescription(arrLenght-1);
       }else{
         forward();
+        changeDescription(1);
       } 
     }  
 //меням превюху параметры: текущая ли, следующая та на которую сечас заменется текущая, направление движения анимацыи,
@@ -243,7 +305,6 @@ $(function() {
     function newSrc(oldLi, newLi){
       var tmpSrc = $(newLi).find('img').attr('src');
       var tmpH1 = $(newLi).find('h1').html();
-      
       //заменим адрес к картинке
       oldLi.find('img').attr({'src':tmpSrc});
       //заменим контент в h1
@@ -251,6 +312,11 @@ $(function() {
       return oldLi;
     }
     changeMainImage();
-  } 
+  }
    ////////////////////////end slider/////////////////////////////////
+
+   
+  
+
+
 });

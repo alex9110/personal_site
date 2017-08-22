@@ -107,20 +107,26 @@ $works__title:25vh;
 .work-description__title{
   display: inline-block;
   padding-top: 5vh;
-  h2{
+  h2 {
     margin:0;
     font-size: 2.5rem;
     font-family: Bernier-Regular;
     font-weight: normal;
     position: relative;
-    @include two-strips(1.3rem, 0.4rem, 1.2rem, -2.5rem, 2rem);
-  }  
+    span{
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+    width: 22rem;
+    @include two-strips(1.3rem, 0.4rem, 1.2rem, -2rem, 2rem);
+  }
   text-align: center;
 }
 .work-description__technologies{
   margin: 3rem 0 5rem 0;
   padding: 1rem 0;
-  span{
+  p{
     color: #01BFA5;
     text-transform: uppercase;
     font-size: 1rem;
@@ -143,6 +149,7 @@ $works__title:25vh;
     top:100%;
   }
 }
+@import 'imports/animateText.scss';
 .work-description__botton{
   border-radius: 0.32rem;
   background-color:  #05BCA5;

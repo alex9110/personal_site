@@ -5,11 +5,11 @@ block variables
 block content
   .blog-wrapper
     .section-header
-      a(name="hidden-link-top")
+      a#hidden-link-top(name="hidden-link-top")
       -var autor = 'Блог'
       -var desc =  'Статьи которые я написал'
       include ../includes/portfolio_header.pug
-    a(name="second-section")
+    a#second-section(name="second-section")
     section.section-articles#section-articles
       section.section-articles-box
         aside.blog_aside

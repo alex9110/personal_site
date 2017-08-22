@@ -5,19 +5,19 @@ block variables
 block content
   .works-wrapper
     section.section-header
-      a(name="hidden-link-top")
+      a#hidden-link-top(name="hidden-link-top")
       include ../includes/portfolio_header.pug   
-    a(name="second-section")
+    a#second-section(name="second-section")
     section.section-works
       section.section-works__title
         h2 Мои работы
       .works-box
         .work-description
           .work-description-box
-            .work-description__title 
-              h2 Сайт школы онлайн <br>образования
-            .work-description__technologies 
-              span html, css, javascript
+            .work-description__title
+              h2.animateText Сайт школы онлайн <br>образования
+            .work-description__technologies
+              p.animateText html, css, javascript
             .work-description__botton Посмотреть сайт
               a(href="#")
               svg
@@ -27,20 +27,20 @@ block content
             ul.slider__images-list
               li.slider__images-item
                 .slider__image-description
-                  h2 Супер пупер крутой сайт <br>номер 1
-                  span html jquery ajax 
+                  h2 Сайт школы онлайн образования
+                  p html, css, javascript
                 h1 1
                 img(src="/assets/img/works_image/work_1.png", alt="work_1")
               li.slider__images-item
                 .slider__image-description
-                  h2 Сайт круче первого <br>номер 2
-                  span html jquery ajax 
+                  h2 Сайт круче первого номер 2
+                  p html html html
                 h1 2
                 img(src="/assets/img/works_image/work_2.png", alt="work_2")
               li.slider__images-item
                 .slider__image-description
-                  h2 Проэкт круче крутых яиц<br>номер 3
-                  span html jquery ajax 
+                  h2 Проэкт круче крутых яиц номер 3
+                  p jquery jquery jquery
                 h1 3
                 img(src="/assets/img/works_image/work_0.jpg", alt="work_3")
           .slider__buttons
@@ -62,7 +62,7 @@ block content
                   img(src="/assets/img/works_image/work_2.png", alt="work_1")
                 li
                   h1 3
-                  img(src="/assets/img/works_image/work_3.jpg", alt="work_2")
+                  img(src="/assets/img/works_image/work_3.png", alt="work_2")
              
               span.icon.right
                 svg
