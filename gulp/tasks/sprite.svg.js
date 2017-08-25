@@ -12,7 +12,7 @@ module.exports = function() {
       .pipe($.gp.svgSprite({
         mode: {
           symbol: {
-            sprite: "../sprite.svg"
+            sprite: '../sprite.svg'
           }
         }
       }))
@@ -26,6 +26,6 @@ module.exports = function() {
         },
         parserOptions: { xmlMode: true }
       }))
-      .pipe($.gulp.dest('./source/template/common/img'))
-  })
+      .pipe($.gulp.dest('./source/template/common/icons_svg'));
+  });
 };

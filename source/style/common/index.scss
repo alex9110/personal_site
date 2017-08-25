@@ -1,6 +1,6 @@
 .index-wrapper{
   height: 100vh;
-  background-image: url(/assets/img/bg.jpg);
+  //background-image: url(/assets/img/bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -8,6 +8,7 @@
   overflow: hidden;
   
 }
+@import'imports/paralax.scss';
 #authorization-button{
   border: 1px solid rgba(#fff, 0.6);
   border-radius: 0.5vw;
@@ -51,10 +52,7 @@ $nav_size:2.24rem;
 @import'imports/autor.scss';
 @import'imports/social.scss';
 @import'imports/index-nav.scss';
-
 @import'imports/login-form.scss';
-
-
 .plate{
   display: inline-block;
   perspective: 1000;
@@ -77,10 +75,7 @@ $nav_size:2.24rem;
   left: 0;
   top:0;
   transform: rotateY(180deg);
-
 }
-
-
 .index-copyright{
   position: absolute;
   left: 0;
@@ -89,4 +84,20 @@ $nav_size:2.24rem;
   color: #fff;
   font-size: 0.7rem;
   text-align: center;
+}
+
+.animate_plate{
+  transform: rotateX(-91deg);
+  transform-origin: top;
+  animation: plateVisible 500ms linear 1000ms;
+  animation-fill-mode:forwards;
+}
+@keyframes plateVisible{
+  0%{
+    transform: rotateX(-91deg);
+  }
+  100%{
+    transform: rotateX(0deg);
+   
+  }
 }

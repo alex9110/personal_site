@@ -1,5 +1,6 @@
 'use strict';
 $(document).ready(function () {
+ 
   ////////////////// плавный скрол ///////////////////////////
   $('a[href^="#"]').click(function(){
     var elementClick = $(this).attr('href');
@@ -315,8 +316,83 @@ $(document).ready(function () {
   }
    ////////////////////////end slider/////////////////////////////////
 
-   
-  
+   ///////////////////////////psrallax//////////////////////////
+  (function () {
+    var layer = $('.parallax').find('.parallax__layer');
+    $(window).on('mousemove', function (e) { 
+      var mouse_dx = (e.pageX); // Узнаем положение мышки по X
+      var mouse_dy = (e.pageY); // Узнаем положение мышки по Y
+      var w = (window.innerWidth / 2) - mouse_dx; // Вычисляем для x перемещения
+      var h = (window.innerHeight / 2) - mouse_dy; // Вычисляем для y перемещения
+
+      layer.map(function (key, value) {
+        var widthPosition = w * (key / 90); // Вычисляем коофицент смешения по X
+        var heightPosition = h * (key / 90); // Вычисляем коофицент смешения по Y
+        $(value).css({
+          'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)'
+        });
+      });
+    });
+  })();  
+  ///////////////////////////psrallax//////////////////////////
+  ///////////////////////preloader/////////////////////////////
+  //$('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
+  $(function () {
+    $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
+    var imgs = [];
+
+    $.each($('*'), function () {
+      var $this = $(this),
+        background = $this.css('background-image'),
+        img = $this.is('img');
+        //console.log(img);
+
+      if (background != 'none') {
+        var path = background.replace('url("', '').replace('")', '');
+
+        imgs.push(path);
+      }
+
+      if (img) {
+        path = $this.attr('src');
+        imgs.push(path);
+      }
+    });
+
+    var percents = 1;
+
+    for (var i = 0; i < imgs.length; i++) {
+      var image = $('<img>', {
+        attr: {
+          src : imgs[i]
+        }
+      });
+
+      image.load(function () {
+        setPercents(imgs.length, percents);
+        percents++;
+      });
+    }
+    //console.log(circles[0]);
+    function setPercents(total, current) {
+      var percent = Math.ceil(current / total * 100);
+
+      if (percent >= 100) {
+        $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'block'});
+        $('.plate-front').addClass('animate_plate');
+        $('.loader-wrapper').fadeOut(1500, function(){
+          setTimeout(function(){
+            $('.plate-front').removeClass('animate_plate');
+          }, 2000);
+          
+        });
+      }
+
+      $('.loader__percent').text(percent + '%');
+    }
+  });
+  ///////////////////////preloader/////////////////////////////
+
 
 
 });
