@@ -2,11 +2,6 @@
   background-image: url("/assets/img/bg/bg_0.jpg");
   overflow: hidden;
   position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // width: 70%;
-  // height: 70%;
-  // transform:translate(-50%, -50%);
   right: 0;
   bottom: 0;
   top: 0;
@@ -19,12 +14,13 @@
   right: -2.8%;
   left: -2.8%;
   bottom: 0%;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    bottom: -25%;
+  }
 }
 
-.parallax__layer img {
-  width: 100%;
-  height: auto;
-  display: block;
-  position: absolute;
-  bottom: -25%;
-}
+

@@ -1,6 +1,5 @@
 $button_size: 2.5rem;
 .contact-form-box{
-  // filter:blur(1px);
   border-radius: 0.32rem;
   position: absolute;
   top: 40%;
@@ -10,20 +9,28 @@ $button_size: 2.5rem;
   overflow: hidden; 
 }
 .blur{
-  background-image: url(/assets/img/form_bg.jpg);
-  background-repeat: no-repeat;
-  filter:blur(4px);
-  background-size: 100% 100%;
-  opacity: 0.85;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   z-index: -10;
+  .blur__bg{
+    filter:blur(4px);
+    background-image: url(/assets/img/bg_bot.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 70%;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform:translate(-50%, -40%);
+    height: 100vh;
+    width: 100vw; 
+  }
 }
 .contact-form{
- //background-color: #ccc;
   height: 100%;
   width: 20rem;
   padding:2rem 1rem 1rem 1rem;
@@ -57,7 +64,7 @@ $button_size: 2.5rem;
   bottom: 0;
   input{
     border: 0;
-    background-color: #27BBAB;
+    background-color: rgba(#27BBAB, 1);
     width: 50%;
     float: left;
     height: $button_size;
@@ -65,7 +72,7 @@ $button_size: 2.5rem;
     margin: 0;
     color: #fff;
     &:hover{
-      opacity: 0.7;
+      background-color: rgba(#27BBAB, 0.7);
     }
   }
   &::after{

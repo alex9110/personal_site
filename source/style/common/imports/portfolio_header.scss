@@ -80,7 +80,6 @@
   z-index: -1;
 }
 .portfolio_header_bg1{
-  background-image: url(/assets/img/bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -100,6 +99,10 @@
     display: block;
     opacity: 0.1;
   }
+}
+.parallax_scroll{
+  @extend .parallax;
+  position: fixed;
 }
 .social-white{
   margin: 0;

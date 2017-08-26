@@ -80,7 +80,6 @@
   text-align: center;
   overflow: hidden;
   &::before{
-    background-color: rgba(#000, 0.25);
     content: "";
     position: absolute;
     left :0;
@@ -90,7 +89,7 @@
     z-index: 5;
   }
   .icon{
-    display:inline-block;
+    display:block;
     height: 4vh;
     width: 4vh;
     overflow: hidden;
@@ -108,20 +107,18 @@
   } 
 }
 .slider__buttons-bottom{
+  &::before{
+    background-color: rgba(#000, 0.30);
+  }
   &:hover .left{
     top: 60%;
-    z-index: 11;
   }
-
 }
 .slider__buttons-top{
    &::before{
     background-color: rgba(#000, 0.40);
   }
   svg{
-    fill:#fff;
-    height: 100%;
-    width: 100%;
     transform:rotate(180deg);
   }
    &:hover .right{

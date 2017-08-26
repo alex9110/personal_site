@@ -172,12 +172,12 @@ svg{
       stroke-width: 55;
     }
 .sector {
-  stroke-dasharray:361 722;
-  transition: all 1s;
+  stroke-dasharray:7 722;
+  transition: all 2s;
 }
 
 .section-contacts{
-  background-color: rgba(#60D8C7, 0.2);
+  background-color: rgba(#60D8C7, 1);
   height: 100vh;
   position: relative;
 }
@@ -188,10 +188,9 @@ svg{
   background-color: rgba(#fff, 0.9);
   position: absolute;
   width: 17rem; 
-  //height: 35vh;
   padding-bottom: 1.5rem;
   left: 50%;
-  top:50%;
+  top:40%;
   transform:translate(-50%, -50%);
   text-align: center;
 }

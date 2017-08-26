@@ -15,14 +15,16 @@ $(document).ready(function () {
   });
 ////////////////////////////flip over////////////////////////////
 
-  var not_fixed = true;
-  var arrow_none = true;
-  var target = $('#section-articles'); 
-  var articles = $('.article');
-  var asideItem = $('.blog_aside__item');
-  var asideList = $('.blog_aside__list');
-  var winHeight = $(window).height();
-  var winScrollTop = '';
+  var
+    not_fixed = true,
+    arrow_none = true,
+    target = $('#section-articles'),
+    articles = $('.article'),
+    asideItem = $('.blog_aside__item'),
+    asideList = $('.blog_aside__list'),
+    winHeight = $(window).height(),
+    winScrollTop = '';
+
   $(window).on('scroll', function(){
     winScrollTop = $(window).scrollTop();
     fixet_nav();
@@ -57,13 +59,14 @@ $(document).ready(function () {
     }
   }
   //покрасит елемент навигационного меню который сответствует текущей стати
-  var savedIndexNumber = 0;
-  var currentIndexNumber = 0;
+  var savedIndexNumber = 0, currentIndexNumber = 0;
   function inWindow(articles, asideItem){
-    var indent = parseInt( $(articles[0]).css('margin-bottom') );
-    var currentEls = $(articles);
-    var result = [];
-    var offsetTop;
+    var
+      indent = parseInt( $(articles[0]).css('margin-bottom') ),
+      currentEls = $(articles),
+      result = [],
+      offsetTop;
+
     currentEls.each(function(){
       var element = $(this);
       offsetTop = element.offset().top;
@@ -102,9 +105,11 @@ $(document).ready(function () {
     }, transition);
   }
  
-  var arr = $('.main-nav-list-item');
-  var arr_length = arr.length;
-  var fontSize = $(arr[0]).css('font-size');
+  var
+    arr = $('.main-nav-list-item'),
+    arr_length = arr.length,
+    fontSize = $(arr[0]).css('font-size');
+
   function show_menu(){
     $('#menu-button').addClass('menu-button-close');
     $(arr).find('a').css('font-size', '0');
@@ -129,46 +134,53 @@ $(document).ready(function () {
   ///////////////////////end portfolio header///////////////////////////
 
    /////////////////////////////анимирования текста в слайдере///////////////////////////////
-  var timeout = 1000;
-  function textAnimate(){
-    $.fn.animateText = function() {
-      return this.each(function(){
-        var $this = $(this);
-        var string = $this.text();
-        $this.html(string.replace(/./g, '<span class="letter">$&</span>'));
-        showText($this);
-      });
-      
-    };
-    function showText($this){
+   //функция подготовит текст к анимации порубает на отдельные буквы все что надо
+  (function(){
+    var
+      descriptions = $('.slider__image-description'),
+      titles = descriptions.find('h2'),
+      technologists = descriptions.find('p');
 
-      var letterList = $this.find('.letter');
-
-      var listLength = letterList.length;
-      var i = 0;
-      function showLetter(){
-        var currentLetter = $(letterList[i]).html();
-       //если это пробел зададим ему фиксированную ширину иначе потом он сплющиться 
-        if (currentLetter === ' ') {
-          var letterWidth = $(letterList[i]).width();
-        //если ширина пробела = 0, значит это конец строки и нужно вставить елемент переноса строки
-          if (letterWidth == 0) {
-            $(letterList[i]).after('<br>');
-          }
-          $(letterList[i]).width(letterWidth);
-        }
-        //добавим клас с анимацией
-        $(letterList[i]).addClass('showLetter');
-        i++;
-        setTimeout(function(){
-          if (i < listLength) {
-            showLetter();
-          } 
-        }, timeout/listLength/2);
-      }
-      showLetter();
+    function divide(e){
+      e.forEach(function(item){
+        item.each(function(){
+          var $this = $(this);
+          var string = $this.text();
+          $this.html(string.replace(/./g, '<span class="letter">$&</span>'));
+        });
+      }); 
+      return;
     }
-    $('.animateText').animateText();
+    divide([titles, technologists]);
+  })();
+  
+  var timeout = 600;
+  function textAnimate($this){
+    var
+      letterList = $this.find('.letter'),
+      listLength = letterList.length,
+      i = 0;
+
+    (function showLetter(){
+      var currentLetter = $(letterList[i]).html();
+     //если это пробел зададим ему фиксированную ширину иначе потом он сплющиться 
+      if (currentLetter === ' ') {
+        var letterWidth = $(letterList[i]).width();
+      //если ширина пробела = 0, значит это конец строки и нужно вставить елемент переноса строки
+        if (letterWidth == 0) {
+          $(letterList[i]).after('<br>');
+        }
+        $(letterList[i]).width(letterWidth);
+      }
+      //добавим клас с анимацией
+      $(letterList[i]).addClass('showLetter');
+      i++;
+      setTimeout(function(){
+        if (i < listLength) {
+          showLetter();
+        } 
+      }, timeout/listLength);
+    })();
   }
    /////////////////////////////конец анимирования текста в слайдере///////////////////////////////
 
@@ -184,26 +196,34 @@ $(document).ready(function () {
     setTimeout(function(){
       //вернём обработчик
       buttons.on('click', function(evt){slider(evt);});
-    },timeout); 
+    },timeout*2); 
   });
   function changeDescription(i){
-    var desc = $('.slider__image-description').clone();
-    var title = $(desc[i]).find('h2').addClass('animateText');
-    var technologies = $(desc[i]).find('p').addClass('animateText');
+    var
+      desc = $('.slider__image-description').clone(),
+      title = $(desc[i]).find('h2').addClass('animateText'),
+      technologies = $(desc[i]).find('p').addClass('animateText');
+
     $('.work-description__title h2').replaceWith(title);
     $('.work-description__technologies p').replaceWith(technologies);
-    textAnimate();
+    textAnimate($('.animateText'));
   }
+   
   function slider(evt){
-    var botton     = $(evt.currentTarget).attr('class'),
-      images     = $('li.slider__images-item'),
-      arrLenght  = images.length,
-      imageList  = $('.slider__images-list'),
-      prev1Left  = $('.slider__bottom-preview li:last-child'),
-      prev2Left  = $('.slider__bottom-preview li:first-child'),
-      prev1Right = $('.slider__top-preview li:last-child'),
-      prev2Right = $('.slider__top-preview li:first-child'),
-      currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
+    var imageList, images, arrLenght, botton, prev, prevLeft, prevRight, prev1Left,prev2Left, prev1Right, prev2Right, currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
+
+    imageList  = $('.slider__images-list');
+    images     = imageList.find('li');
+    arrLenght  = images.length;
+    botton     = $(evt.currentTarget).attr('class');
+    prev       = $('.slider__buttons');
+    prevLeft   = prev.find('.slider__bottom-preview li');
+    prevRight  = prev.find('.slider__top-preview li');
+    prev1Left  = $(prevLeft[1]);
+    prev2Left  = $(prevLeft[0]);
+    prev1Right = $(prevRight[1]);
+    prev2Right = $(prevRight[0]);
+      
     //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следующийелемент тот что пока что скрыт 
     if ( parseInt(prev1Left.css('top')) > parseInt(prev2Left.css('top'))) {
       currentLeftLi = prev1Left;
@@ -302,10 +322,11 @@ $(document).ready(function () {
         } 
       }
     }
-//функцbя меняет катринку и h1 в li элементте
+//функция меняет катринку и h1 в li элементте
     function newSrc(oldLi, newLi){
-      var tmpSrc = $(newLi).find('img').attr('src');
-      var tmpH1 = $(newLi).find('h1').html();
+      var
+        tmpSrc = $(newLi).find('img').attr('src'),
+        tmpH1 = $(newLi).find('h1').html();
       //заменим адрес к картинке
       oldLi.find('img').attr({'src':tmpSrc});
       //заменим контент в h1
@@ -318,25 +339,41 @@ $(document).ready(function () {
 
    ///////////////////////////psrallax//////////////////////////
   (function () {
-    var layer = $('.parallax').find('.parallax__layer');
+    var
+      layer = $('.parallax').find('.parallax__layer'),
+      layerScroll = $('.parallax_scroll').find('.parallax__layer');
     $(window).on('mousemove', function (e) { 
-      var mouse_dx = (e.pageX); // Узнаем положение мышки по X
-      var mouse_dy = (e.pageY); // Узнаем положение мышки по Y
-      var w = (window.innerWidth / 2) - mouse_dx; // Вычисляем для x перемещения
-      var h = (window.innerHeight / 2) - mouse_dy; // Вычисляем для y перемещения
+      var
+        mouse_dx = (e.pageX), // Узнаем положение мышки по X
+        mouse_dy = (e.pageY), // Узнаем положение мышки по Y
+        w = (window.innerWidth / 2) - mouse_dx, // Вычисляем для x перемещения
+        h = (window.innerHeight / 2) - mouse_dy; // Вычисляем для y перемещения
 
       layer.map(function (key, value) {
-        var widthPosition = w * (key / 90); // Вычисляем коофицент смешения по X
-        var heightPosition = h * (key / 90); // Вычисляем коофицент смешения по Y
+        var
+          widthPosition = w * (key / 90), // Вычисляем коофицент смешения по X
+          heightPosition = h * (key / 90); // Вычисляем коофицент смешения по Y
+
         $(value).css({
           'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)'
         });
       });
     });
+    var windowHeigth = $(window).height();
+    $(window).on('scroll', function(){
+      winScrollTop = $(window).scrollTop();
+      if (windowHeigth > winScrollTop) {
+        layerScroll.map(function (key, value){
+          var bias = winScrollTop * (key/10);
+          $(value).css({
+            'transform': 'translate3d(0, ' + -bias +'px, 0)'
+          });
+        });
+      } else{return;}
+    });
   })();  
   ///////////////////////////psrallax//////////////////////////
   ///////////////////////preloader/////////////////////////////
-  //$('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
   $(function () {
     $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
     var imgs = [];
@@ -345,38 +382,30 @@ $(document).ready(function () {
       var $this = $(this),
         background = $this.css('background-image'),
         img = $this.is('img');
-        //console.log(img);
-
       if (background != 'none') {
         var path = background.replace('url("', '').replace('")', '');
 
         imgs.push(path);
       }
-
       if (img) {
         path = $this.attr('src');
         imgs.push(path);
       }
     });
-
     var percents = 1;
-
     for (var i = 0; i < imgs.length; i++) {
       var image = $('<img>', {
         attr: {
           src : imgs[i]
         }
       });
-
       image.load(function () {
         setPercents(imgs.length, percents);
         percents++;
       });
     }
-    //console.log(circles[0]);
     function setPercents(total, current) {
       var percent = Math.ceil(current / total * 100);
-
       if (percent >= 100) {
         $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'block'});
         $('.plate-front').addClass('animate_plate');
@@ -384,15 +413,34 @@ $(document).ready(function () {
           setTimeout(function(){
             $('.plate-front').removeClass('animate_plate');
           }, 2000);
-          
         });
       }
-
       $('.loader__percent').text(percent + '%');
     }
   });
   ///////////////////////preloader/////////////////////////////
-
-
-
+//////////////////////////skills//////////////////////////
+  (function(){
+    var
+      skills = $('.my-skills__item'),
+      data,
+      target = $('.my-skills-box');
+      if (target.length > 0) {
+        target = target.offset().top;
+        $(window).on('scroll', function(){
+          winScrollTop = $(window).scrollTop();
+          if (winScrollTop > target/2) {
+            skills.each(function(){
+              var $this = $(this);
+              data = $this.attr('data-skill');
+              if (data == 0) {data = 1;}
+              data =  parseInt( 722*(data/100) );
+              $this.find('.sector').css({'stroke-dasharray':data+' 722'});
+            });
+          }
+        });
+      }
+    
+  })();
+  //////////////////////////skills//////////////////////////
 });
