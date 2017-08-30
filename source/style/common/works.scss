@@ -86,7 +86,7 @@ $works__title:25vh;
 }
 .works-box{
   background-color: #EFEBE0;
-  height: 100vh;
+  height: 100%;
 }
 .work-description{
   background-color: #F0EFEA;
@@ -193,4 +193,66 @@ $works__title:25vh;
 }
 
 @import'imports/contact-form-box.scss';
-@import 'imports/footer'
+@import 'imports/footer';
+@media (max-width: 1026px) {
+ .section-works{
+   height: 100 -10 + $works__title;
+   padding-top: -10 + $works__title;
+ }
+  .section-works__title{
+    height: -10 + $works__title;
+    &::after{
+      background-size: auto 100%;
+    }
+    h2{
+      font-size: 9vw;
+      @include two-strips(4vw, 1vw, 4.5vw, -7vw, 6.5vw);
+    }
+    &::before{
+      height: 42vw;
+    }
+  }
+  .work-description-box{
+    width: 100%;
+  }
+ .work-description{
+   // position: absolute;
+   // height: 20vh;
+   // width: 100%;
+   // bottom: 25%;
+   // left: 0;
+   display: none;
+ }
+  .work-description__title{
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .section-works{
+    height: 100 -10 + $works__title;
+    padding-top: -10 + $works__title;
+  }
+  .section-works__title{
+    h2{    
+      @include two-strips(4vw, 1vw, 4.5vw, -7vw, 6.5vw);
+    }
+  }
+}
+
+
+
+@media (max-width: 416px) {
+  .section-works{
+     height: 100-15 + $works__title;
+     padding-top: -15 + $works__title;
+  }
+  .section-works__title{
+    height: -15 + $works__title;
+    h2{    
+      @include two-strips(4vw, 1vw, 4.5vw, -7vw, 6.5vw);
+    }
+  }
+}

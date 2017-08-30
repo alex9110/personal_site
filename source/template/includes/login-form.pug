@@ -12,16 +12,17 @@
           svg
             use(xlink:href="#password_icon")
         input#password(type="password" placeholder="Пароль")
-      p.checkbox-box
-        input(type="checkbox" id="loginform_check")
-        label(for="loginform_check") Я человек
-      .login-form__radio
-        p Вы точно не робот?
-        input(type="radio" id="radio_yes" name="answer" value="true")
-        label(for="radio_yes") Да
-          span
-        input(type="radio" id="radio_no" name="answer"  value="false")
-        label(for="radio_no") Не уверен
+      .login-form-checks-wrapper
+        p.checkbox-box
+          input(type="checkbox" id="loginform_check")
+          label(for="loginform_check") Я человек
+        .login-form__radio
+          p Вы точно не робот?
+          input(type="radio" id="radio_yes" name="answer" value="true")
+          label(for="radio_yes") Да
+            span
+          input(type="radio" id="radio_no" name="answer"  value="false")
+          label(for="radio_no") Не уверен
   nav.login-nav
     ul.login-nav__list
       li.login-nav__to-main#to-main-but Назад

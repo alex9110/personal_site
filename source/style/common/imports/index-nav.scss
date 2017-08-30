@@ -9,12 +9,12 @@
 .index-nav__list{
   height: 100%;
   text-align: center;
-  line-height: 2rem;
+  line-height: 2.1rem;
   li{
     background-color: rgba(#09B19E, 1);
     min-width: 10%;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     float: left;
     height: 100%;
     cursor: pointer;
@@ -43,4 +43,12 @@
 }
 .index-nav__item-blog{
   width: 26%;
+}
+@media (max-width: 416px){
+  .index-nav{
+    height: 0.5+$nav_size;
+  }
+  .index-nav__list{
+   line-height: 2.5rem;
+  }
 }

@@ -34,3 +34,8 @@ a{
 @import 'common/about';
 @import 'common/blog';
 @import 'common/imports/loader';
+@media (max-width: 416px){
+  html{
+   font-size: 18px;
+  }
+}

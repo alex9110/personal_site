@@ -24,24 +24,30 @@ $radius: 0.3rem; //радиус полей форм
     transform: translate(0.5rem, -0.5rem);
   }
 }
+.login-form{
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
 .login-form__login{
-  text-align: center;
   svg{
     width: 40%;
     fill: #C5CBCE;
     height: 40%;
     position: relative;
-    top: 0.5rem;
+    top:50%;
+    transform:translateY(-50%);
     cursor: pointer;
   }
   border-radius: $radius;
   overflow: hidden;
-  display: inline-block;
+  display: block;
+  margin: auto;
+  margin-bottom: 1rem;
   width: 90%;
 }
 .login-form__password{
   @extend .login-form__login;
-  margin-top: 1rem;
 }
 .login-form__login label, .login-form__password label{
   border-radius:$radius 0 0 $radius;
@@ -65,6 +71,7 @@ $radius: 0.3rem; //радиус полей форм
   }
 }
 .checkbox-box{
+  margin: 0;
   input{
     display: none;
   }
@@ -114,12 +121,16 @@ $radius: 0.3rem; //радиус полей форм
   }
 }
 #radio_yes, #radio_no{
-  &:checked + label::before{
-    text-align: center;
-    font-size: 1.85rem;
-    line-height: 0.55;
-    content: "\2022";
-    color: #09B09E;
+  &:checked + label::after{
+    position: absolute;
+    left: 0.27rem;
+    bottom: 25%;
+    width: 0.5rem;
+    height: 0.5rem;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    background-color:  #09B09E;;
   }
 }
 .login-nav{
@@ -134,4 +145,22 @@ $radius: 0.3rem; //радиус полей форм
  .login-nav__enter{
   border-left: 0.08rem solid;
   border-color: rgba(#fff, 0.6);
+ }
+ @media (max-width: 416px) {
+  .login-form__login{
+    margin-bottom: 1.2rem;
+  }
+   #login, #password{
+    height: 3rem;
+    padding-left: 4rem;
+   }
+  .login-form__login label, .login-form__password label{
+    height: 3rem;
+    width: 3em;
+  }
+  .login-form-checks-wrapper{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+  }
  }

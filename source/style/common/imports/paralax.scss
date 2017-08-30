@@ -22,5 +22,30 @@
     bottom: -25%;
   }
 }
-
-
+@media (max-width: 1026px) {
+  .parallax__layer{
+    right: -50%;
+    left: -50%;
+    img{
+      bottom: -17%;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .parallax__layer{
+    right: -60%;
+    left: -60%;
+    img{
+      bottom: -15%;
+    }
+  }
+}
+@media (max-width: 416px) {
+  .parallax__layer{
+    right: -80%;
+    left: -80%;
+    img{
+      bottom: -10%;
+    }
+  }
+}
