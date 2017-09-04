@@ -1,5 +1,6 @@
 .parallax {
   background-image: url("/assets/img/bg/bg_0.jpg");
+  background-size: cover;
   overflow: hidden;
   position: absolute;
   right: 0;
@@ -13,39 +14,54 @@
   top:0;
   right: -2.8%;
   left: -2.8%;
-  bottom: 0%;
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: absolute;
-    bottom: -25%;
+  bottom: -25%;
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  &:nth-child(1){
+    background-image: url("/assets/img/bg/bg_1-min.png");
+  }
+  &:nth-child(2){
+    background-image: url("/assets/img/bg/bg_2-min.png");
+  }
+  &:nth-child(3){
+    background-image: url("/assets/img/bg/bg_3-min.png");
+  }
+  &:nth-child(4){
+    background-image: url("/assets/img/bg/bg_4-min.png");
+  }
+  &:nth-child(5){
+    background-image: url("/assets/img/bg/bg_5-min.png");
+  }
+  &:nth-child(6){
+    background-image: url("/assets/img/bg/bg_6.png");
   }
 }
 @media (max-width: 1026px) {
-  .parallax__layer{
-    right: -50%;
-    left: -50%;
-    img{
-      bottom: -17%;
-    }
+  .parallax {
+    background-image: url("/assets/img/bg/bg_mobile.jpg");
+    background-size: 100vw 100vh;
+    background-position: center bottom;
+    background-repeat: no-repeat;
   }
+  .parallax__layer{
+    right: -45%;
+    left: -45%;
+  }
+  .parallax__layer.parallax__layer{
+    background-image: none;
+  }
+
 }
 @media (max-width: 800px) {
   .parallax__layer{
     right: -60%;
     left: -60%;
-    img{
-      bottom: -15%;
-    }
   }
 }
 @media (max-width: 416px) {
   .parallax__layer{
     right: -80%;
     left: -80%;
-    img{
-      bottom: -10%;
-    }
   }
 }

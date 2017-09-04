@@ -5,6 +5,7 @@ $title_height:11vh;
 }
 .section-about{
   height: 100+$title_margin_top;
+  min-height: 600px;
   color: #465D69;
   margin-top: -$title_margin_top;
 }
@@ -80,6 +81,9 @@ $title_height:11vh;
     font-size: 0.9rem;
     margin: 0 0 0.5rem 0;
     text-align: left;
+    &:last-child{
+      margin: 0;
+    }
   }
 }
 .about-me-photo{
@@ -173,12 +177,13 @@ svg{
     }
 .sector {
   stroke-dasharray:7 722;
-  transition: all 2s;
+  transition: all 3s;
 }
 
 .section-contacts{
   background-color: rgba(#60D8C7, 1);
   height: 100vh;
+  min-height: 600px;
   position: relative;
 }
 
@@ -226,4 +231,175 @@ li.contacts__item{
     width: 1rem;
     height: 1rem;
   }
+}
+@media (max-width: 1026px) {
+  .about-me__title{
+    background-color: #fff;
+    height: 10vh;
+    min-height: 60px;
+    margin-top: 20vh;
+    &::before{
+      background-image: url(/assets/img/svg/bg_2.svg);
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center 0;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 200%;
+      bottom: 0;
+      left: 0;
+      display: block;  
+    }
+    h2{
+      font-size: 6vw;
+      margin-top: 3vw;
+      @include two-strips(3vw, 1vw, 2.8vw, -6vw, 6vw);
+    }
+  }
+
+  .about-me-description-box{
+    background-color:  #F0EEE9;
+    height: auto;
+  }
+  .about-me-description{
+    h2{
+      margin: 4vw 0 2vw ;
+      font-size: 4vw;
+      @include two-strips(2vw, 0.5vw, 2vw, -4.5vw, 4.5vw);
+    }
+    p{
+      text-align: justify;
+    }
+  }
+  .about-me-center-box{
+    position: static;
+    transform:none;
+    margin-bottom: 0 1.5rem;
+    padding: 2vw 20vw 6vw 20vw;
+    .ava__img{
+      border-radius: 4px;
+      margin-top: 0;
+    }
+  }
+  .section-about{
+    height: auto;
+  }
+  .about-me, .my-skills{
+    background-image: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    float: none;
+  }
+
+  .my-skills{
+    background-color: #EFEBDF;
+  }
+  .my-skills__title{
+    margin-top: 6vw;
+    height: auto;
+  }
+  .my-skills__desk{
+    height: auto;
+    p{
+      text-align: justify;
+      letter-spacing: 1px;
+      width: 60%;
+      margin: 2vw 0;
+    }
+  }
+  .my-skills-box{
+    height: auto;
+    position: relative;
+  }
+  .my-skills-box-ceenter{
+    position: static;
+    transform:translateY(0);
+    padding-bottom: 1.5rem;
+  }
+  .my-skills-list-box{
+    text-align: center;
+    margin-bottom: 1vw;
+    h3{
+      text-align: center;
+      font-size: 3vw;
+      padding-top: 1.5rem;
+    }
+  }
+  .my-skills-list{
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin-bottom: 0;
+    margin-top: 2vw;
+  }
+  .my-skills__item{
+    display: inline-block;
+    width: 20vw;
+    height: 15vw;
+    margin: 0;
+    span{
+      font-size: 1.5vw;
+    }
+  }
+  .my-skills__title{
+    h2{
+      font-size: 4vw;
+      margin-top: 0;
+      @include two-strips(2vw, 0.5vw, 2vw, -4.5vw, 4.5vw);
+    }
+  }
+
+}
+@media (max-width: 416px) {
+  .about-me__title{
+    h2{
+      font-size: 2rem;
+      margin-top: 2vh;
+      @include two-strips(1rem, 0.32rem, 1rem, -1.8rem, 1.7rem);
+    }
+  }
+  .about-me-description{
+    padding-bottom: 0.5rem;
+    h2{
+      margin: 1rem 0 ;
+      font-size: 1.5rem;
+      @include two-strips(1rem, 0.32rem, 0.8rem, -1.8rem, 1.7rem);
+    }
+  }
+  .about-me-center-box{
+    margin-bottom: 0 1.5rem;
+    padding: 1rem;
+  }
+  .my-skills__title{
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .my-skills__desk{
+    p{
+      width: 90vw;
+    }
+  }
+  .my-skills-list-box{
+    margin-bottom: 0.5rem;
+    h3{
+      font-size: 1.3rem;
+    }
+  }
+  .my-skills__item{
+    span{
+      top:110%;
+      transform:translate(-50%, 0);
+      width: 100%;
+      font-size: 0.7rem;
+    }
+  }
+  .my-skills__title{
+    h2{
+      font-size: 1.5rem;
+      @include two-strips(1rem, 0.32rem, 0.8rem, -1.8rem, 1.7rem);
+    }
+  }
+
 }

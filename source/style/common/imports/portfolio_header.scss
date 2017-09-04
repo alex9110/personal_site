@@ -2,6 +2,7 @@
   height: 100vh;
   position: relative;
   text-align: center;
+  min-height: 600px;
 }
 .curtains{
   overflow: hidden;
@@ -236,9 +237,15 @@
  }
  .ava_bigger.ava_bigger{
   margin-top: 1rem;
+  height: auto;
    .ava__img{
     margin-top: 2rem;
-    height: 70%;
+    height: auto;
+    width: 50%;
    }
+ }
+ .autor{
+  height: auto;
+  padding-top: 1.5rem;
  }
 }

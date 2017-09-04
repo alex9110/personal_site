@@ -17,8 +17,8 @@ $button_size: 2.5rem;
   overflow: hidden;
   z-index: -10;
   .blur__bg{
-    filter:blur(4px);
-    background-image: url(/assets/img/bg_bot.jpg);
+    filter:blur(12px);
+    background-image: url(/assets/img/bg/bg_bot.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 70%;
@@ -50,10 +50,10 @@ $button_size: 2.5rem;
 .contact-form__header{
   font-family: Bernier-Regular;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.8rem;
   position: relative;
   text-align: center;
-  @include two-strips(1rem, 0.32rem, 1rem, -1.7rem, 1rem);
+  @include two-strips(1rem, 0.32rem, 0.8rem, -2rem, 2rem);
 }
 #message{
   height: 7rem;
@@ -84,4 +84,20 @@ $button_size: 2.5rem;
     left: 50%;
     top: 0;
   }
+}
+@media (max-width: 416px) {
+  .contact-form-box{
+    top: 50%;
+  }
+  .contact-form{
+    width: 90vw;
+  }
+  .blur{
+    .blur__bg{
+      height: 60vh;
+      min-height: 450px;
+      transform:translate(-50%, -50%);
+    }
+  }
+  
 }

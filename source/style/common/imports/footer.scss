@@ -32,6 +32,7 @@
 .footer-box{
   padding: 0 1%;
   height: 100%;
+  overflow: hidden;
 }
 .footer-menu{
   height: 50%;
@@ -57,10 +58,19 @@ nav.footer-nav{
     color: #fff;
     cursor: pointer;
   }
+  &:last-child{
+    margin-right: 0;
+  }
 }
-.social-in-circle{
+.footer-social{
   float: right;
   margin: 1vh 0;
+}
+.social-in-circle{
+  .social__list{
+    transform:translateY(0);
+    top: 0;
+  }
   .social__item{
     $size:4.5vh;
     border: 1px solid rgba(#fff, 0.4);
@@ -97,4 +107,64 @@ nav.footer-nav{
 .footer-copyright__right{
   float: right;
   text-align: right;
+}
+@media (max-width: 416px) {
+  .footer{
+    background-color: rgba(#2F4246, 1);
+    height: 40vh;
+    min-height: 250px;
+    position: relative;
+    &::after{
+      top: 40%;
+    }
+  }
+  .arrow-top a{
+   display: none;
+  }
+  .footer-menu{
+    height: 40%;
+    overflow: hidden;
+  }
+  .footer-copyright{
+    height: 60%;
+  }
+  .footer-copyright__left, .footer-copyright__right {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 1rem;
+    span{
+      display: block;
+    }
+  }
+  nav.footer-nav{
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  .footer-nav__list{
+    display: inline-block;
+    margin-top: 3vh;
+  }
+  .footer-nav__item{
+    display: inline-block;
+    margin-right: 1rem;
+    a{
+      font-size: 0.8rem;
+    }
+  }
+  .footer-social{
+    float: none;
+    display: inline-block;
+    margin-top: 3%;
+    width: 100%;
+  }
+  .social-in-circle .social__item{
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 0 10px;
+    svg{
+      padding: 0.4rem;
+    }
+  }
 }

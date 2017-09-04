@@ -1,6 +1,5 @@
 'use strict';
-$(document).ready(function () {
- 
+$(window).ready(function () {
   ////////////////// плавный скрол ///////////////////////////
   $('a[href^="#"]').click(function(){
     var elementClick = $(this).attr('href');
@@ -22,6 +21,8 @@ $(document).ready(function () {
     articles = $('.article'),
     asideItem = $('.blog_aside__item'),
     asideList = $('.blog_aside__list'),
+    aside = $('.blog_aside'),
+    asideLoistButton = asideList.find('#blog_aside__list_button'),
     winHeight = $(window).height(),
     winScrollTop = '';
 
@@ -47,6 +48,19 @@ $(document).ready(function () {
       }
     }
   }
+  ///////////////////gпоказать скрыть боковое меню/////////////////////////////
+  asideLoistButton.click(function(){
+    var left = parseInt( aside.css('left') );
+    if (left<0) {
+      asideList.css({'left':'0px'});
+      aside.css({'left': '0'});
+    }else{
+      asideList.css({'left':'-300px'});
+      aside.css({'left': '-300px'});
+    }
+  });
+  ///////////////////gпоказать скрыть боковое меню/////////////////////////////
+
   //показать скрыть стрелку вверх
   function showArrow(){
     if (winHeight <= winScrollTop && arrow_none) {
@@ -424,22 +438,23 @@ $(document).ready(function () {
     var
       skills = $('.my-skills__item'),
       data,
-      target = $('.my-skills-box');
-      if (target.length > 0) {
-        target = target.offset().top;
-        $(window).on('scroll', function(){
-          winScrollTop = $(window).scrollTop();
-          if (winScrollTop > target/2) {
-            skills.each(function(){
-              var $this = $(this);
-              data = $this.attr('data-skill');
-              if (data == 0) {data = 1;}
-              data =  parseInt( 722*(data/100) );
-              $this.find('.sector').css({'stroke-dasharray':data+' 722'});
-            });
-          }
-        });
-      }
+      target = $('.my-skills-box-ceenter'),
+      windowHeigth = $(window).height();
+    if(target.length > 0) {
+      target = target.offset().top;
+      $(window).on('scroll', function(){
+        winScrollTop = $(window).scrollTop();
+        if (winScrollTop+windowHeigth/10*7 > target) {
+          skills.each(function(){
+            var $this = $(this);
+            data = $this.attr('data-skill');
+            if (data == 0) {data = 1;}
+            data =  parseInt( 722*(data/100) );
+            $this.find('.sector').css({'stroke-dasharray':data+' 722'});
+          });
+        }
+      });
+    }
     
   })();
   //////////////////////////skills//////////////////////////
