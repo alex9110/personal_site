@@ -391,6 +391,10 @@ $(window).ready(function () {
   $(function () {
     $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
     var imgs = [];
+    //ЕСЛИ КАРТИНОК НЕТ 
+    if(imgs.length < 1){
+      setPercents(1,1);
+    }
 
     $.each($('*'), function () {
       var $this = $(this),

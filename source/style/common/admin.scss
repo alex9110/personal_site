@@ -1,0 +1,121 @@
+.admin-wrapper{
+  background-image: url("/assets/img/bg.jpg");
+  background-size: cover;
+}
+.admin-wrapper-box{
+  background-color: rgba(#ccc, 0.7);
+  width: 100vw;
+  height: 100vh;
+}
+.admin-header{
+  background-color: #00BEA3;
+  overflow: hidden;
+}
+.admin-header-top-box{
+  width: 96vw;
+  margin:auto;
+  h1{
+    display: inline-block;
+    margin: 1rem 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+}
+#admin-exit{
+  float: right;
+  color: #fff;
+  text-decoration: underline;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 1.4rem 0;
+}
+.admin-nav{
+  border-top: 2px solid #fff;
+  background-color: #EFEEE9;
+}
+.clearfix::before, .clearfix::after{
+  content: "";
+  display: table;
+}
+.clearfix::after{
+  clear: both;
+}
+
+.admin-nav__item{
+  border-right: 2px solid #fff;
+  float: left;
+  width: 8rem;
+  text-align: center;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #768488;
+  cursor: pointer;
+  &:hover{
+    background-color: #fff;
+    color:  #00BEA3;
+  }
+}
+.admin-content{
+  width: 96vw;
+  margin: auto;
+  padding-top:3rem;
+}
+///////////////////////first////////////////////////
+.admin-about-me{
+  h3{
+    margin: 0 0 2rem 0;
+    color: #455A63;
+  }
+}
+.admin-about-me-box{
+  border: none;
+  display: inline-block;
+  margin: 0 5rem 1rem 0;
+  padding: 0;
+  width: 10rem;
+  font-size: 1rem;
+  color: #415B68;
+}
+.admin-about-me-label{
+  display: block;
+  height: 1.5rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 1rem;
+  padding: 0 1rem 0 0;
+  position: relative;
+  color: #415B68;
+  &:first-child{
+    margin-top: 1rem;
+  }
+  &::after{
+    content: "%";
+    position: absolute;
+    right: 0;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  input{
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    width: 2rem;
+    height: 100%;
+    float: right;
+    text-align: center;
+    color: #47484A;
+
+  }
+}
+#admin-about-me__save{
+  background-color: #00BEA3;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 1rem 0;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+}

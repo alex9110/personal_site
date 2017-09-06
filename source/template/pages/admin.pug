@@ -1,0 +1,28 @@
+extends ../_admin-template
+
+block admin
+  form.admin-about-me
+    h3 Страница "Обо мне"
+    fieldset.admin-about-me-box Frontend
+      label(for="skill_html").admin-about-me-label Html
+        input(type="text" maxlength="3")#skill_html
+      label(for="skill_html").admin-about-me-label CSS
+        input(type="text"  maxlength="3")#skill_css
+      label(for="skill_html" maxlength="3").admin-about-me-label javaScript
+        input(type="text")#skill_js
+    fieldset.admin-about-me-box Backend
+      label(for="skill_html").admin-about-me-label PHP
+        input(type="text" maxlength="3")#skill_html
+      label(for="skill_html").admin-about-me-label Node.js
+        input(type="text"  maxlength="3")#skill_css
+      label(for="skill_html").admin-about-me-label Mongo.db
+        input(type="text"  maxlength="3")#skill_js
+    fieldset.admin-about-me-box Workflow
+      label(for="skill_html").admin-about-me-label Git
+        input(type="text"  maxlength="3")#skill_html
+      label(for="skill_html").admin-about-me-label Gulp
+        input(type="text"  maxlength="3")#skill_css
+      label(for="skill_html").admin-about-me-label Bower
+        input(type="text" maxlength="3")#skill_js
+    div
+      span#admin-about-me__save Сохранить

@@ -1,0 +1,16 @@
+extends _template
+
+block content
+  .admin-wrapper
+    .admin-wrapper-box
+      header.admin-header
+        .admin-header-top-box
+          h1 Панель администрирования
+          a(href="exit.html")#admin-exit Вернуться на сайт
+        nav.admin-nav
+          ul.admin-nav__list.clearfix
+            li.admin-nav__item Обо мне
+            li.admin-nav__item Bлог
+            li.admin-nav__item Мои работы
+      .admin-content
+        block admin
