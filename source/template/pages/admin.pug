@@ -1,7 +1,9 @@
 extends ../_admin-template
 
 block admin
-  form.admin-about-me
+
+
+  form#admin-about-me.admin-form.admin-about-me
     h3 Страница "Обо мне"
     fieldset.admin-about-me-box Frontend
       label(for="skill_html").admin-about-me-label Html
@@ -26,3 +28,24 @@ block admin
         input(type="text" maxlength="3")#skill_js
     div
       span#admin-about-me__save Сохранить
+
+
+  form#admin-blog.admin-form.admin-blog
+    h3 Страница "Блог"
+    p Добавить запись
+    input(type="text" placeholder="Название")#admin-blog__article-title
+    input(type="text" placeholder="дата")#admin-blog__article-data
+    textarea(rows="8" cols="50" placeholder="Содержание")#admin-blog__article-content
+    span#admin-blog__save Добавить
+  
+
+  form#admin-works.admin-form.admin-works
+    h3 Страница "Мои работы"
+    p Добавить Работу
+    input(type="text" placeholder="Название проекта")#admin-works__project-title
+    input(type="text" placeholder="Технологии")#admin-works__project-technologies
+    input(type="text" placeholder="Ссылка")#admin-works__project-link
+    p
+      label#admin-works__project-select-image.admin-works__project-select-image Выбрать картинку
+        input(type="file")
+    span#admin-works__save Добавить

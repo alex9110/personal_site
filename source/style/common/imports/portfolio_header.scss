@@ -98,7 +98,7 @@
     bottom: 0;
     left: 0;
     display: block;
-    opacity: 0.1;
+    opacity: 0.15;
   }
 }
 .parallax_scroll{
@@ -168,7 +168,8 @@
     font-size: 1.8rem;
      font-weight: normal;
     letter-spacing: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
+    margin-top: 1rem;
     color: #fff;
   }
   .autor__description{
@@ -180,9 +181,10 @@
 }
 .ava_bigger{
   margin-top: 0;
+  height: 70%;
   .ava__img{
     margin-top: 0;
-   height: 90%;
+    height: 100%;
   }
 
 }
@@ -213,16 +215,21 @@
     opacity: 1;
    }
 }
+@media (max-width: 1026px) {
+  .portfolio_header_bg1.portfolio_header_bg1{
+    &::after{
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: center 80%;
+      opacity: 0.5;
+    }
+  }
+}
 @media (max-width: 416px){
   .main-nav-list-item{
     font-size: 2rem;
     text-align: center;
     height: 4rem;
-  }
-  .portfolio_header_bg1{
-    &::after{
-      background-image: none;
-    }
   }
   .menu-button{
     top: 1rem;

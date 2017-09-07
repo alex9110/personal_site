@@ -365,8 +365,8 @@ $(window).ready(function () {
 
       layer.map(function (key, value) {
         var
-          widthPosition = w * (key / 90), // Вычисляем коофицент смешения по X
-          heightPosition = h * (key / 90); // Вычисляем коофицент смешения по Y
+          widthPosition = w * (key / 100), // Вычисляем коофицент смешения по X
+          heightPosition = h * (key / 100); // Вычисляем коофицент смешения по Y
 
         $(value).css({
           'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)'
@@ -389,13 +389,8 @@ $(window).ready(function () {
   ///////////////////////////psrallax//////////////////////////
   ///////////////////////preloader/////////////////////////////
   $(function () {
-    $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'none'});
+    $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper, .admin-wrapper').css({'display':'none'});
     var imgs = [];
-    //ЕСЛИ КАРТИНОК НЕТ 
-    if(imgs.length < 1){
-      setPercents(1,1);
-    }
-
     $.each($('*'), function () {
       var $this = $(this),
         background = $this.css('background-image'),
@@ -421,11 +416,19 @@ $(window).ready(function () {
         setPercents(imgs.length, percents);
         percents++;
       });
+      image.error(function () {
+        setPercents(imgs.length, percents);
+        percents++;
+      });
+    }
+    //ЕСЛИ КАРТИНОК НЕТ 
+    if(imgs.length === 0){
+      setPercents(1,1);
     }
     function setPercents(total, current) {
       var percent = Math.ceil(current / total * 100);
       if (percent >= 100) {
-        $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper').css({'display':'block'});
+        $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper, .admin-wrapper').css({'display':'block'});
         $('.plate-front').addClass('animate_plate');
         $('.loader-wrapper').fadeOut(1500, function(){
           setTimeout(function(){
@@ -462,4 +465,41 @@ $(window).ready(function () {
     
   })();
   //////////////////////////skills//////////////////////////
+
+  ////////////////////////////admin////////////////////////////
+
+  (function(){
+    var 
+      adminForms = $('.admin-form'),
+      menList = $('.admin-nav__item');
+
+    menList.click(function(){
+      var that = this;
+      if ($(that).hasClass('active')) {
+        return;
+      }else{
+        $(that).siblings().removeClass('active');
+        $(that).addClass('active');
+        showForm();
+      }
+    });
+   
+    function showForm(){
+      var count = 0;
+      //функцыя покажет нужную форму и скроет не нужную решения принимаеться на основе активного елемента меню
+      menList.each(function(){
+        var that = this;
+        if ( $(that).hasClass('active') ) {
+          $(adminForms[count]).css('display', 'block');
+        }else{
+          $(adminForms[count]).css('display', 'none');
+        }
+        count++;  
+      });
+    }
+    adminForms.css('display', 'none');
+    showForm();
+    
+  })();
+  ////////////////////////////admin////////////////////////////
 });

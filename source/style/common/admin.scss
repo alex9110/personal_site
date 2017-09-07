@@ -3,17 +3,18 @@
   background-size: cover;
 }
 .admin-wrapper-box{
-  background-color: rgba(#ccc, 0.7);
+  background-color: rgba(#fff, 0.5);
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
 }
 .admin-header{
-  background-color: #00BEA3;
   overflow: hidden;
 }
 .admin-header-top-box{
-  width: 96vw;
-  margin:auto;
+  background-color: #00BEA3;
+  padding: 0 2vw;
+  overflow: hidden;
   h1{
     display: inline-block;
     margin: 1rem 0;
@@ -31,8 +32,8 @@
   margin: 1.4rem 0;
 }
 .admin-nav{
-  border-top: 2px solid #fff;
-  background-color: #EFEEE9;
+  margin-top: 2px;
+  background-color: #F0EFEA;
 }
 .clearfix::before, .clearfix::after{
   content: "";
@@ -54,16 +55,19 @@
   color: #768488;
   cursor: pointer;
   &:hover{
-    background-color: #fff;
-    color:  #00BEA3;
+    background-color: #E2E1DD;
   }
+}
+.admin-nav__item.active{
+  background-color: #fff;
+  color:  #00BEA3;
 }
 .admin-content{
   width: 96vw;
   margin: auto;
-  padding-top:3rem;
+  padding:3rem 0 1rem;
 }
-///////////////////////first////////////////////////
+///////////////////////about////////////////////////
 .admin-about-me{
   h3{
     margin: 0 0 2rem 0;
@@ -98,7 +102,7 @@
     transform:translateY(-50%);
   }
   input{
-    border: none;
+    border: 1px solid transparent;
     border-radius: 4px;
     outline: none;
     width: 2rem;
@@ -106,6 +110,9 @@
     float: right;
     text-align: center;
     color: #47484A;
+    &:focus{
+      border-color: #01BFA5;
+    }
 
   }
 }
@@ -118,4 +125,134 @@
   padding: 0.6rem 1rem;
   color: #fff;
   font-size: 0.9rem;
+}
+// #admin-about-me{
+//   display: none;
+// }
+///////////////////////about////////////////////////
+
+
+//////////////////////blog///////////////////////
+
+.admin-blog{
+  color: #415B68;
+  h3{
+    margin:0 0 1.5rem 0;
+  }
+  p{
+    margin: 0 0 -0.5rem 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  input, textarea{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+    display: block;
+    margin: 1rem 0 0 0;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    color: #445D67;
+    position: relative;
+
+    &:focus{
+      border-color: #01BFA5;
+    }
+  }
+  input{
+    width: 14rem;
+  }
+  textarea{
+    min-width: 40vw;
+    max-width: 100%;
+    max-height: 50vh;
+    &::-webkit-scrollbar {
+      width: 15px;
+      position: relative;
+      left: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #D0D0D0;
+      border-radius: 3px;
+      border: 10px solid #fff;
+      border-left: none;
+      height: 50px;
+    }
+  }
+}
+#admin-blog__save{
+  @extend #admin-about-me__save;
+  margin-top: 1.5rem;
+}
+//#admin-blog{display: none;}
+//////////////////////blog///////////////////////
+
+/////////////////////my works///////////////////////
+.admin-works{
+  @extend .admin-blog;
+}
+.admin-works__project-select-image{
+ // background-color: #ccc;
+  margin: 1rem 0 0 0;
+  color: #01A08B;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  position: relative;
+  &::before, &::after{
+    content: "";
+    background-color: #01A08B;
+    position: absolute;
+    left: 1rem;
+    top: 0.7rem;
+    width: 3px;
+    height: 10px;
+  }
+  &::after{
+    transform:rotate(90deg);
+
+  }
+  input{
+    display: none;
+  }
+}
+#admin-works__save{
+  @extend #admin-about-me__save;
+  margin-top: 1.5rem;
+}
+// #admin-works{
+//   display: none;
+// }
+/////////////////////my works///////////////////////
+
+
+@media (max-width: 416px) {
+  .admin-header-top-box{
+    text-align: center;
+    h1{
+      display: block;
+    }
+  }
+  .admin-nav__item.admin-nav__item{
+    border-right: none;
+    border-bottom: 2px solid #fff;
+    clear: both;
+    width: 100%;
+  }
+  #admin-exit{
+    clear: both;
+    float: none;
+    display: inline-block;
+  }
+  .admin-blog.admin-blog{
+    input{
+      width: 100%;
+      padding: 0.7rem;
+    }
+    textarea{
+      min-width: 100%;
+    }
+  }
 }

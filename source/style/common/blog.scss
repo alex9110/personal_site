@@ -2,11 +2,9 @@
   .portfolio_header_bg1{
     &::after{
       background-image: url(/assets/img/svg/blog_header.svg);
-      background-size: 30%;
-      background-position: center 65%;
+      background-size: 60%;
     }
   }
- 
 }
 .section-articles{
   background-color: #fff;

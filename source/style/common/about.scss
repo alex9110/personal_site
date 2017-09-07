@@ -2,6 +2,11 @@ $title_margin_top:20vh;
 $title_height:11vh;
 .about-wrapper{
   @extend .works-wrapper;
+    .portfolio_header_bg1{
+      &::after{
+        background-image: url(/assets/img/svg/about_header_white.svg);
+      }
+    }
 }
 .section-about{
   height: 100+$title_margin_top;
@@ -63,9 +68,12 @@ $title_height:11vh;
 .about-me-center-box{
   display: inline-block;
   position: absolute;
-  top:50%;
+  top:45%;
   left:50%;
   transform:translate(-50%, -50%);
+  .ava__img{
+    border-radius: 6px;
+  }
 }
 .about-me-description{
   h2{
