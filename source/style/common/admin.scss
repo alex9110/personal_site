@@ -226,7 +226,13 @@
 //   display: none;
 // }
 /////////////////////my works///////////////////////
-
+@media (max-width: 1026px) {
+  .admin-blog.admin-blog{
+    textarea{
+      min-width: 100%;
+    }
+  }
+}
 
 @media (max-width: 416px) {
   .admin-header-top-box{

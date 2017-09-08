@@ -104,7 +104,7 @@ $nav_size:2.24rem;
    
   }
 }
-@media (max-width: 416px){
+@media (max-width: 416px)and(orientation:portrait){
   .index-content-main{
     width: 90vw;
     height: 60vh;

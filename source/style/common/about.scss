@@ -241,6 +241,17 @@ li.contacts__item{
   }
 }
 @media (max-width: 1026px) {
+  .section-about{
+    height: auto;
+  }
+  .about-me, .my-skills{
+    background-image: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    float: none;
+    overflow: visible;
+  }
   .about-me__title{
     background-color: #fff;
     height: 10vh;
@@ -255,13 +266,14 @@ li.contacts__item{
       position: absolute;
       width: 100%;
       height: 200%;
+      min-height: 20vw;
       bottom: 0;
       left: 0;
       display: block;  
     }
     h2{
       font-size: 6vw;
-      margin-top: 3vw;
+      //margin-top: 3vw;
       @include two-strips(3vw, 1vw, 2.8vw, -6vw, 6vw);
     }
   }
@@ -290,22 +302,12 @@ li.contacts__item{
       margin-top: 0;
     }
   }
-  .section-about{
-    height: auto;
-  }
-  .about-me, .my-skills{
-    background-image: none;
-    position: static;
-    width: 100%;
-    height: auto;
-    float: none;
-  }
-
   .my-skills{
     background-color: #EFEBDF;
   }
   .my-skills__title{
-    margin-top: 6vw;
+  padding-top: 6vh;
+    margin-top: 0;
     height: auto;
   }
   .my-skills__desk{

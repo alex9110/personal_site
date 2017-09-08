@@ -168,7 +168,7 @@
     &.active{
       color: #fff;
       &::after{
-        background-color: #000;
+        background-color: transparent;
       }
     }
   }
