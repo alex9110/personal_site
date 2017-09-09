@@ -1,25 +1,34 @@
+.animateText{
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
 .letter {
   opacity: 0;
 }
 .showLetter {
   display: inline-block;
-  animation-name:textAnimation;
+  transform:scale(0);
   animation-fill-mode: forwards;
-  animation-duration:800ms;
+  animation-duration: 800ms;
   animation-timing-function:linear;
+  animation-name:textAnimation;
 }
 @keyframes textAnimation{
   0%{
-    //opacity: 0;
-    transform:scale(0.1);
+    opacity: 1;
+    transform:scale(0);
+  }
+  20%{
+    transform:scale(1);
+    opacity: 0.9;
   }
   50%{
-    transform:scale(1.1);
-    opacity: 0.5;
+      transform:scale(1);
+      opacity: 1;
   }
   70%{
-    transform:scale(0.8);
-    opacity: 1;
+      transform:scale(0.75);
+      opacity: 1;
   }
   100%{
     transform:scale(1);

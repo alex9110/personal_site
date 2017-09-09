@@ -206,14 +206,14 @@ $(window).ready(function () {
           $(letterList[i]).after('<br>');
         }
         $(letterList[i]).width(letterWidth);
-      }else{
-        $(letterList[i]).addClass('showLetter');
       }
       i++;
       (function(){
         if (i < listLength) {
           showLetter();
-        } 
+        }else{
+          letterList.addClass('showLetter');
+        }
       })();
     })();
   }
