@@ -63,6 +63,7 @@
     position: relative;
     padding: 0 2.2rem;
     overflow: hidden;
+    font-size: inherit;
     &::before, &::after{
       transition: 100ms;
       transition-property:transform;

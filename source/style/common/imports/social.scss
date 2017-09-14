@@ -17,6 +17,18 @@
   width: 1.5rem;
   height: 1.5rem;
   margin: 0 0.5rem;
+  position: relative;
+  a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    &:hover svg{
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 }
 .social__item svg{
   fill: #09B09E;
@@ -25,10 +37,6 @@
   height: 100%;
   opacity: 0.5;
   color:#286F85;
-  &:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
 }
 @media (max-width: 416px){
   .social__list{

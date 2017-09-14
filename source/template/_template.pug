@@ -4,7 +4,7 @@
 block variables
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
   head
     meta(charset="utf-8")
     title #{title}
@@ -20,7 +20,6 @@ html(lang="en")
     link(rel='stylesheet' href='/assets/css/foundation.css')
     link(rel='stylesheet' href='/assets/css/app.css')
     
-
     <!--[if lt IE 9]>
     script(src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js")
     <![endif]-->
@@ -30,5 +29,5 @@ html(lang="en")
     include includes/loader.pug
     block content
     
-    script(src='/assets/js/foundation.js' defer)
-    script(src='/assets/js/app.js' defer)
+    script(src='/assets/js/foundation.js')
+    script(src='/assets/js/app.js')
