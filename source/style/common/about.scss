@@ -411,5 +411,23 @@ li.contacts__item{
       @include two-strips(1rem, 0.32rem, 0.8rem, -1.8rem, 1.7rem);
     }
   }
+  .section-contacts{
+    background-color: rgba(#F0EEE9, 1);
+    height: auto;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contacts{
+    background-color: rgba(#fff, 1);
+    display: block;
+    width: 90%;
+    position: static;
+    padding-top: 0.8rem;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    transform: translate(0, 0);
+  }
 
 }
