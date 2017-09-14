@@ -26,27 +26,28 @@ $(window).ready(function () {
       asideLoistButton = asideList.find('#blog_aside__list_button'),
       winHeight = $(window).height(),
       winScrollTop = '';
-
-    $(window).on('scroll', function(){
-      winScrollTop = $(window).scrollTop();
-      fixet_nav();
-      inWindow(articles, asideItem);
-      showArrow();
-    });
+      
+    if (target.length > 0) {
+      $(window).on('scroll', function(){
+        winScrollTop = $(window).scrollTop();
+        fixet_nav();
+        inWindow(articles, asideItem);
+        showArrow();
+      });
+    }
     //позыцыонирование навигации
     function fixet_nav(){
-      if (target.length > 0) {
-        var targetPos = target.offset().top;
+     
+      var targetPos = target.offset().top;
 
-        if(winScrollTop >= targetPos && not_fixed){
-          var top = $(asideList).position().top;
-          var left = $(asideList).offset().left;
-          $(asideList).css({'position':'fixed', 'top': top+'px', 'left': left+'px'});
-          not_fixed = false;
-        }else if(winScrollTop < targetPos && !not_fixed) {
-          $(asideList).css({'position':'static'});
-          not_fixed = true;
-        }
+      if(winScrollTop >= targetPos && not_fixed){
+        var top = $(asideList).position().top;
+        var left = $(asideList).offset().left;
+        $(asideList).css({'position':'fixed', 'top': top+'px', 'left': left+'px'});
+        not_fixed = false;
+      }else if(winScrollTop < targetPos && !not_fixed) {
+        $(asideList).css({'position':'static'});
+        not_fixed = true;
       }
     }
     ///////////////////gпоказать скрыть боковое меню/////////////////////////////
@@ -400,7 +401,7 @@ $(window).ready(function () {
       var winScrollTop = $(window).scrollTop();
       if (windowHeigth > winScrollTop) {
         layerScroll.map(function (key, value){
-          var bias = winScrollTop * (key/10);
+          var bias = winScrollTop * (key/20);
           $(value).css({
             'transform': 'translate3d(0, ' + -bias +'px, 0)'
           });
@@ -467,11 +468,14 @@ $(window).ready(function () {
 //////////////////////////skills//////////////////////////
   (function(){
     var
-      skills = $('.my-skills__item'),
-      data,
       target = $('.my-skills-box-ceenter'),
       windowHeigth = $(window).height();
+
     if(target.length > 0) {
+      var
+        skills = $('.my-skills__item'),
+        data;
+
       target = target.offset().top;
       $(window).on('scroll', function(){
         var winScrollTop = $(window).scrollTop();
@@ -526,4 +530,86 @@ $(window).ready(function () {
     
   })();
   ////////////////////////////admin////////////////////////////
+
+////////////////////////форма входа//////////////////////////////
+  (function(){
+    var loginData = {};
+    $('#login-nav__enter').on('click', function(){
+      var
+        loginForm = $('#login-form'),
+        errors = [];
+
+      loginData.login = loginForm.find('#login').val().trim(),
+      loginData.pass = loginForm.find('#password').val().trim(),
+      loginData.human = loginForm.find('#loginform_check').prop('checked'),
+      loginData.exactlyHuman = loginForm.find('#radio_yes').prop('checked');
+        
+      for(var property in loginData){
+        var propLalue = loginData[property];
+        if ( propLalue === false || propLalue === true) {
+          //значет это чекбоксы
+          if (propLalue == false) {
+            errors[1] = 'Пожоже что вы робот.';
+          }
+        }else{
+          //значет это строки
+          var strLength = propLalue.length;
+          if (strLength < 4 || strLength > 14) {
+            errors[0] = 'Длинна логина и пароля должна быть от 4 до 14 символов.';
+          }
+        }
+      }
+      if (errors.length > 0) {
+        var message = 'При заполнении формы обнаружены следующие ошибки.\n';
+        errors.forEach(function(item){
+          message += (item) ? item+'\n':' ';
+          //console.log(item);
+        });
+        alert(message);
+        return false;
+      }
+      //дале работа за сервером
+    });
+  })();
+  ////////////////////////форма входа//////////////////////////////
+  /////////////////////////Админ//////////////////////////
+  (function(){
+    var
+      formAboutMe = $('#admin-about-me'),
+      formBlog = $('#admin-blog'),
+      formWorks = $('#admin-works');  
+    //проверяем вводится ли в input число если нет чистим его
+    formAboutMe.find('input').on('input', function(){
+      var value = parseInt( $(this).val() );
+      if ( isNaN(value) ) {$(this).val('');}
+    });
+    //берёт данные с формы полученой в качестве параметра и сформируем двух уровевый массив дднных для отправки на сервер
+    function getData(form){
+      var
+        formId = form.attr('id'),
+        inputs = form.find('input, textarea'),
+        data = [['formId', formId]];
+      inputs.each(function(){
+        var that = $(this), curentData = [that.attr('id'), that.val()];
+        data[data.length] = curentData;
+      });
+      return data;
+    }
+    
+
+    formAboutMe.find('#admin-about-me__save').on('click', function(){
+      var data = getData(formAboutMe);
+      console.log(data);
+    });
+    formBlog.find('#admin-blog__save').on('click', function(){
+      var data = getData(formBlog);
+      console.log(data);
+    });
+    formWorks.find('#admin-works__save').on('click', function(){
+      var data = getData(formWorks);
+      console.log(data);
+
+    });
+  })();
+  /////////////////////////Админ//////////////////////////
 });

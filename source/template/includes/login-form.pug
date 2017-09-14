@@ -1,17 +1,17 @@
 .login-wrapper.plate-back
   .login-box
-    form.login-form
+    form#login-form.login-form(action='admin.html' method="post")
       h1.login-form__header Авторизуйтесь
       .login-form__login
         label(for="login")
           svg
             use(xlink:href="#login_icon")
-        input#login(type="text" placeholder="Логин")
+        input#login(maxlength="14" type="text" placeholder="Логин" name="login")
       .login-form__password
         label(for="password")
           svg
             use(xlink:href="#password_icon")
-        input#password(type="password" placeholder="Пароль")
+        input#password(maxlength="14" type="password" placeholder="Пароль" name="pas")
       .login-form-checks-wrapper
         p.checkbox-box
           input(type="checkbox" id="loginform_check")
@@ -21,10 +21,10 @@
           input(type="radio" id="radio_yes" name="answer" value="true")
           label(for="radio_yes") Да
             span
-          input(type="radio" id="radio_no" name="answer"  value="false")
+          input(checked type="radio" id="radio_no" name="answer" value="false")
           label(for="radio_no") Не уверен
   nav.login-nav
     ul.login-nav__list
       li.login-nav__to-main#to-main-but Назад
       li.login-nav__enter Войти
-        a(href="admin.html")
+        input(type="submit" name='login-nav__enter' value='' form='login-form')#login-nav__enter
