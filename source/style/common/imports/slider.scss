@@ -139,7 +139,8 @@
     overflow: hidden;
     //transition:300ms;
     top:0;
-    transition-property:top;
+    transform:translateY(0);
+    transition-property:translateY();
     transition-timing-function: linear;
     img{
       width: 100%;
@@ -162,19 +163,19 @@
   }
 }
 .slider__bottom-preview{
-  top:-100%;
+  transform:translateY(-100%);
 }
 
 .slider__bottom-preview li{
   &:first-child{
-     top:100%;
+     transform:translateY(100%);
   }
   &:last-child{
-     top:0;
+     transform:translateY(0);
   }
 }
 .slider__top-preview li:last-child(){
-  top:100%;
+  transform:translateY(100%);
 }
 
 

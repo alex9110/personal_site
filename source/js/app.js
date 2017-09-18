@@ -288,12 +288,16 @@ $(document).ready(function () {
       var
         desc = $('.slider__image-description').clone(),
         title = $(desc[i]).find('h2').addClass('animateText'),
-        technologies = $(desc[i]).find('p').addClass('animateText');
+        technologies = $(desc[i]).find('p').addClass('animateText'),
+        link = $(desc[i]).find('a');
 
       $('.work-description__title h2').replaceWith(title);
       $('.work-description__technologies p').replaceWith(technologies);
+      $('.work-description__botton a').replaceWith(link);
       textAnimate($('.animateText'));
     }
+    //уставим описание текущей работы
+    changeDescription(0);
     var imageList  = $('.slider__images-list');
     function slider(evt){
       var images, arrLenght, botton, prev, prevLeft, prevRight, prev1Left,prev2Left,
@@ -311,7 +315,7 @@ $(document).ready(function () {
       prev2Right = $(prevRight[0]);
         
       //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следующийелемент тот что пока что скрыт 
-      if ( parseInt(prev1Left.css('top')) > parseInt(prev2Left.css('top'))) {
+      if (prev1Left.position().top > prev2Left.position().top) {
         currentLeftLi = prev1Left;
         nextLeftLi = prev2Left;
       }else{
@@ -329,8 +333,9 @@ $(document).ready(function () {
         }, timeout/2);
         changePreview(currentLeftLi, nextLeftLi, 'bottom', images[arrLenght-3]);
       }
+      //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следу
       //узнаем текущий и следующий елементы превьюх, текущий тот который на виду, а следующийелемент тот что пока что скрыт
-      if (parseInt(prev1Right.css('top')) < parseInt(prev2Right.css('top'))) {
+      if (prev1Right.position().top < prev2Right.position().top) {
         currentRightLi = prev1Right;
         nextRightLi = prev2Right;
       }else{
@@ -386,10 +391,10 @@ $(document).ready(function () {
           setTimeout( function(){
             if (prev == 'left') {
               currentElement = newSrc(currentElement, newLi);
-              currentElement.css({'transition-duration':'0ms', 'top':'0'});
+              currentElement.css({'transition-duration':'0ms', 'transform':'translateY(0)'});
             }else if (prev == 'right') {
               currentElement = newSrc(currentElement, newLi);
-              currentElement.css({'transition-duration':'0ms', 'top':'100%'});
+              currentElement.css({'transition-duration':'0ms', 'transform':'translateY(100%)'});
             }
           }, timeout);
         }
@@ -400,11 +405,11 @@ $(document).ready(function () {
           }
           nextElement.css({'transition-duration':timeout+'ms'});
           if (direction == 'bot') {
-            currentElement.css({'top':'200%'});
-            nextElement.css({'top':'100%'});
+            currentElement.css({'transform':'translateY(200%)'});
+            nextElement.css({'transform':'translateY(100%)'});
           }else if(direction == 'top'){
-            currentElement.css({'top': '-100%'});
-            nextElement.css({'top':'0'});  
+            currentElement.css({'transform':'translateY(-100%)'});
+            nextElement.css({'transform':'translateY(0)'});  
           } 
         }
       }
