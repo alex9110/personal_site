@@ -71,15 +71,15 @@ block content
                 svg
                   use(xlink:href="#arrow_bottom_icon")
     section.section-contact-form
-      .contact-form-box
-        form.contact-form
+      #contact-form-box.contact-form-box
+        form#contact-form.contact-form
           .contact-form__header Связаться со мной
           input#name(type="text" name="name" placeholder="Имя")
           input#mail(type="email" name="mail" placeholder="Email")
           textarea#message(type="text" name="message" placeholder="Ваше сообщение")
         .contact-form__buttons   
           input#send-message(type="button" value="Отправить")
-          input#reset(type="reset" value="Очистить")
+          input#reset(type="button" value="Очистить")
         .blur
           .blur__bg
 

@@ -496,6 +496,103 @@ $(document).ready(function () {
   })();
   //////////////////////////skills//////////////////////////
 
+  /////////////////////////pop_up//////////////////////////
+  function popUp(message, time){
+    if (time == undefined) {time = 5000;}
+    $('#pop_up-content').html(message);
+    $('#pop_up').removeClass('hidden');
+    setTimeout(function(){
+      $('#pop_up').addClass('hidden');
+    }, time);
+  }
+
+  (function(){
+    $('#pop_up-button').on('click', function(){
+      $('#pop_up').addClass('hidden');
+    });
+  })();
+
+  /////////////////////////pop_up//////////////////////////
+
+  //берёт данные с формы полученой в качестве параметра и сформируем двух уровевый массив дднных для отправки на сервер
+  function getData(form){
+    var
+      formId = form.attr('id'),
+      inputs = form.find('input, textarea'),
+      data = [['formId', formId]];
+    inputs.each(function(){
+      var that = $(this), curentData = [that.attr('id'), that.val().trim()];
+      data[data.length] = curentData;
+    });
+    return data;
+  }
+
+  function clear(form){
+    var inputs = form.find('input, textarea');
+
+    inputs.each(function(){
+      $(this).val('');
+    });
+  }
+
+  /////////////////////////form of communication////////////////
+
+  (function(){
+    var formBox = $('#contact-form-box');
+    if (formBox.length < 1) {return;}
+    var
+      form = formBox.find('#contact-form'),
+      buttons = formBox.find('.contact-form__buttons');
+
+    buttons.on('click', function(evt){
+      if ( $(evt.target).attr('id') === 'send-message' ) {
+        var data = getData(form);
+        //пройдемся по импутам но пропустим id текущей формы
+        var
+          errors = [],
+          mail = '';
+        for(var i=1; i<data.length; i++){
+          var
+            currenId = data[i][0],
+            currentData = data[i][1];
+
+          if (currenId == 'mail') {mail = currentData;}
+
+          if (currentData.length < 1) {
+            var massege = [ ['name','Имя'], ['mail', 'Email'], ['message', 'Сообщение'] ];
+            var currenInput = '';
+            //посмотрим ссобщения с от имени какого поля нужно вывести
+            massege.forEach(function(element){
+              if (currenId === element[0]) {currenInput = element[1];}
+            });
+            errors[errors.length] = currenInput+' не может быть пустым! <br>';
+          }
+        }
+        var r = /^\w+@\w+\.\w{2,4}$/i;
+        if (errors.length < 1 && !r.test(mail) ){
+          errors[errors.length] = 'Не коректный e-mail!';
+        }
+        if (errors.length < 1) {
+          var answer = true;
+          //если оштбок нет отравим запрос на сервер
+
+          //если от сервера прийдет положительный ответ
+          if (answer === true) {
+            popUp('УСПЕШНО ОТПРАВЛЕНО!', 3000);
+            clear(form);
+          }
+
+        }else{popUp(errors);}
+        
+      }else if($(evt.target).attr('id') === 'reset'){
+        clear(form);
+      }
+    });
+  })();
+
+
+  /////////////////////////form of communication////////////////
+
   ////////////////////////////admin////////////////////////////
 
   (function(){
@@ -551,23 +648,23 @@ $(document).ready(function () {
         if ( propLalue === false || propLalue === true) {
           //значет это чекбоксы
           if (propLalue == false) {
-            errors[1] = 'Пожоже что вы робот.';
+            errors[1] = 'Пожоже что вы робот!<br>';
           }
         }else{
           //значет это строки
           var strLength = propLalue.length;
           if (strLength < 4 || strLength > 14) {
-            errors[0] = 'Длинна логина и пароля должна быть от 4 до 14 символов.';
+            errors[0] = 'Длинна логина и пароля должна быть от 4 до 14 символов!<br>';
           }
         }
       }
       if (errors.length > 0) {
-        var message = 'При заполнении формы обнаружены следующие ошибки.\n';
+        var message = '';
         errors.forEach(function(item){
           message += (item) ? item+'\n':' ';
           //console.log(item);
         });
-        alert(message);
+        popUp(message);
         return false;
       }
       //дале работа за сервером
@@ -580,6 +677,9 @@ $(document).ready(function () {
   ////////////////////////форма входа//////////////////////////////
   /////////////////////////Админ//////////////////////////
   (function(){
+    if ($('.admin-form').length < 1){return;}
+    //изменим цвет popUp для админки
+    $('#pop_up').css({'background-color':'#00A78E'});
     var
       formAboutMe = $('#admin-about-me'),
       formBlog = $('#admin-blog'),
@@ -589,32 +689,36 @@ $(document).ready(function () {
       var value = parseInt( $(this).val() );
       if ( isNaN(value) ) {$(this).val('');}
     });
-    //берёт данные с формы полученой в качестве параметра и сформируем двух уровевый массив дднных для отправки на сервер
-    function getData(form){
-      var
-        formId = form.attr('id'),
-        inputs = form.find('input, textarea'),
-        data = [['formId', formId]];
-      inputs.each(function(){
-        var that = $(this), curentData = [that.attr('id'), that.val()];
-        data[data.length] = curentData;
-      });
-      return data;
-    }
     
     formAboutMe.find('#admin-about-me__save').on('click', function(){
+      var errors = [];
+      if (errors.length<1) {
+        popUp('сохранено', 1500);
+      }else{popUp(errors);}
       var data = getData(formAboutMe);
+
       console.log(data);
     });
     formBlog.find('#admin-blog__save').on('click', function(){
+      var errors = [];
+      if (errors.length<1) {
+        popUp('сохранено', 1500);
+      }else{popUp(errors);}
       var data = getData(formBlog);
+
       console.log(data);
     });
     formWorks.find('#admin-works__save').on('click', function(){
+      var errors = [];
+      if (errors.length<1) {
+        popUp('сохранено', 1500);
+      }else{popUp(errors);}
       var data = getData(formWorks);
+
       console.log(data);
 
     });
   })();
   /////////////////////////Админ//////////////////////////
+
 });

@@ -27,6 +27,9 @@ html(lang="ru")
   body
     include common/icons_svg/sprite.svg
     include includes/loader.pug
+    #pop_up.hidden
+      span#pop_up-button
+      #pop_up-content какая то ошибка<br> ещё ошибка
     block content
     
     script(src='/assets/js/foundation.js')
