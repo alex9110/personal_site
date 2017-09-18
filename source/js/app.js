@@ -183,12 +183,11 @@ $(document).ready(function () {
     }
     var
       arr = $('.main-nav-list-item'),
-      arr_length = arr.length,
-      fontSize = $(arr[0]).css('font-size');
+      arr_length = arr.length;
 
     function show_menu(){
       menuButton.addClass('menu-button-close');
-      $(arr).find('a').css('font-size', '0');
+      $(arr).find('a').css({'transform': 'scale(0)', 'transition-duration':transition+'ms'});
       var current = 0;
       $('.curtain-left').addClass('closeCurtainsL');
       $('.curtain-right').addClass('closeCurtainsR');
@@ -196,9 +195,7 @@ $(document).ready(function () {
         $('#main-nav').addClass('block');
         var timerId = setInterval(function(){
           var a = $(arr[current]).find('a');
-          a.animate({'font-size':fontSize}, {
-            duration:transition
-          });
+          a.css({'transform':'scale(1)'});
           if (current >= arr_length-1) {
             clearTimeout(timerId);
           }
@@ -297,10 +294,11 @@ $(document).ready(function () {
       $('.work-description__technologies p').replaceWith(technologies);
       textAnimate($('.animateText'));
     }
+    var imageList  = $('.slider__images-list');
     function slider(evt){
-      var imageList, images, arrLenght, botton, prev, prevLeft, prevRight, prev1Left,prev2Left, prev1Right, prev2Right, currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
+      var images, arrLenght, botton, prev, prevLeft, prevRight, prev1Left,prev2Left,
+        prev1Right, prev2Right, currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
 
-      imageList  = $('.slider__images-list');
       images     = imageList.find('li');
       arrLenght  = images.length;
       botton     = $(evt.currentTarget).attr('class');

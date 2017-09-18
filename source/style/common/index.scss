@@ -104,11 +104,11 @@ $nav_size:2.24rem;
    
   }
 }
-@media (max-width: 416px)and(orientation:portrait){
+@media (max-width: 416px){
   .index-content-main{
     width: 90vw;
     height: 60vh;
-    min-height: 350px;
+    min-height: 360px;
     margin-bottom: 0.5+$nav_size;
   }
   .index-copyright{
