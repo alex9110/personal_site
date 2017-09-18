@@ -18,6 +18,7 @@
   background-size: 100% auto;
   background-position: center bottom;
   background-repeat: no-repeat;
+  transform: translateZ(0);
   &:nth-child(1){
     background-image: url("/assets/img/bg/bg_1-min.png");
   }

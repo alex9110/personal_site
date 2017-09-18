@@ -59,6 +59,8 @@ $nav_size:2.24rem;
 .plate{
   display: inline-block;
   perspective: 1000px;
+  transform: translateZ(0);
+
   &.plate-front{
     & .plate-front{
       transform: rotateY(180deg);
