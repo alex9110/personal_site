@@ -69,8 +69,12 @@
   }
 }
 @media (max-width: 416px) {
+  .parallax {
+    background-size: cover;
+  }
   .parallax__layer{
     right: -80%;
     left: -80%;
+    height: 100%;
   }
 }

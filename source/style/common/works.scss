@@ -90,7 +90,7 @@ $works__title:25vh;
 .works-box{
   background-color: #EFEBE0;
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 .work-description{
   background-color: #F0EFEA;
@@ -255,6 +255,7 @@ $works__title:25vh;
    top: 50%;
    left: 0;
    right: 0;
+   z-index: 10;
   }
  .work-description-box{
   width: 100%;
