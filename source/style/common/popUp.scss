@@ -9,8 +9,8 @@
  padding: 10px 30px 10px 10px;
  position: fixed;
  left: 50%;
- top: 0;
- transform: translateX(-50%);
+ bottom: 100%;
+ transform: translate(-50%, -10%);
  text-align: center;
  z-index: 1000;
  transition:500ms;
@@ -53,6 +53,6 @@
   line-height: 1.5;
   text-decoration: underline;
 }
-#pop_up.hidden{
-  transform:translate(-50%, -110%);
+#pop_up.show{
+  transform:translate(-50%, 100%);
 }

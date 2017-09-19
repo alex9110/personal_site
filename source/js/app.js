@@ -500,15 +500,15 @@ $(document).ready(function () {
   function popUp(message, time){
     if (time == undefined) {time = 5000;}
     $('#pop_up-content').html(message);
-    $('#pop_up').removeClass('hidden');
+    $('#pop_up').addClass('show');
     setTimeout(function(){
-      $('#pop_up').addClass('hidden');
+      $('#pop_up').removeClass('show');
     }, time);
   }
 
   (function(){
     $('#pop_up-button').on('click', function(){
-      $('#pop_up').addClass('hidden');
+      $('#pop_up').removeClass('show');
     });
   })();
 
