@@ -41,40 +41,29 @@
 @media (max-width: 1026px){
   .parallax {
     background-image: url("/assets/img/bg/bg_mobile.jpg");
+    background-size: cover;
+    top:-20%;
   }
   .parallax__layer.parallax__layer{
     background-image: none;
+    display: none;
   }
 }
 @media (max-width: 1026px)and(orientation:portrait) {
   .parallax {
-    background-image: url("/assets/img/bg/bg_mobile.jpg");
-    background-size: 100vw 100vh;
+    background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
-  }
-  .parallax__layer{
-    right: -45%;
-    left: -45%;
+    top:-10%;
   }
   .parallax__layer.parallax__layer{
     background-image: none;
-  }
-
-}
-@media (max-width: 800px) {
-  .parallax__layer{
-    right: -60%;
-    left: -60%;
+    display: none;
   }
 }
-@media (max-width: 416px) {
+@media (max-width: 416px)and(orientation:portrait) {
   .parallax {
-    background-size: cover;
-  }
-  .parallax__layer{
-    right: -80%;
-    left: -80%;
-    height: 100%;
+    background-image: url("/assets/img/bg/bg_mobile_m.jpg");
+    background-size: 110% auto;
   }
 }

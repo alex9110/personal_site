@@ -276,14 +276,17 @@ $(document).ready(function () {
     $('.slider__images-list').css({ 'transition-duration':timeout/2+'ms'});
     var buttons = $('.slider__buttons-bottom, .slider__buttons-top');
     buttons.on('click', function(evt){
+      callSlider(evt);
+    });
+    function callSlider(evt){
       //удалим обработчик
       buttons.off();
-      slider(evt);
       setTimeout(function(){
         //вернём обработчик
-        buttons.on('click', function(evt){slider(evt);});
-      },timeout*2); 
-    });
+        buttons.on('click', function(evt){callSlider(evt);});
+      },timeout*1.5);
+      slider(evt);
+    }
     function changeDescription(i){
       var
         desc = $('.slider__image-description').clone(),

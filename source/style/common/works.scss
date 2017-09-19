@@ -24,6 +24,7 @@ $works__title:25vh;
 .works-wrapper{
   overflow: hidden;
   color: #373F42;
+  min-width: 300px;
 }
 .section-header{
   position: relative;
@@ -250,7 +251,7 @@ $works__title:25vh;
   }
 .work-description{
    position: absolute;
-   height: 30%;
+   height: 32%;
    width: 100%;
    top: 50%;
    left: 0;

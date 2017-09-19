@@ -34,6 +34,7 @@ $button_size: 2.5rem;
 .contact-form{
   height: 100%;
   width: 20rem;
+  min-width: 270px;
   padding:2rem 1rem 1rem 1rem;
   text-align: center;
   input, textarea{

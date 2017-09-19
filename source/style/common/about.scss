@@ -317,6 +317,7 @@ li.contacts__item{
       text-align: justify;
       letter-spacing: 1px;
       width: 60%;
+      min-width: 270px;
       margin: 2vw 0;
     }
   }
@@ -348,7 +349,9 @@ li.contacts__item{
   .my-skills__item{
     display: inline-block;
     width: 20vw;
+    min-width: 60px;
     height: 15vw;
+    min-height: 45px;
     margin: 0;
     span{
       font-size: 1.5vw;
