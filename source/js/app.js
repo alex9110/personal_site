@@ -1,476 +1,33 @@
 'use strict';
 $(document).ready(function () {
-  ///////////////////////preloader/////////////////////////////
-  $(function () {
-    $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper, .admin-wrapper').css({'display':'none'});
-    var imgs = [];
-    $.each($('*'), function () {
-      var $this = $(this),
-        background = $this.css('background-image'),
-        img = $this.is('img');
-      if (background != 'none') {
-        var path = background.replace('url("', '').replace('")', '');
 
-        imgs.push(path);
-      }
-      if (img) {
-        path = $this.attr('src');
-        imgs.push(path);
-      }
-    });
-    var percents = 1;
-    for (var i = 0; i < imgs.length; i++) {
-      var image = $('<img>', {
-        attr: {
-          src : imgs[i]
-        }
-      });
-      image.load(function () {
-        setPercents(imgs.length, percents);
-        percents++;
-      });
-      image.error(function () {
-        setPercents(imgs.length, percents);
-        percents++;
-      });
-    }
-    //ЕСЛИ КАРТИНОК НЕТ 
-    if(imgs.length === 0){
-      setPercents(1,1);
-    }
-    function setPercents(total, current) {
-      var percent = Math.ceil(current / total * 100);
-      if (percent >= 100) {
-        $('.about-wrapper, .blog-wrapper, .index-wrapper, .works-wrapper, .admin-wrapper').css({'display':'block'});
-        $('.plate-front').addClass('animate_plate');
-        $('.loader-wrapper').fadeOut(1500, function(){
-          setTimeout(function(){
-            $('.plate-front').removeClass('animate_plate');
-          }, 2000);
-        });
-      }
-      $('.loader__percent').text(percent + '%');
-    }
-  });
-  ///////////////////////preloader/////////////////////////////
-  ////////////////// плавный скрол ///////////////////////////
+  require('./modules/slider.js')();
+  require('./modules/blog_page/blog.js')();
+  require('./modules/show_hide_menu.js')();
+  require('./modules/paralax.js')();
+  require('./modules/communication_form.js')();
+  require('./modules/admin_scripts/login_form.js')();
+  require('./modules/admin_scripts/admin_menu.js')();
+  require('./modules/admin_scripts/admin_form_processing.js')();
+  require('./modules/preloader.js')();
+
+
+// плавный скрол
   $('a[href^="#"]').click(function(){
     var elementClick = $(this).attr('href');
     var destination = $(elementClick).offset().top;  //узнаем место назначения 
     $('html, body').animate({scrollTop: destination}, 1000);  //двигаем к ниму
     return false;                     
   });
-  ////////////////// плавный скрол ///////////////////////////
-  ////////////////////////перевернуть плашку//////////////////////////////////
+
+
+//перевернуть плашку
   $('#to-main-but, #authorization-button').on('click',function(){
     $('#plate').toggleClass('plate-front');
   });
-////////////////////////////перевернуть плашку////////////////////////////
-//////////////////////////код страницы блога/////////////////////////////////
-  (function(){
-    var
-      not_fixed = true,
-      arrow_none = true,
-      target = $('#section-articles'),
-      articles = $('.article'),
-      asideItem = $('.blog_aside__item'),
-      asideList = $('.blog_aside__list'),
-      aside = $('.blog_aside'),
-      asideLoistButton = asideList.find('#blog_aside__list_button'),
-      winHeight = $(window).height(),
-      winScrollTop = '';
-      
-    if (target.length > 0) {
-      $(window).on('scroll', function(){
-        winScrollTop = $(window).scrollTop();
-        fixet_nav();
-        inWindow(articles, asideItem);
-        showArrow();
-      });
-    }
-    //позыцыонирование навигации
-    function fixet_nav(){
-     
-      var targetPos = target.offset().top;
 
-      if(winScrollTop >= targetPos && not_fixed){
-        var top = $(asideList).position().top;
-        var left = $(asideList).offset().left;
-        $(asideList).css({'position':'fixed', 'top': top+'px', 'left': left+'px'});
-        not_fixed = false;
-      }else if(winScrollTop < targetPos && !not_fixed) {
-        $(asideList).css({'position':'static'});
-        not_fixed = true;
-      }
-    }
-    ///////////////////gпоказать скрыть боковое меню/////////////////////////////
-    asideLoistButton.click(function(){
-      var left = parseInt( aside.css('left') );
-      if (left<0) {
-        asideList.css({'left':'0px'});
-        aside.css({'left': '0'});
-      }else{
-        asideList.css({'left':'-300px'});
-        aside.css({'left': '-300px'});
-      }
-    });
-    ///////////////////gпоказать скрыть боковое меню/////////////////////////////
 
-    //показать скрыть стрелку вверх
-    function showArrow(){
-      if (winHeight <= winScrollTop && arrow_none) {
-        $('.arrow-top').css({'display':'block'});
-        arrow_none = false;
-      }
-      else if(winHeight > winScrollTop && !arrow_none){
-        $('.arrow-top').css({'display':'none'});
-        arrow_none = true;
-      }
-    }
-    //покрасит елемент навигационного меню который сответствует текущей стати
-    var savedIndexNumber = 0, currentIndexNumber = 0;
-    function inWindow(articles, asideItem){
-      var
-        indent = parseInt( $(articles[0]).css('margin-bottom') ),
-        currentEls = $(articles),
-        result = [],
-        offsetTop;
-
-      currentEls.each(function(){
-        var element = $(this);
-        offsetTop = element.offset().top;
-        offsetTop = parseInt(offsetTop);
-        if( winScrollTop+indent*2 > offsetTop ){
-          result.push(this);
-          currentIndexNumber = result.length - 1;
-        }
-      });
-      if ( savedIndexNumber !== currentIndexNumber) {
-        savedIndexNumber = currentIndexNumber;
-        $(asideItem).removeClass('active');
-        $(asideItem[currentIndexNumber]).addClass('active');
-      }
-    }
-  })();
-  
-  //////////////////////////код страницы блога/////////////////////////////////
-
-  ///////////////////////start portfolio header///////////////////////////
-  (function(){
-    var
-      transition = 300,
-      menuButton = $('#menu-button');
-
-    menuButton.click(function(){
-      var close = $('.curtain-left').hasClass('closeCurtainsL');
-      if(close){
-        close_menu();
-      }else{
-        show_menu();
-      }
-    });
-    function close_menu(){
-      menuButton.removeClass('menu-button-close');
-      $('.curtain-left, .curtain-right, #main-nav').css({'opacity':0});
-      setTimeout(function(){
-        $('.curtain-left').removeClass('closeCurtainsL');
-        $('.curtain-right').removeClass('closeCurtainsR');
-        $('#main-nav').removeClass('block');
-        setTimeout(function(){
-          $('.curtain-left, .curtain-right, #main-nav').css({'opacity':1});
-        }, transition); 
-      }, transition);
-    }
-    var
-      arr = $('.main-nav-list-item'),
-      arr_length = arr.length;
-
-    function show_menu(){
-      menuButton.addClass('menu-button-close');
-      $(arr).find('a').css({'transform': 'scale(0)', 'transition-duration':transition+'ms'});
-      var current = 0;
-      $('.curtain-left').addClass('closeCurtainsL');
-      $('.curtain-right').addClass('closeCurtainsR');
-      setTimeout(function(){
-        $('#main-nav').addClass('block');
-        var timerId = setInterval(function(){
-          var a = $(arr[current]).find('a');
-          a.css({'transform':'scale(1)'});
-          if (current >= arr_length-1) {
-            clearTimeout(timerId);
-          }
-          current++;
-        }, transition/2); 
-
-      }, transition);
-    }
-  })();
-  ///////////////////////end portfolio header///////////////////////////
-
-   /////////////////////////////анимирования текста в слайдере///////////////////////////////
-   
-  var timeout = 600;
-  (function(){
-    var
-      descriptions = $('.slider__image-description'),
-      titles = descriptions.find('h2'),
-      technologists = descriptions.find('p');
-      //функция подготовит текст к анимации порубает на отдельные буквы все что надо
-    function fraction(e){
-      e.forEach(function(item){
-        item.each(function(){
-          var
-            that = $(this),
-            string = that.text();
-          that.html(string.replace(/./g, '<span class="letter">$&</span>'));
-          //присвоем каждой букве необходимую задержку перед анимацией
-          var
-            letters = that.find('span'),
-            dealy = 0;
-          letters.each(function(){
-            var
-              that = $(this),
-              leterLength = letters.length;
-            that.css({'animation-delay':dealy+'ms'});
-            dealy += parseInt(timeout / leterLength, 10);
-          });
-        });
-      }); 
-      return;
-    }
-    fraction([titles, technologists]);
-  })();
-  
-  function textAnimate(that){
-    var
-      letterList = that.find('.letter'),
-      listLength = letterList.length,
-      i = 0;
-
-    (function showLetter(){
-      var currentLetter = $(letterList[i]).html();
-     //если это пробел зададим ему фиксированную ширину иначе потом он сплющиться 
-      if (currentLetter === ' ') {
-        var letterWidth = $(letterList[i]).width();
-      //если ширина пробела = 0, значит это конец строки и нужно вставить елемент переноса строки
-        if (letterWidth == 0) {
-          $(letterList[i]).after('<br>');
-        }
-        $(letterList[i]).width(letterWidth);
-      }
-      i++;
-      (function(){
-        if (i < listLength) {
-          showLetter();
-        }else{
-          letterList.addClass('showLetter');
-        }
-      })();
-    })();
-  }
-   /////////////////////////////конец анимирования текста в слайдере///////////////////////////////
-
-  /////////////////////////start slider/////////////////////////////////
-  (function(){
-    $('.slider__bottom-preview li, .slider__top-preview li, .slider__images-list').css({'transition-duration':timeout+'ms'});
-    $('.slider__images-list').css({ 'transition-duration':timeout/2+'ms'});
-    var buttons = $('.slider__buttons-bottom, .slider__buttons-top');
-    buttons.on('click', function(evt){
-      callSlider(evt);
-    });
-    function callSlider(evt){
-      //удалим обработчик
-      buttons.off();
-      setTimeout(function(){
-        //вернём обработчик
-        buttons.on('click', function(evt){callSlider(evt);});
-      },timeout*1.5);
-      slider(evt);
-    }
-    function changeDescription(i){
-      var
-        desc = $('.slider__image-description').clone(),
-        title = $(desc[i]).find('h2').addClass('animateText'),
-        technologies = $(desc[i]).find('p').addClass('animateText'),
-        link = $(desc[i]).find('a');
-
-      $('.work-description__title h2').replaceWith(title);
-      $('.work-description__technologies p').replaceWith(technologies);
-      $('.work-description__botton a').replaceWith(link);
-      textAnimate($('.animateText'));
-    }
-    //уставим описание текущей работы
-    changeDescription(0);
-    var imageList  = $('.slider__images-list');
-    function slider(evt){
-      var images, arrLenght, botton, prev, prevLeft, prevRight, prev1Left,prev2Left,
-        prev1Right, prev2Right, currentLeftLi, nextLeftLi, currentRightLi, nextRightLi;
-
-      images     = imageList.find('li');
-      arrLenght  = images.length;
-      botton     = $(evt.currentTarget).attr('class');
-      prev       = $('.slider__buttons');
-      prevLeft   = prev.find('.slider__bottom-preview li');
-      prevRight  = prev.find('.slider__top-preview li');
-      prev1Left  = $(prevLeft[1]);
-      prev2Left  = $(prevLeft[0]);
-      prev1Right = $(prevRight[1]);
-      prev2Right = $(prevRight[0]);
-        
-      //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следующийелемент тот что пока что скрыт 
-      if (prev1Left.position().top > prev2Left.position().top) {
-        currentLeftLi = prev1Left;
-        nextLeftLi = prev2Left;
-      }else{
-        currentLeftLi = prev2Left;
-        nextLeftLi = prev1Left;
-      }
-      //Следующий елемент с лева значение по умолчанию
-      nextLeftLi = newSrc(nextLeftLi, images[arrLenght-2]);
-      //если нажал кнопку назад она же в низ
-      function back(){
-        setTimeout(function(){
-          //перекинем изображение с кона в начало
-          imageList.prepend(images[arrLenght-1]);
-          imageList.toggleClass('opacity');
-        }, timeout/2);
-        changePreview(currentLeftLi, nextLeftLi, 'bottom', images[arrLenght-3]);
-      }
-      //узнаем текущий и следующий елементы превьюх, текущий тот что видим, а следу
-      //узнаем текущий и следующий елементы превьюх, текущий тот который на виду, а следующийелемент тот что пока что скрыт
-      if (prev1Right.position().top < prev2Right.position().top) {
-        currentRightLi = prev1Right;
-        nextRightLi = prev2Right;
-      }else{
-        currentRightLi = prev2Right;
-        nextRightLi = prev1Right;
-      }
-      //Следующий елемент с права значение по умолчанию
-      nextRightLi = newSrc(nextRightLi, images[2]);
-      //если нажал впеёд она же вверх
-      function forward(){
-        setTimeout(function(){
-          //перекинем изображение с начала в конец
-          imageList.append(images[0]);
-          imageList.toggleClass('opacity');
-        }, timeout/2);
-        changePreview(currentRightLi, nextRightLi, 'top', images[3]);
-      }   
-  //меняем главное изображение
-      function changeMainImage(){
-        imageList.toggleClass('opacity');
-        if (botton == 'slider__buttons-bottom') {
-          back();
-          changeDescription(arrLenght-1);
-        }else{
-          forward();
-          changeDescription(1);
-        } 
-      }  
-  //меням превюху параметры: текущая ли, следующая та на которую сечас заменется текущая, направление движения анимацыи,
-  //новая ли тоесть с новым изображением и возможно описанием она заменет ту ли которую мы сдвиним из зоны видимости
-      function changePreview(currentLi, nextLi, direction, newLi){  
-        if (direction == 'bottom') {
-          move('bot');
-          prewBack('left');
-           // кликнули по левой кнопке значит меняем значения по умолчанию для следующиго елемента правой кнопке
-          nextRightLi = newSrc(nextRightLi, images[0]);
-          move('top', currentRightLi, nextRightLi);
-          prewBack('right', currentRightLi);
-        }
-        if (direction == 'top') {
-          move('top');
-          prewBack('right');
-          // кликнули по правой кнопке значит меняем значения по умолчанию для следующиго елемента на левой кнопке
-          nextLeftLi = newSrc(nextLeftLi, images[0]);
-          move('bot', currentLeftLi, nextLeftLi);
-          prewBack('left', currentLeftLi);
-        }
-        //возврвщает скрытое превю на стартовою позицыю, параметры какое превью левое или правое, и не обезательный текущийэлемнт
-        function prewBack(prev, currentElement){
-          if (currentElement === undefined) {
-            currentElement = currentLi;
-          }
-          setTimeout( function(){
-            if (prev == 'left') {
-              currentElement = newSrc(currentElement, newLi);
-              currentElement.css({'transition-duration':'0ms', 'transform':'translateY(0)'});
-            }else if (prev == 'right') {
-              currentElement = newSrc(currentElement, newLi);
-              currentElement.css({'transition-duration':'0ms', 'transform':'translateY(100%)'});
-            }
-          }, timeout);
-        }
-        function move(direction, currentElement, nextElement){
-          if (currentElement === undefined || nextElement === undefined) {
-            currentElement = currentLi;
-            nextElement = nextLi;
-          }
-          nextElement.css({'transition-duration':timeout+'ms'});
-          if (direction == 'bot') {
-            currentElement.css({'transform':'translateY(200%)'});
-            nextElement.css({'transform':'translateY(100%)'});
-          }else if(direction == 'top'){
-            currentElement.css({'transform':'translateY(-100%)'});
-            nextElement.css({'transform':'translateY(0)'});  
-          } 
-        }
-      }
-  //функция меняет катринку и h1 в li элементте
-      function newSrc(oldLi, newLi){
-        var
-          tmpSrc = $(newLi).find('img').attr('src'),
-          tmpH1 = $(newLi).find('h1').html();
-        //заменим адрес к картинке
-        oldLi.find('img').attr({'src':tmpSrc});
-        //заменим контент в h1
-        oldLi.find('h1').html(tmpH1);
-        return oldLi;
-      }
-      changeMainImage();
-    }
-  })();
-  
-   ////////////////////////end slider/////////////////////////////////
-
-   ///////////////////////////psrallax//////////////////////////
-  (function () {
-    var
-      layer = $('.parallax').find('.parallax__layer'),
-      layerScroll = $('.parallax_scroll').find('.parallax__layer');
-    $(window).on('mousemove', function (e) { 
-      var
-        mouse_dx = (e.pageX), // Узнаем положение мышки по X
-        mouse_dy = (e.pageY), // Узнаем положение мышки по Y
-        w = (window.innerWidth / 2) - mouse_dx, // Вычисляем для x перемещения
-        h = (window.innerHeight / 2) - mouse_dy; // Вычисляем для y перемещения
-
-      layer.map(function (key, value) {
-        var
-          widthPosition = w * (key / 100), // Вычисляем коофицент смешения по X
-          heightPosition = h * (key / 100); // Вычисляем коофицент смешения по Y
-
-        $(value).css({
-          'transform': 'translate3d(' + widthPosition + 'px, ' + heightPosition + 'px, 0)'
-        });
-      });
-    });
-    var windowHeigth = $(window).height();
-    $(window).on('scroll', function(){
-      var winScrollTop = $(window).scrollTop();
-      if (windowHeigth > winScrollTop) {
-        layerScroll.map(function (key, value){
-          var bias = winScrollTop * (key/20);
-          $(value).css({
-            'transform': 'translate3d(0, ' + -bias +'px, 0)'
-          });
-        });
-      } else{return;}
-    });
-  })();  
-  ///////////////////////////psrallax//////////////////////////
-
-//////////////////////////skills//////////////////////////
+//skills persent
   (function(){
     var
       target = $('.my-skills-box-ceenter'),
@@ -495,19 +52,19 @@ $(document).ready(function () {
         }
       });
     }
-    
   })();
-  //////////////////////////skills//////////////////////////
 
-  /////////////////////////pop_up//////////////////////////
-  function popUp(message, time){
+
+//pop_up
+  window.hm = {};
+  window.hm.popUp = function popUp(message, time){
     if (time == undefined) {time = 5000;}
     $('#pop_up-content').html(message);
     $('#pop_up').addClass('show');
     setTimeout(function(){
       $('#pop_up').removeClass('show');
     }, time);
-  }
+  };
 
   (function(){
     $('#pop_up-button').on('click', function(){
@@ -515,10 +72,18 @@ $(document).ready(function () {
     });
   })();
 
-  /////////////////////////pop_up//////////////////////////
 
-  //берёт данные с формы полученой в качестве параметра и сформируем двух уровевый массив дднных для отправки на сервер
-  function getData(form){
+//удалик фрейм с картой на мобильных
+  if ($(window).width() <= 416) {
+    $('.section-contacts iframe').remove();
+  }
+
+
+/*
+берёт данные с формы полученой в качестве параметра и сформируем двух 
+уровевый массив дднных для дальнейшей обработки или отправки на сервер
+*/
+  window.hm.getData = function getData(form){
     var
       formId = form.attr('id'),
       inputs = form.find('input, textarea'),
@@ -528,200 +93,7 @@ $(document).ready(function () {
       data[data.length] = curentData;
     });
     return data;
-  }
+  };
 
-  function clear(form){
-    var inputs = form.find('input, textarea');
-
-    inputs.each(function(){
-      $(this).val('');
-    });
-  }
-
-  /////////////////////////form of communication////////////////
-
-  (function(){
-    var formBox = $('#contact-form-box');
-    if (formBox.length < 1) {return;}
-    var
-      form = formBox.find('#contact-form'),
-      buttons = formBox.find('.contact-form__buttons');
-
-    buttons.on('click', function(evt){
-      if ( $(evt.target).attr('id') === 'send-message' ) {
-        var data = getData(form);
-        //пройдемся по импутам но пропустим id текущей формы
-        var
-          errors = [],
-          mail = '';
-        for(var i=1; i<data.length; i++){
-          var
-            currenId = data[i][0],
-            currentData = data[i][1];
-
-          if (currenId == 'mail') {mail = currentData;}
-
-          if (currentData.length < 1) {
-            var massege = [ ['name','Имя'], ['mail', 'Email'], ['message', 'Сообщение'] ];
-            var currenInput = '';
-            //посмотрим ссобщения с от имени какого поля нужно вывести
-            massege.forEach(function(element){
-              if (currenId === element[0]) {currenInput = element[1];}
-            });
-            errors[errors.length] = currenInput+' не может быть пустым! <br>';
-          }
-        }
-        var r = /^\w+@\w+\.\w{2,4}$/i;
-        if (errors.length < 1 && !r.test(mail) ){
-          errors[errors.length] = 'Не коректный e-mail!';
-        }
-        if (errors.length < 1) {
-          var answer = true;
-          //если оштбок нет отравим запрос на сервер
-
-          //если от сервера прийдет положительный ответ
-          if (answer === true) {
-            popUp('УСПЕШНО ОТПРАВЛЕНО!', 3000);
-            clear(form);
-          }
-
-        }else{popUp(errors);}
-        
-      }else if($(evt.target).attr('id') === 'reset'){
-        clear(form);
-      }
-    });
-  })();
-
-
-  /////////////////////////form of communication////////////////
-
-  ////////////////////////////admin////////////////////////////
-
-  (function(){
-    var 
-      adminForms = $('.admin-form'),
-      menList = $('.admin-nav__item');
-
-    menList.click(function(){
-      var that = this;
-      if ($(that).hasClass('active')) {
-        return;
-      }else{
-        $(that).siblings().removeClass('active');
-        $(that).addClass('active');
-        showForm();
-      }
-    });
-   
-    function showForm(){
-      var count = 0;
-      //функцыя покажет нужную форму и скроет не нужную решения принимаеться на основе активного елемента меню
-      menList.each(function(){
-        var that = this;
-        if ( $(that).hasClass('active') ) {
-          $(adminForms[count]).css('display', 'block');
-        }else{
-          $(adminForms[count]).css('display', 'none');
-        }
-        count++;  
-      });
-    }
-    adminForms.css('display', 'none');
-    showForm();
-    
-  })();
-  ////////////////////////////admin////////////////////////////
-
-////////////////////////форма входа//////////////////////////////
-  (function(){
-    var loginData = {};
-    $('#login-nav__enter').on('click', function(){
-      var
-        loginForm = $('#login-form'),
-        errors = [];
-
-      loginData.login = loginForm.find('#login').val().trim(),
-      loginData.pass = loginForm.find('#password').val().trim(),
-      loginData.human = loginForm.find('#loginform_check').prop('checked'),
-      loginData.exactlyHuman = loginForm.find('#radio_yes').prop('checked');
-        
-      for(var property in loginData){
-        var propLalue = loginData[property];
-        if ( propLalue === false || propLalue === true) {
-          //значет это чекбоксы
-          if (propLalue == false) {
-            errors[1] = 'Пожоже что вы робот!<br>';
-          }
-        }else{
-          //значет это строки
-          var strLength = propLalue.length;
-          if (strLength < 4 || strLength > 14) {
-            errors[0] = 'Длинна логина и пароля должна быть от 4 до 14 символов!<br>';
-          }
-        }
-      }
-      if (errors.length > 0) {
-        var message = '';
-        errors.forEach(function(item){
-          message += (item) ? item+'\n':' ';
-          //console.log(item);
-        });
-        popUp(message);
-        return false;
-      }
-      //дале работа за сервером
-    });
-  })();
-  //удалик фрейм с картой на мобильных
-  if ($(window).width() <= 416) {
-    $('.section-contacts iframe').remove();
-  }
-  ////////////////////////форма входа//////////////////////////////
-  /////////////////////////Админ//////////////////////////
-  (function(){
-    if ($('.admin-form').length < 1){return;}
-    //изменим цвет popUp для админки
-    $('#pop_up').css({'background-color':'#00A78E'});
-    var
-      formAboutMe = $('#admin-about-me'),
-      formBlog = $('#admin-blog'),
-      formWorks = $('#admin-works');  
-    //проверяем вводится ли в input число если нет чистим его
-    formAboutMe.find('input').on('input', function(){
-      var value = parseInt( $(this).val() );
-      if ( isNaN(value) ) {$(this).val('');}
-    });
-    
-    formAboutMe.find('#admin-about-me__save').on('click', function(){
-      var errors = [];
-      if (errors.length<1) {
-        popUp('сохранено', 1500);
-      }else{popUp(errors);}
-      var data = getData(formAboutMe);
-
-      console.log(data);
-    });
-    formBlog.find('#admin-blog__save').on('click', function(){
-      var errors = [];
-      if (errors.length<1) {
-        popUp('сохранено', 1500);
-      }else{popUp(errors);}
-      var data = getData(formBlog);
-
-      console.log(data);
-    });
-    formWorks.find('#admin-works__save').on('click', function(){
-      var errors = [];
-      if (errors.length<1) {
-        popUp('сохранено', 1500);
-      }else{popUp(errors);}
-      var data = getData(formWorks);
-
-      console.log(data);
-
-    });
-  })();
-  /////////////////////////Админ//////////////////////////
 
 });

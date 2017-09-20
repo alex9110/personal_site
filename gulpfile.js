@@ -11,6 +11,9 @@ global.$ = {
   },
   gulp: require('gulp'),
   rimraf: require('rimraf'),
+  browserify: require('browserify'),
+  vinyl: require('vinyl-source-stream'),
+  buffer: require('vinyl-buffer'),
   browserSync: require('browser-sync').create(),
   gp: require('gulp-load-plugins')()
 };
