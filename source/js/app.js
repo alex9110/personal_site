@@ -1,6 +1,5 @@
 'use strict';
 $(document).ready(function () {
-console.log('');
   require('./modules/slider.js')();
   require('./modules/blog_page/blog.js')();
   require('./modules/show_hide_menu.js')();
