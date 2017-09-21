@@ -1,5 +1,6 @@
 'use strict';
 $(document).ready(function () {
+console.log('hay i work, and is good)))');
   require('./modules/slider.js')();
   require('./modules/blog_page/blog.js')();
   require('./modules/show_hide_menu.js')();
@@ -9,7 +10,6 @@ $(document).ready(function () {
   require('./modules/admin_scripts/admin_menu.js')();
   require('./modules/admin_scripts/admin_form_processing.js')();
   require('./modules/preloader.js')();
-
 
 // плавный скрол
   $('a[href^="#"]').click(function(){

@@ -26,13 +26,13 @@ $.gulp.task('default', $.gulp.series(
   'clean',
   $.gulp.parallel(
     'sass',
-    'pug',
+    //'pug',
     'js:foundation',
     'js:process',
     'copy:image',
     'copy:fonts',
-    'css:foundation',
-    'sprite:svg'
+    'css:foundation'
+    //'sprite:svg'
   ),
   $.gulp.parallel(
     'watch',
