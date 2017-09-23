@@ -1,6 +1,6 @@
 'use strict';
 $(document).ready(function () {
-console.log('hay i work, and is good)))');
+
   require('./modules/slider.js')();
   require('./modules/blog_page/blog.js')();
   require('./modules/show_hide_menu.js')();
@@ -14,7 +14,9 @@ console.log('hay i work, and is good)))');
 // плавный скрол
   $('a[href^="#"]').click(function(){
     var elementClick = $(this).attr('href');
-    var destination = $(elementClick).offset().top;  //узнаем место назначения 
+    //если елемента с нужным id нету, двигаемся к тегу а с нужным именем
+    var elementDirection = ($(elementClick).length > 10)? $(elementClick) : $('a[name='+elementClick.substr(1)+']');
+    var destination = elementDirection.offset().top;  //узнаем место назначения 
     $('html, body').animate({scrollTop: destination}, 1000);  //двигаем к ниму
     return false;                     
   });
@@ -79,19 +81,24 @@ console.log('hay i work, and is good)))');
 
 
 /*
-берёт данные с формы полученой в качестве параметра и сформируем двух 
-уровевый массив дднных для дальнейшей обработки или отправки на сервер
+берёт данные с формы полученой в качестве параметра и сформируем обьект данных
+с двома свойствами, formId и data в котором храниться масив с данными
+для дальнейшей обработки или отправки на сервер
 */
   window.hm.getData = function getData(form){
     var
       formId = form.attr('id'),
-      inputs = form.find('input, textarea'),
-      data = [['formId', formId]];
+      inputs = form.find('input, textarea');
+
+    var obj = {
+      formId: formId,
+      data:[]
+    };
     inputs.each(function(){
       var that = $(this), curentData = [that.attr('id'), that.val().trim()];
-      data[data.length] = curentData;
+      obj.data[obj.data.length] = curentData;
     });
-    return data;
+    return obj;
   };
 
 

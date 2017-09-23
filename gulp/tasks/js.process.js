@@ -3,7 +3,7 @@
 module.exports = function() {
   $.gulp.task('js:process', function() {
     return $.browserify($.path.app)
-      .bundle()
+      .bundle().on('error', $.gp.notify.onError({ title: 'Java Script' }))
       .pipe($.vinyl('app.js'))
       .pipe($.buffer())
       .pipe($.gp.sourcemaps.init())

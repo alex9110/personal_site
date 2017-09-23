@@ -1,7 +1,7 @@
 <?php
-  class Model_Works{
+  class Model_Admin{
     public function get_data(){
-      $sql = 'SELECT image_src, title, technologies, url FROM works ORDER BY id ASC';
+      $sql = 'SELECT * FROM works';
       $result = DB::get_select($sql);
 
       if ($result['count'] > 0) {

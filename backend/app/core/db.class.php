@@ -15,11 +15,19 @@ class DB{
   public static function get_select( $sql, $data = array() ){
     $link = self::$link;
     $res = $link->prepare($sql);
-    $res->execute($data);
+    $error = $res->execute($data);
 
     $result = $res->fetchAll();
     $count = $res->rowCount();
 
-    return array('count'=>$count, 'result'=>$result);
+    return array('count'=>$count, 'result'=>$result, 'error'=>$error);
+  }
+  public static function set_data($sql, $data = array()){
+    $link = self::$link;
+    $res = $link->prepare($sql);
+    $result = $res->execute($data);
+    $count = $res->rowCount();
+
+    return $result;
   }
 }

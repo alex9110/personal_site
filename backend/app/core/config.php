@@ -5,7 +5,7 @@
   //подключение к базе
   $user = 'root';
   $password = '';
-  $dbname = 'backend';
+  $dbname = 'personal_db';
   $host = 'localhost';
 
   if (!defined('DOMAN')) {

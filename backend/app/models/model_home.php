@@ -1,6 +1,6 @@
 <?php
   class Model_Home{
-    public function get_works(){
+    public function get_data(){
       $sql = 'SELECT * FROM works';
       $result = DB::get_select($sql);
 
