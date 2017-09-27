@@ -67,17 +67,17 @@
               <div class="my-skills-list-box">
                 <h3>Frontend</h3>
                 <ul class="my-skills-list">
-                  <li class="my-skills__item" data-skill="<?php echo($skills['HTML5']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['html']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>HTML 5</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['CSS3']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['css']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>CSS3</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['JavaScript_&_JQuery']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['JavaScript']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>JavaScript &amp; jQuery</span>
@@ -92,12 +92,12 @@
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>php</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['mySQL']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['mysql']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>mySQL</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['Node_JS_&_npm']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['node_npm']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>Node JS &amp; npm</span>
@@ -107,17 +107,17 @@
               <div class="my-skills-list-box">
                 <h3>WorkFlow</h3>
                 <ul class="my-skills-list">
-                  <li class="my-skills__item" data-skill="<?php echo($skills['Git']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['git']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>Git</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['Gulp']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['gulp']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>Gulp</span>
                   </li>
-                  <li class="my-skills__item" data-skill="<?php echo($skills['Bower']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
+                  <li class="my-skills__item" data-skill="<?php echo($skills['bower']); ?>"><svg width="300" height="300" class="g-circles" viewBox="0 0 300 300">
 <circle r="115" cx="150" cy="150" stroke="#DFDCD5" fill="none" />
 <circle r="115" cx="150" cy="150" stroke="#19C2AB" transform="rotate(-90 150 150)" class="sector" /> 
 </svg><span>Bower</span>

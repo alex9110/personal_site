@@ -7,6 +7,7 @@
   $password = '';
   $dbname = 'personal_db';
   $host = 'localhost';
+  $photo_works_folder = 'assets/img/works_image/';
 
   if (!defined('DOMAN')) {
     define('DOMAIN', $_SERVER['HTTP_HOST']);

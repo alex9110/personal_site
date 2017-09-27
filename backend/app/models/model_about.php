@@ -10,7 +10,6 @@
     }
     //сформирует асоц масив данных ключ названия скила, значение значения скила
     public function prepare_data($str){
-      //echo($str);
       $arr = explode("/", $str);
        for ($i=0; count($arr)>$i; $i++){
         $str = trim($arr[$i]);

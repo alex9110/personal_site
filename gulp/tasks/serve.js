@@ -8,6 +8,6 @@ module.exports = function() {
       proxy: 'personal'
     });
 
-    $.browserSync.watch([$.config.root + '/**/*.*', '!**/*.css'], $.browserSync.reload);
+    $.browserSync.watch([$.config.root + '/**/*.*', '!**/*.css', '!'+$.config.root+'/assets/img/works_image/*.*'], $.browserSync.reload);
   });
 };

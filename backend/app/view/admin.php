@@ -39,36 +39,36 @@
           <form class="admin-form admin-about-me" id="admin-about-me">
             <h3>Страница "Обо мне"</h3>
             <fieldset class="admin-about-me-box">Frontend
-              <label class="admin-about-me-label" for="skill_html">Html 5
-                <input type="text" maxlength="3" id="skill_html" <?php echo('value="'.$skills['HTML5'].'"');?>/>
+              <label class="admin-about-me-label" for="html">Html 5
+                <input type="text" maxlength="3" id="html" <?php echo('value="'.$skills['html'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">CSS3
-                <input type="text" maxlength="3" id="skill_css" <?php echo('value="'.$skills['CSS3'].'"');?>/>
+              <label class="admin-about-me-label" for="css">CSS3
+                <input type="text" maxlength="3" id="css" <?php echo('value="'.$skills['css'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">javaScript
-                <input type="text" maxlength="3" id="skill_js" <?php echo('value="'.$skills['JavaScript_&_JQuery'].'"');?>/>
+              <label class="admin-about-me-label" for="JavaScript">javaScript
+                <input type="text" maxlength="3" id="JavaScript" <?php echo('value="'.$skills['JavaScript'].'"');?>/>
               </label>
             </fieldset>
             <fieldset class="admin-about-me-box">Backend
-              <label class="admin-about-me-label" for="skill_html">PHP
-                <input type="text" maxlength="3" id="skill_html" <?php echo('value="'.$skills['php'].'"');?>/>
+              <label class="admin-about-me-label" for="php">PHP
+                <input type="text" maxlength="3" id="php" <?php echo('value="'.$skills['php'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">mySQL
-                <input type="text" maxlength="3" id="skill_html" <?php echo('value="'.$skills['mySQL'].'"');?>/>
+              <label class="admin-about-me-label" for="mysql">mySQL
+                <input type="text" maxlength="3" id="mysql" <?php echo('value="'.$skills['mysql'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">Node & npm
-                <input type="text" maxlength="3" id="skill_css" <?php echo('value="'.$skills['Node_JS_&_npm'].'"');?>/>
+              <label class="admin-about-me-label" for="node_npm">Node & npm
+                <input type="text" maxlength="3" id="node_npm" <?php echo('value="'.$skills['node_npm'].'"');?>/>
               </label>
             </fieldset>
             <fieldset class="admin-about-me-box">Workflow
-              <label class="admin-about-me-label" for="skill_html">Git
-                <input type="text" maxlength="3" id="skill_html" <?php echo('value="'.$skills['Git'].'"');?>/>
+              <label class="admin-about-me-label" for="git">Git
+                <input type="text" maxlength="3" id="git" <?php echo('value="'.$skills['git'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">Gulp
-                <input type="text" maxlength="3" id="skill_css" <?php echo('value="'.$skills['Gulp'].'"');?>/>
+              <label class="admin-about-me-label" for="gulp">Gulp
+                <input type="text" maxlength="3" id="gulp" <?php echo('value="'.$skills['gulp'].'"');?>/>
               </label>
-              <label class="admin-about-me-label" for="skill_html">Bower
-                <input type="text" maxlength="3" id="skill_js" <?php echo('value="'.$skills['Bower'].'"');?>/>
+              <label class="admin-about-me-label" for="bower">Bower
+                <input type="text" maxlength="3" id="bower" <?php echo('value="'.$skills['bower'].'"');?>/>
               </label>
             </fieldset>
             <div><span id="admin-about-me__save">Сохранить</span></div>
@@ -88,7 +88,7 @@
             <input type="text" placeholder="Ссылка" id="admin-works__project-link"/>
             <p>
               <label class="admin-works__project-select-image">Выбрать картинку
-                <input type="file" id="admin-works__project-select-image"/>
+                <input type="file" multiple="multiple" id="admin-works__project-select-image"/>
               </label>
             </p><span id="admin-works__save">Добавить</span>
           </form>

@@ -13,51 +13,77 @@ module.exports = function(){
   });
   
   formAboutMe.find('#admin-about-me__save').on('click', function(){
-    var errors = [];
-    if (errors.length<1) {
-      window.hm.popUp('сохранено', 1500);
-    }else{window.hm.popUp(errors);}
     var data = window.hm.getData(formAboutMe);
-    var response = sendData(data);
-    //console.log('response == '+response);
-    //console.log(data);
+    sendData(data);
   });
   formBlog.find('#admin-blog__save').on('click', function(){
-    var errors = [];
-    if (errors.length<1) {
-      window.hm.popUp('сохранено', 1500);
-    }else{window.hm.popUp(errors);}
-    //var data = window.hm.getData(formBlog);
-
-    //console.log(data);
+    var data = window.hm.getData(formBlog);
+    sendData(data);
+  });
+  var files = '';
+  $('input[type=file]').change(function(){
+    files = this.files;
   });
   formWorks.find('#admin-works__save').on('click', function(){
-    var errors = [];
-    if (errors.length<1) {
-      window.hm.popUp('сохранено', 1500);
-    }else{window.hm.popUp(errors);}
-    //var data = window.hm.getData(formWorks);
-
-    //console.log(data);
-
+    var data = window.hm.getData(formWorks);
+    data = JSON.stringify(data);
+    var objFormData = new FormData();
+   
+    $.each( files, function( key, value ){
+      objFormData.append( key, value );
+    });
+    objFormData.append('data', data);
+    sendFile(objFormData, data);
+  
   });
+
+
   function sendData(data){
-    var response = false;
     //console.log(data);
     $.ajax({
       url: 'queries.php?',
       type: 'POST',
       data: data,
-     // dataType: 'json',
+      //dataType: 'json',
       success: function( data ){
-        console.log(data);
-          
+        if ( data) {
+          window.hm.popUp('Сохранено', 1500);
+          console.log(data);  
+        }else{
+          window.hm.popUp('Ошибка сохранения', 2000);
+          console.log(data);  
+        }
+           
       },
       error: function( jqXHR, textStatus ){
+        window.hm.popUp('Ошибка', 2000);
         console.log('ОШИБКИ AJAX запроса: ' + textStatus );
       }
     });
+  }
 
-    return response;
+
+  function sendFile(files, data){
+    $.ajax({
+      url: 'queries.php',
+      type: 'POST',
+      data: files,
+      cache: false,
+      //dataType: 'json',
+      processData: false, // Не обрабатываем файлы (Don't process the files)
+      contentType: false, // Так jQuery скажет серверу что это строковой запрос
+      success: function( data, textStatus, jqXHR ){
+        if ( data) {
+          window.hm.popUp('Сохранено', 1500);
+          console.log(data); 
+        }else{
+          window.hm.popUp('Ошибка сохранения', 2000);
+          console.log(data);  
+        }
+      },
+      error: function( jqXHR, textStatus, errorThrown ){
+        console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+      }
+    });
   }
 };
