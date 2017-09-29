@@ -1,4 +1,5 @@
 module.exports = function(){
+
   //очистка формы, параметр форма в виде jquery обьект
   function clear(form){
     var inputs = form.find('input, textarea');
@@ -7,6 +8,7 @@ module.exports = function(){
       $(this).val('');
     });
   }
+
   
   var formBox = $('#contact-form-box');
   if (formBox.length < 1) {return;}
@@ -16,15 +18,17 @@ module.exports = function(){
 
   buttons.on('click', function(evt){
     if ( $(evt.target).attr('id') === 'send-message' ) {
-      var data = window.hm.getData(form);
+      var
+        dataObj = window.hm.getData(form),
+        dataArr = dataObj.data;
       //пройдемся по импутам но пропустим id текущей формы
       var
         errors = [],
         mail = '';
-      for(var i=1; i<data.length; i++){
+      for(var i=1; i<dataArr.length; i++){
         var
-          currenId = data[i][0],
-          currentData = data[i][1];
+          currenId = dataArr[i][0],
+          currentData = dataArr[i][1];
 
         if (currenId == 'mail') {mail = currentData;}
 
@@ -43,19 +47,33 @@ module.exports = function(){
         errors[errors.length] = 'Не коректный e-mail!';
       }
       if (errors.length < 1) {
-        var answer = true;
-        //если оштбок нет отравим запрос на сервер
-
-        //если от сервера прийдет положительный ответ
-        if (answer === true) {
-          window.hm.popUp('УСПЕШНО ОТПРАВЛЕНО!', 3000);
-          clear(form);
-        }
-
+        //если оштбок нет данные запрос на сервер
+        sendMessage(dataObj);
       }else{window.hm.popUp(errors);}
       
     }else if($(evt.target).attr('id') === 'reset'){
       clear(form);
     }
   });
+
+  function sendMessage(data){
+    $.ajax({
+      url: 'queries.php?',
+      type: 'POST',
+      data: data,
+      //dataType: 'json',
+      success: function( data ){
+        if (data === 'true') {
+          window.hm.popUp('Сообщение отправлено!', 3000);
+          clear(form);
+        }else{
+          window.hm.popUp('ОШИБКА ОТПРАВКИ!', 3000);
+        }
+      },
+      error: function( jqXHR, textStatus ){
+        console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+      }
+    });
+  }
+
 };

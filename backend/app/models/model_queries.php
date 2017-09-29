@@ -1,4 +1,9 @@
 <?php
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 require_once 'app/core/config.php';
 
   class Model_Queries{
@@ -98,6 +103,74 @@ require_once 'app/core/config.php';
       $random_name = uniqid('work');          //генерируем случайное имя
       $new_name = $random_name.$file_extension;
       return $new_name;
+    }
+
+
+    public function save_message($arr){
+      $name =    $arr[0][1];
+      $email =   $arr[1][1];
+      $message = $arr[2][1];
+
+      $sql = "INSERT INTO messages (name, email, message) VALUES ('$name', '$email', '$message')";
+      $result = DB::set_data($sql);
+      if ($result) {
+        $sending_result = $this->send_email($name, $email, $message);
+        //если true отправка удалась, пойти в базу пометить сообщение как отправленое если нет попробовать отправить еще раз черес время
+      }
+      return $result;
+    }
+
+
+    public function send_email($name, $email, $message){
+      if ($name && $email && $message) {
+        global $my_mail, $email_for_smtp, $email_smtp_pas;
+       
+        require './lib/PHPMailer/src/PHPMailer.php';
+        require './lib/PHPMailer/src/SMTP.php';
+        require './lib/PHPMailer/src/Exception.php';
+
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+        try {
+            //Server settings
+            //mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = $email_for_smtp;                 // SMTP username
+            $mail->Password = $email_smtp_pas;                           // SMTP password
+            $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 465;                                    // TCP port to connect to
+
+            // //Recipients
+            $mail->setFrom($email_for_smtp, 'My email robot');
+            $mail->addAddress($my_mail, '');     // Add a recipient
+            //$mail->addAddress('ellen@example.com');               // Name is optional
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+
+            //Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'My site';
+            $mail->Body    = $name.' </br>'.$email.' </br>'.$message.' </b>';
+           // $mail->AltBody = $message;
+
+            $mail->send();
+            return true;
+
+        } catch (Exception $e) {
+            return false;
+            //return $mail->ErrorInfo;
+        }
+
+        return $my_mail;
+      }else{
+        return false;
+      }
     }
 
   }
