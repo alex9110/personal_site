@@ -128,8 +128,8 @@ class Elements{
           </div>
         </div>
         <div class="footer-copyright">
-          <div class="footer-copyright__left">Я веб разваботчик, из Хмельницкого, и этот сайт я сделал в рамках одного из обучающих курсов, найденых на просторах интернета.</div>
-          <div class="footer-copyright__right">© Александр Лычик | создано с любовью <span> 2017<span> </div>
+          <div class="footer-copyright__left">'.$this->text[$lang]['copyright_left'].'</div>
+          <div class="footer-copyright__right">'.$this->text[$lang]['copyright_right'].'</div>
         </div>
       </div>
     </footer>');

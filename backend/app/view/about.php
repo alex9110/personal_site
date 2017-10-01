@@ -165,7 +165,7 @@
           </ul>
         </div>
       </section>
-      <?php echo $elements->get_footer(); ?>
+      <?php echo $elements->get_footer($lang); ?>
     </div>
     <?php echo $elements->scripts_connect; ?>
   </body>
