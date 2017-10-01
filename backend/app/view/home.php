@@ -1,17 +1,26 @@
 <?php 
   require_once 'view_elements/elements.class.php';
-  $head = new Head();
-  $common = new Сommon_elements();
-  echo $head->get_head('Welcome');
-  echo $head->get_svg_sprite();
+
+  $elements = new Elements();
+  echo $elements->get_head('Welcome');
+  echo $elements->get_svg_sprite();
+
+  global $lang;
+  $text = [ 'ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб разработчика', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright'=>'© Александр Лычик <span>создано с любовью | 2017<span>'], 
+
+  'en'=>['autor_name'=>'Aleksandr Lychyk','autor_description'=>'Personal website of the developer', 'works'=>'My works', 'about'=>'About me', 'blog'=>'Blog', 'copyright'=>'© Aleksandr Lychyk <span>created with love | 2017<span>'] ];
  ?>
   <body>
       <?php
-        echo $head->preloader;
-        echo $head->pop_up;
+        echo $elements->preloader;
+        echo $elements->pop_up;
       ?>     
     <div class="index-wrapper">
-      <?php echo $common->paralax ?>
+      <form class="language_but" action="queries.php" method="post">
+        <input type="submit" value="en" name="lang">
+        <input type="submit" value="ru" name="lang">
+      </form>
+      <?php echo $elements->paralax ?>
       <span id="authorization-button">Авторизоваться</span>
       <div class="index-content">
         <div class="plate" id="plate">
@@ -19,18 +28,18 @@
             <div class="index-content-main">
               <div class="ava"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
               <div class="autor">
-                <h1 class="autor__name">Александр Лычик</h1>
-                <h3 class="autor__description">Личный сайт веб разработчика</h3>
+                <h1 class="autor__name"><?php echo $text[$lang]['autor_name']; ?></h1>
+                <h3 class="autor__description"><?php echo $text[$lang]['autor_description']; ?></h3>
               </div>
               <div class="social">
-                <?php echo $common->social_list ?>
+                <?php echo $elements->social_list ?>
               </div>
             </div>
             <nav class="index-nav">
               <ul class="index-nav__list">
-                <li class="index-nav__item-works">Мои работы<a href="works.html"></a></li>
-                <li class="index-nav__item-about">Обо мне<a href="about.html"></a></li>
-                <li class="index-nav__item-blog">Блог<a href="blog.html"></a></li>
+                <li class="index-nav__item-works"><?php echo $text[$lang]['works']; ?><a href="works.html"></a></li>
+                <li class="index-nav__item-about"><?php echo $text[$lang]['about']; ?><a href="about.html"></a></li>
+                <li class="index-nav__item-blog"><?php echo $text[$lang]['blog']; ?><a href="blog.html"></a></li>
               </ul>
             </nav>
           </div>
@@ -81,9 +90,9 @@
         </div>
       </div>
       <div class="index-copyright">
-        <p class="index-copyright__autor">© Александр Лычик <span>создано с любовью | 2017<span></p>
+        <p class="index-copyright__autor"><?php echo $text[$lang]['copyright']; ?></p>
       </div>
     </div>
-   <?php echo Footer::$scripts_connect; ?>
+   <?php echo $elements->scripts_connect; ?>
   </body>
 </html>

@@ -8,6 +8,10 @@ require_once 'app/core/config.php';
 
   class Model_Queries{
 
+    public function сhange_language($lang){
+      $_SESSION['lang'] = $lang;
+      header('Location: '.$_SESSION['current_page']);
+    }
 
     public function get_data(){
       $sql = 'SELECT * FROM works';
@@ -30,20 +34,23 @@ require_once 'app/core/config.php';
         //после последего елемента не ставить флеш
         if($arr_length-$i <= 1 ){$delimiter = '';}
         $skills .= $key.':'.$val.$delimiter;
+        $data = [':skills'=>$skills];
       }
-      $sql = "UPDATE skills SET skills='$skills' WHERE id=1";
-      $result = DB::set_data($sql);
+      $sql = "UPDATE skills SET skills = :skills WHERE id=1";
+      $result = DB::set_data($sql, $data);
       return($result);
     }
 
 
     public function save_article($arr){
       $title =   ($arr[0][1] != '')? $arr[0][1] : 'title';
-      $data =    ($arr[1][1] != '')? $arr[1][1] : date("d F y");
+      $curr_date =    ($arr[1][1] != '')? $arr[1][1] : date("d F y");
       $article = ($arr[2][1] != '')? $arr[2][1] : 'article';
 
-      $sql = "INSERT INTO blog (title, data, article) VALUES ('$title', '$data', '$article')";
-      $result = DB::set_data($sql);
+      $data = [':title'=>$title, ':curr_date'=>$curr_date, ':article'=>$article];
+
+      $sql = 'INSERT INTO blog (title, data, article) VALUES (:title, :curr_date, :article )';
+      $result = DB::set_data($sql, $data);
       return($result);
     }
 
@@ -55,16 +62,25 @@ require_once 'app/core/config.php';
       $data_to_array =  json_decode($data_to_string, true);
       $arr = $data_to_array['data'];
 
-      $title =        ($arr[0][1] != '')? $arr[0][1] : 'title';
+
+      $title =        ($arr[0][1] != '')? $arr[0][1] : 'title_ru/title_en';
       $technologies = ($arr[1][1] != '')? $arr[1][1] : 'technologies';
       $url =          ($arr[2][1] != '')? $arr[2][1] : 'https://www.facebook.com/AleksandrLychyk';
+
+      //разделим русское и английское названия проекта
+      $title_arr = explode("/", $title);
+      $title_ru = $title_arr[0];
+      $title_en = end($title_arr);
 
       $result = $this->save_title_image($files);
       
       if ($result != false) {
-        $img_name = $result;
-        $sql = "INSERT INTO works (image_src, title, technologies, url) VALUES ('$img_name', '$title', '$technologies', '$url')";
-        $result = DB::set_data($sql);
+        
+        $data_arr = [':image_src'=>$result, ':title_ru'=>$title_ru, 'title_en'=>$title_en, ':technologies'=>$technologies, ':url'=>$url];
+
+        $sql = 'INSERT INTO works (image_src, title_ru, title_en, technologies, url) VALUES (:image_src, :title_ru, :title_en, :technologies, :url)';
+        $result = DB::set_data($sql, $data_arr);
+        
         return($result);
       }
       return $result;
@@ -111,8 +127,10 @@ require_once 'app/core/config.php';
       $email =   $arr[1][1];
       $message = $arr[2][1];
 
-      $sql = "INSERT INTO messages (name, email, message) VALUES ('$name', '$email', '$message')";
-      $result = DB::set_data($sql);
+      $data = [':name'=>$name, ':email'=>$email, ':message'=>$message];
+
+      $sql = "INSERT INTO messages (name, email, message) VALUES (:name, :email, :message)";
+      $result = DB::set_data($sql, $data);
       if ($result) {
         $sending_result = $this->send_email($name, $email, $message);
         //если true отправка удалась, пойти в базу пометить сообщение как отправленое если нет попробовать отправить еще раз черес время

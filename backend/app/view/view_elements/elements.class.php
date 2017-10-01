@@ -1,7 +1,12 @@
 <?php
 
-class Head{
- 
+class Elements{
+
+  public  $text = [ 'ru'=>['main'=>'Главная', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright_left'=>'Я веб разваботчик, из Хмельницкого, и этот сайт я сделал в рамках одного из обучающих курсов, найденых на просторах интернета.', 'copyright_right'=>'© Александр Лычик | создано с любовью'],
+
+  'en'=>['main'=>'Home', 'works'=>'My works', 'about'=>'About me', 'blog'=>'Blog', 'copyright_left'=>"I'm a web developer, from Khmelnitsky, and I made this site in one of the training courses found on the Internet.", 'copyright_right'=>'© Aleksandr Lychyk | created with love'] ];
+
+
   public function get_head($title=''){
     return(
       '<!DOCTYPE html>
@@ -20,6 +25,8 @@ class Head{
         </head>'
     );
   }
+
+
   public $preloader ='<div class="loader-wrapper">
       <div class="loader-box">
         <div class="loader">
@@ -38,9 +45,6 @@ class Head{
     return file_get_contents('assets/img/svg/sprite.svg');
   }
 
-}
-
-class Сommon_elements{
 
   public $paralax ='<div class="parallax">
         <div class="parallax__layer"></div>
@@ -60,18 +64,23 @@ class Сommon_elements{
               <div class="parallax__layer"></div>
             </div>';
 
-  public $curtains = '<div class="curtains">
-            <nav class="main-nav" id="main-nav">
-              <ul class="main-nav-list">
-                <li class="main-nav-list-item"><a href="index.html">Главная</a></li>
-                <li class="main-nav-list-item"><a href="works.html">Мои работы</a></li>
-                <li class="main-nav-list-item"><a href="about.html">Обо мне</a></li>
-                <li class="main-nav-list-item"><a href="blog.html">Блог</a></li>
-              </ul>
-            </nav>
-            <div class="curtain-left"></div>
-            <div class="curtain-right"></div>
-          </div>';
+  public function get_curtains ($lang = 'ru'){
+    if ($lang == 'undefined') {
+      $lang = 'ru';
+    }
+    return('<div class="curtains">
+                  <nav class="main-nav" id="main-nav">
+                    <ul class="main-nav-list">
+                      <li class="main-nav-list-item"><a href="index.html">'.$this->text[$lang]['main'].'</a></li>
+                      <li class="main-nav-list-item"><a href="works.html">'.$this->text[$lang]['works'].'</a></li>
+                      <li class="main-nav-list-item"><a href="about.html">'.$this->text[$lang]['about'].'</a></li>
+                      <li class="main-nav-list-item"><a href="blog.html">'.$this->text[$lang]['blog'].'</a></li>
+                    </ul>
+                  </nav>
+                  <div class="curtain-left"></div>
+                  <div class="curtain-right"></div>
+                </div>');
+  } 
 
   public $social_list = '<ul class="social__list">
                   <li class="social__item"><a href="https://www.facebook.com/AleksandrLychyk" target="_blank">
@@ -89,15 +98,14 @@ class Сommon_elements{
                 </ul>';
 
 
-}
 
-class Footer{
-
-  public static $scripts_connect = '<script src="/assets/js/foundation.js"></script>
+  public $scripts_connect = '<script src="/assets/js/foundation.js"></script>
   <script src="/assets/js/app.js"></script>';
 
-  public function get_footer(){
-    $common = new Сommon_elements();
+  public function get_footer($lang = 'ru'){
+    if ($lang == 'undefined') {
+      $lang = 'ru';
+    }
     return('<footer class="footer">
       <div class="arrow-top"><a id="show-works" href="#hidden-link-top">
           <svg>
@@ -107,15 +115,15 @@ class Footer{
         <div class="footer-menu">
           <nav class="footer-nav">
             <ul class="footer-nav__list">
-              <li class="footer-nav__item"><a href="index.html">Главная</a></li>
-              <li class="footer-nav__item"> <a href="works.html">Мои работы</a></li>
-              <li class="footer-nav__item"> <a href="about.html">Обо мне</a></li>
-              <li class="footer-nav__item"> <a href="blog.html">Блог</a></li>
+              <li class="footer-nav__item"><a href="index.html">'.$this->text[$lang]['main'].'</a></li>
+              <li class="footer-nav__item"> <a href="works.html">'.$this->text[$lang]['works'].'</a></li>
+              <li class="footer-nav__item"> <a href="about.html">'.$this->text[$lang]['about'].'</a></li>
+              <li class="footer-nav__item"> <a href="blog.html">'.$this->text[$lang]['blog'].'</a></li>
             </ul>
           </nav>
           <div class="footer-social">
             <div class="social social-in-circle">
-              '.$common->social_list .'
+              '.$this->social_list.'
             </div>
           </div>
         </div>
@@ -126,4 +134,6 @@ class Footer{
       </div>
     </footer>');
   }
+
+
 }

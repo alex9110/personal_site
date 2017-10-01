@@ -1,13 +1,12 @@
 <?php 
   require_once 'view_elements/elements.class.php';
-  $head = new Head();
-  $common = new Сommon_elements();
-  echo ( $head->get_head('Welcome') );
+  $elements = new Elements();
+  echo ( $elements->get_head('Welcome') );
  ?>
   <body>
       <?php
-        echo $head->preloader;
-        echo $head->pop_up;
+        echo $elements->preloader;
+        echo $elements->pop_up;
       ?>
     <div class="loader-wrapper">
       <div class="loader-box">
@@ -95,6 +94,6 @@
         </div>
       </div>
     </div>
-    <?php echo Footer::$scripts_connect; ?>
+    <?php echo $elements->scripts_connect; ?>
   </body>
 </html>

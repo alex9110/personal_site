@@ -1,29 +1,34 @@
 <?php 
   require_once 'view_elements/elements.class.php';
-  $head = new Head();
-  $common = new Сommon_elements();
-  echo ( $head->get_head('Welcome') );
-  echo $head->get_svg_sprite();
 
+  $elements = new Elements();
+  echo ( $elements->get_head('Welcome') );
+  echo $elements->get_svg_sprite();
+
+  global $lang;
   // echo('<pre>');
   // print_r($articles);
   // echo('<pre>');
  ?>
   <body>
       <?php
-        echo $head->preloader;
-        echo $head->pop_up;
+        echo $elements->preloader;
+        echo $elements->pop_up;
       ?>
     <div class="blog-wrapper">
+      <form class="language_but vertical" action="queries.php" method="post">
+        <input type="submit" value="en" name="lang">
+        <input type="submit" value="ru" name="lang">
+      </form>
       <div class="section-header"><a id="hidden-link-top" name="hidden-link-top"></a>
         <header class="portfolio_header">
-          <?php echo $common->curtains ?>
+          <?php echo $elements->get_curtains($lang); ?>
           <div class="portfolio_header_bg">
-           <?php echo $common->paralax_scroll ?>
+           <?php echo $elements->paralax_scroll ?>
             <div class="portfolio_header_bg1"></div>
           </div>
           <div class="social social-white">
-            <?php echo $common->social_list ?>
+            <?php echo $elements->social_list ?>
           </div>
           <div class="menu-button" id="menu-button"><span></span><span></span><span></span></div>
           <div class="index-content">
@@ -76,11 +81,8 @@
           </div>
         </section>
       </section>
-      <?php
-        $footer = new Footer();
-        echo $footer->get_footer();
-      ?>
+      <?php echo $elements->get_footer(); ?>
     </div>
-    <?php echo Footer::$scripts_connect; ?>
+    <?php echo $elements->scripts_connect; ?>
   </body>
 </html>

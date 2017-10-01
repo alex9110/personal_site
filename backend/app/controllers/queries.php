@@ -20,18 +20,26 @@ class Queries{
     }
 
     if ( !empty($data) ) {
-      $formId = $data['formId'];
+      @$formId = $data['formId'];
       if ($formId === 'admin-about-me') {
         $result = $queries->save_skills($data['data']);
-        echo( json_encode($result) );  
+        echo( json_encode($result) );
+        return;
       }
       if ($formId === 'admin-blog') {
         $result = $queries->save_article($data['data']);
         echo( json_encode($result) );
+        return;
       }
       if ($formId === 'contact-form') {
         $result = $queries->save_message($data['data']);
         echo( json_encode($result) );
+        return;
+      }
+      if ( !empty($data['lang']) ) {
+        $data['lang'];
+        $queries->сhange_language( $data['lang'] );
+        return;
       }
       return;
     }

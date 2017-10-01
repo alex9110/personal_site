@@ -1,25 +1,34 @@
 <?php 
   require_once 'view_elements/elements.class.php';
-  $head = new Head();
-  $common = new Сommon_elements();
-  echo ( $head->get_head('Welcome') );
-  echo $head->get_svg_sprite();
+
+  $elements = new Elements();
+  echo ( $elements->get_head('Welcome') );
+  echo $elements->get_svg_sprite();
+
+  global $lang;
+  $text =['ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб разработчика', 'about_me'=>'Обо мне', 'about_me2'=>'Кто я', 'about_me_desc'=>'<p>Я веб разработчик. мне 26 лет. Я занимаюсь разработкой веб приложений. Мне нравится делать интересные и современные проэкты.</p><p>Этот сайт я сделал в рамках обучения на одном из курсов. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!</p>', 'my_skills'=>'Чем я могу быть вам <br> полезен', 'my_skills_desc'=>'Больше всего меня привлекает Front End разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.', 'contacts'=>'Контакты', 'contacts_address'=>'г. Киев ул. Пушкина дом Колотушкина'], 
+
+  'en'=>['autor_name'=>'Aleksandr Lychyk','autor_description'=>'Personal website of the developer', 'about_me'=>'About me', 'about_me2'=>'Who I am', 'about_me_desc'=>"<p>I'm a web developer. I am 26. I'm developing web applications. I like to make interesting and modern projects.</p><p>This site I did as part of the training on one of the courses. A little later I will refresh my content in it, but for now you can see how everything is cool and beautiful!</p>", 'my_skills'=>'How can I help you', 'my_skills_desc'=>"I'm most attracted to Front End development, but I'm also familiar and can solve simple tasks on Backend. But let's start in order.", 'contacts'=>'Contacts', 'contacts_address'=>'city of Kyiv ул. Pushkin House Kolotushkina']];
  ?>
   <body>
     <?php
-      echo $head->preloader;
-      echo $head->pop_up;
+      echo $elements->preloader;
+      echo $elements->pop_up;
     ?>
     <div class="about-wrapper">
+      <form class="language_but vertical" action="queries.php" method="post">
+        <input type="submit" value="en" name="lang">
+        <input type="submit" value="ru" name="lang">
+      </form>
       <section class="section-header"><a id="hidden-link-top" name="hidden-link-top"></a>
         <header class="portfolio_header">
-          <?php echo $common->curtains ?>
+          <?php echo $elements->get_curtains($lang); ?>
           <div class="portfolio_header_bg">
-            <?php echo $common->paralax_scroll ?>
+            <?php echo $elements->paralax_scroll ?>
             <div class="portfolio_header_bg1"></div>
           </div>
           <div class="social social-white">
-            <?php echo $common->social_list ?>
+            <?php echo $elements->social_list ?>
           </div>
           <div class="menu-button" id="menu-button"><span></span><span></span><span></span></div>
           <div class="index-content">
@@ -27,8 +36,8 @@
               <div class="index-content-main index-content-main_transparent">
                 <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
                 <div class="autor">
-                  <h1 class="autor__name">Александр Лычик</h1>
-                  <h3 class="autor__description">Личный сайт веб разработчика</h3>
+                  <h1 class="autor__name"><?php echo $text[$lang]['autor_name']; ?></h1>
+                  <h3 class="autor__description"><?php echo $text[$lang]['autor_description']; ?></h3>
                 </div>
               </div>
             </div>
@@ -42,25 +51,24 @@
       <section class="section-about">
         <div class="about-me">
           <div class="about-me__title"><a id="second-section" name="second-section"></a>
-            <h2>Обо мне</h2>
+            <h2><?php echo $text[$lang]['about_me']; ?></h2>
           </div>
           <div class="about-me-description-box">
             <div class="about-me-center-box"> 
               <div class="about-me-photo"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
               <div class="about-me-description">
-                <h2>Кто я</h2>
-                <p>Я веб разработчик. мне 25 лет. Я занимаюсь разработкой современных веб приложений. Мне нравится делать интересные и современные проэкты.</p>
-                <p>Этот сайт я сделал в рамках обучения в школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!</p>
+                <h2><?php echo $text[$lang]['about_me2']; ?></h2>
+                <?php echo $text[$lang]['about_me_desc']; ?>
               </div>
             </div>
           </div>
         </div>
         <section class="my-skills">
           <div class="my-skills__title">
-            <h2>Чем я могу быть вам <br> полезен</h2>
+            <h2><?php echo $text[$lang]['my_skills']; ?></h2>
           </div>
           <div class="my-skills__desk">
-            <p>Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.</p>
+            <p><?php echo $text[$lang]['my_skills_desc']; ?></p>
           </div>
           <div class="my-skills-box">
             <div class="my-skills-box-ceenter">
@@ -131,7 +139,7 @@
       <section class="section-contacts"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12893.01146647684!2d26.822865102193937!3d50.11815420750371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1503751968027" width="100%" height="130%" frameborder="0" style="border:0" allowfullscreen></iframe>
         <div class="contacts">
           <div class="contacts__title">
-            <h3>Контакты</h3>
+            <h3><?php echo $text[$lang]['contacts']; ?></h3>
           </div>
           <ul class="contacts__list">
             <li class="contacts__item">skype
@@ -149,7 +157,7 @@
                 <use xlink:href="#phone_icon"></use>
               </svg>
             </li>
-            <li class="contacts__item">г. Киев ул. Пушкина дом Калатушкина
+            <li class="contacts__item"><?php echo $text[$lang]['contacts_address']; ?>
               <svg>
                 <use xlink:href="#map_marker_icon"></use>
               </svg>
@@ -157,11 +165,8 @@
           </ul>
         </div>
       </section>
-      <?php
-        $footer = new Footer();
-        echo $footer->get_footer();
-      ?>
+      <?php echo $elements->get_footer(); ?>
     </div>
-    <?php echo Footer::$scripts_connect; ?>
+    <?php echo $elements->scripts_connect; ?>
   </body>
 </html>

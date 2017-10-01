@@ -1,4 +1,5 @@
 <?php
+
 class Route{
 
   static function init(){
@@ -19,7 +20,11 @@ class Route{
       if ($controller_name === 'index') {
         $controller_name = 'home';
       }
-  
+      
+      if ($controller_name === 'exit') {
+        $_SESSION['id'] = 'user';
+        $controller_name = 'home';
+      }
     }
    
     $controller_file = strtolower($controller_name).'.php';
@@ -32,6 +37,17 @@ class Route{
     // echo "<pre>";
   
     if (file_exists($controller_path)) {
+      //запомным текущую страницу если у неё есть view, чтобы при смене языка ми знали на какую страницу его направить
+      if ($controller_name !== 'queries') {
+        $_SESSION['current_page'] = $controller_file;
+      }
+      
+      global $lang;
+      if ( empty($_SESSION['lang']) ) {
+        //язык по умолчанию
+        $lang = 'ru';
+      }else{$lang = $_SESSION['lang'];}
+      
       require_once($controller_path);
       new $controller_name;
     }else{
