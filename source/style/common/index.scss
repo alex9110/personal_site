@@ -167,6 +167,19 @@ $nav_size:2.24rem;
   }
 
 }
+@media (max-width: 1026px){
+  .language_but{
+    input{
+      background-color: rgba(#06B09D, 0.3);
+      padding: 2px 5px 2px 5px;
+      margin: 0 4px 0 0;
+      font-size: 20px;
+      &:first-child(){
+        border-bottom: 2px solid #ccc;
+      }
+    }
+  }
+}
 
 @media (max-width: 416px){
   .index-content-main{
@@ -185,16 +198,5 @@ $nav_size:2.24rem;
   #authorization-button{
    left: 50%;
    transform:translateX(-50%);
-  }
-  .language_but{
-    input{
-      background-color: rgba(#06B09D, 0.3);
-      padding: 2px 5px 2px 5px;
-      margin: 0 4px 0 0;
-      font-size: 20px;
-      &:first-child(){
-        border-bottom: 2px solid #ccc;
-      }
-    }
   }
 }
