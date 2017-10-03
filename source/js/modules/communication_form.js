@@ -16,7 +16,19 @@ module.exports = function(){
     form = formBox.find('#contact-form'),
     buttons = formBox.find('.contact-form__buttons');
 
-  buttons.on('click', function(evt){
+  //активные или не активные кнопки формы
+  function toggleFormActive(buttons, data){
+    if (data) {
+      buttons.on('click', function(evt){
+        sendMessege(evt);
+      });
+    }else{buttons.off();}
+  }
+
+  toggleFormActive(buttons, true);
+
+
+  function sendMessege(evt){
     if ( $(evt.target).attr('id') === 'send-message' ) {
       var
         dataObj = window.hm.getData(form),
@@ -49,12 +61,16 @@ module.exports = function(){
       if (errors.length < 1) {
         //если оштбок нет данные запрос на сервер
         sendMessage(dataObj);
+        $('#send-message').attr('value', 'Подождите');
+        //блоканем форму
+        toggleFormActive(buttons, false);
       }else{window.hm.popUp(errors);}
       
     }else if($(evt.target).attr('id') === 'reset'){
       clear(form);
     }
-  });
+  }
+
 
   function sendMessage(data){
     $.ajax({
@@ -72,6 +88,10 @@ module.exports = function(){
       },
       error: function( jqXHR, textStatus ){
         console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+      },
+      complete: function(){
+        $('#send-message').attr('value', 'Отправить');
+        toggleFormActive(buttons, true);
       }
     });
   }

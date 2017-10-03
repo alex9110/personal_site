@@ -1,7 +1,7 @@
 <?php 
   require_once 'view_elements/elements.class.php';
   $elements = new Elements();
-  echo ( $elements->get_head('Welcome') );
+  echo ( $elements->get_head('Admin') );
  ?>
   <body>
       <?php

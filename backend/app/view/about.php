@@ -2,13 +2,13 @@
   require_once 'view_elements/elements.class.php';
 
   $elements = new Elements();
-  echo ( $elements->get_head('Welcome') );
+  echo ( $elements->get_head('About') );
   echo $elements->get_svg_sprite();
 
   global $lang;
-  $text =['ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб разработчика', 'about_me'=>'Обо мне', 'about_me2'=>'Кто я', 'about_me_desc'=>'<p>Я веб разработчик. мне 26 лет. Я занимаюсь разработкой веб приложений. Мне нравится делать интересные и современные проэкты.</p><p>Этот сайт я сделал в рамках обучения на одном из курсов. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!</p>', 'my_skills'=>'Чем я могу быть вам <br> полезен', 'my_skills_desc'=>'Больше всего меня привлекает Front End разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.', 'contacts'=>'Контакты', 'contacts_address'=>'г. Киев ул. Пушкина дом Колотушкина'], 
+  $text =['ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб разработчика', 'about_me'=>'Обо мне', 'about_me2'=>'Кто я', 'about_me_desc'=>'<p>Я веб разработчик. мне 26 лет. Я занимаюсь разработкой веб приложений. Мне нравится делать интересные и современные проэкты.</p><p>Этот сайт я сделал в рамках обучения на одном из курсов. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!</p>', 'my_skills'=>'Чем я могу быть вам <br> полезен', 'my_skills_desc'=>'Больше всего меня привлекает Front End разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.', 'contacts'=>'Контакты', 'contacts_address'=>'г. Хмельницкий'], 
 
-  'en'=>['autor_name'=>'Aleksandr Lychyk','autor_description'=>'Personal website of the developer', 'about_me'=>'About me', 'about_me2'=>'Who I am', 'about_me_desc'=>"<p>I'm a web developer. I am 26. I'm developing web applications. I like to make interesting and modern projects.</p><p>This site I did as part of the training on one of the courses. A little later I will refresh my content in it, but for now you can see how everything is cool and beautiful!</p>", 'my_skills'=>'How can I help you', 'my_skills_desc'=>"I'm most attracted to Front End development, but I'm also familiar and can solve simple tasks on Backend. But let's start in order.", 'contacts'=>'Contacts', 'contacts_address'=>'city of Kyiv ул. Pushkin House Kolotushkina']];
+  'en'=>['autor_name'=>'Aleksandr Lychyk','autor_description'=>'Personal website of the developer', 'about_me'=>'About me', 'about_me2'=>'Who I am', 'about_me_desc'=>"<p>I'm a web developer. I am 26. I'm developing web applications. I like to make interesting and modern projects.</p><p>This site I did as part of the training on one of the courses. A little later I will refresh my content in it, but for now you can see how everything is cool and beautiful!</p>", 'my_skills'=>'How can I help you', 'my_skills_desc'=>"I'm most attracted to Front End development, but I'm also familiar and can solve simple tasks on Backend. But let's start in order.", 'contacts'=>'Contacts', 'contacts_address'=>'Khmelnytsky city']];
  ?>
   <body>
     <?php
@@ -142,7 +142,7 @@
             <h3><?php echo $text[$lang]['contacts']; ?></h3>
           </div>
           <ul class="contacts__list">
-            <li class="contacts__item">skype
+            <li class="contacts__item">alexandrlychik
               <svg>
                 <use xlink:href="#skype_icon"></use>
               </svg>
