@@ -95,4 +95,4 @@
     </div>
    <?php echo $elements->scripts_connect; ?>
   </body>
-</html>
+</html><!-- zzz </body><!-->

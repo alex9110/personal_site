@@ -7,7 +7,7 @@
       @$pas = $arr['pas'];
 
       //если чувак залогинен как админ и он не пытаеться войти через форму
-      if ($_SESSION['id'] === 'admin' && empty($login) && empty($pas) ) {
+      if (@$_SESSION['id'] === 'admin' && empty($login) && empty($pas) ) {
         return true;
       }
       //если пытаеться отправить данные проверим что он вводит и решим что с ним делеть

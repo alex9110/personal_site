@@ -101,5 +101,12 @@ $(document).ready(function () {
     return obj;
   };
 
+//скрыть не нужную ссылку вцепленую хостингом
+  (function cleanPage(){
+    var badCont = $('.cbalink');
+    if (badCont.length > 0 ) {
+      badCont.css({'display':'none'});
+    }
+  })();
 
 });
