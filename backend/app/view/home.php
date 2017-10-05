@@ -26,7 +26,7 @@
         <div class="plate" id="plate">
           <div class="index-content-box plate-front">
             <div class="index-content-main">
-              <div class="ava"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
+              <div class="ava"><img class="ava__img" src="/assets/img/ava.png" alt="avatar"/></div>
               <div class="autor">
                 <h1 class="autor__name"><?php echo $text[$lang]['autor_name']; ?></h1>
                 <h3 class="autor__description"><?php echo $text[$lang]['autor_description']; ?></h3>

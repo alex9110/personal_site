@@ -34,7 +34,7 @@
           <div class="index-content">
             <div class="index-content-box">
               <div class="index-content-main index-content-main_transparent">
-                <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
+                <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.png" alt="avatar"/></div>
                 <div class="autor">
                   <h1 class="autor__name"><?php echo $text[$lang]['autor_name']; ?></h1>
                   <h3 class="autor__description"><?php echo $text[$lang]['autor_description']; ?></h3>
@@ -55,7 +55,7 @@
           </div>
           <div class="about-me-description-box">
             <div class="about-me-center-box"> 
-              <div class="about-me-photo"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
+              <div class="about-me-photo"><img class="ava__img" src="/assets/img/ava.png" alt="avatar"/></div>
               <div class="about-me-description">
                 <h2><?php echo $text[$lang]['about_me2']; ?></h2>
                 <?php echo $text[$lang]['about_me_desc']; ?>
@@ -136,7 +136,8 @@
           </div>
         </section>
       </section>
-      <section class="section-contacts"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12893.01146647684!2d26.822865102193937!3d50.11815420750371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1503751968027" width="100%" height="130%" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <section class="section-contacts">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24687.600579271893!2d26.973534949240314!3d49.428487933235786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1507061790240" width="100%" height="130%" frameborder="0" style="border:0" allowfullscreen></iframe>
         <div class="contacts">
           <div class="contacts__title">
             <h3><?php echo $text[$lang]['contacts']; ?></h3>

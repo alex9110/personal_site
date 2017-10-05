@@ -36,7 +36,7 @@
           <div class="index-content">
             <div class="index-content-box">
               <div class="index-content-main index-content-main_transparent">
-                <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.jpg" alt="avatar"/></div>
+                <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.png" alt="avatar"/></div>
                 <div class="autor">
                   <h1 class="autor__name"><?php echo $text[$lang]['autor_name']; ?></h1>
                   <h3 class="autor__description"><?php echo $text[$lang]['autor_description']; ?></h3>
