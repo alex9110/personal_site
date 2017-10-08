@@ -6,7 +6,7 @@
   echo $elements->get_svg_sprite();
 
   global $lang;
-  $text = [ 'ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб разработчика', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright'=>'© Александр Лычик <span>создано с любовью | 2017<span>'], 
+  $text = [ 'ru'=>['autor_name'=>'Александр Лычик','autor_description'=>'Личный сайт веб-разработчика', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright'=>'© Александр Лычик <span>создано с любовью | 2017<span>'], 
 
   'en'=>['autor_name'=>'Aleksandr Lychyk','autor_description'=>'Personal website of the developer', 'works'=>'My works', 'about'=>'About me', 'blog'=>'Blog', 'copyright'=>'© Aleksandr Lychyk <span>created with love | 2017<span>'] ];
  ?>
@@ -37,15 +37,15 @@
             </div>
             <nav class="index-nav">
               <ul class="index-nav__list">
-                <li class="index-nav__item-works"><?php echo $text[$lang]['works']; ?><a href="works.html"></a></li>
-                <li class="index-nav__item-about"><?php echo $text[$lang]['about']; ?><a href="about.html"></a></li>
-                <li class="index-nav__item-blog"><?php echo $text[$lang]['blog']; ?><a href="blog.html"></a></li>
+                <li class="index-nav__item-works"><?php echo $text[$lang]['works']; ?><a href="works"></a></li>
+                <li class="index-nav__item-about"><?php echo $text[$lang]['about']; ?><a href="about"></a></li>
+                <li class="index-nav__item-blog"><?php echo $text[$lang]['blog']; ?><a href="blog"></a></li>
               </ul>
             </nav>
           </div>
           <div class="login-wrapper plate-back">
             <div class="login-box">
-              <form class="login-form" id="login-form" action="admin.html" method="post">
+              <form class="login-form" id="login-form" action="admin" method="post">
                 <h1 class="login-form__header">Авторизуйтесь</h1>
                 <div class="login-form__login">
                   <label for="login">

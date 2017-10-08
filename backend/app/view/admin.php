@@ -24,7 +24,7 @@
       <div class="admin-wrapper-box">
         <header class="admin-header">
           <div class="admin-header-top-box">
-            <h1>Панель администрирования</h1><a href="exit.html" id="admin-exit">Вернуться на сайт</a>
+            <h1>Панель администрирования</h1><a href="exit" id="admin-exit">Вернуться на сайт</a>
           </div>
           <nav class="admin-nav">
             <ul class="admin-nav__list clearfix">

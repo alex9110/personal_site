@@ -2,7 +2,7 @@
 
 class Elements{
 
-  public  $text = [ 'ru'=>['main'=>'Главная', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright_left'=>'Я веб разваботчик, из Хмельницкого, и этот сайт я сделал в рамках одного из обучающих курсов, найденых на просторах интернета.', 'copyright_right'=>'© Александр Лычик | создано с любовью'],
+  public  $text = [ 'ru'=>['main'=>'Главная', 'works'=>'Мои работы', 'about'=>'Обо мне', 'blog'=>'Блог', 'copyright_left'=>'Я веб-разваботчик, из Хмельницкого, и этот сайт я сделал в рамках одного из обучающих курсов, найденых на просторах интернета.', 'copyright_right'=>'© Александр Лычик | создано с любовью'],
 
   'en'=>['main'=>'Home', 'works'=>'My works', 'about'=>'About me', 'blog'=>'Blog', 'copyright_left'=>"I'm a web developer, from Khmelnitsky, and I made this site in one of the training courses found on the Internet.", 'copyright_right'=>'© Aleksandr Lychyk | created with love'] ];
 
@@ -72,10 +72,10 @@ class Elements{
     return('<div class="curtains">
                   <nav class="main-nav" id="main-nav">
                     <ul class="main-nav-list">
-                      <li class="main-nav-list-item"><a href="index.html">'.$this->text[$lang]['main'].'</a></li>
-                      <li class="main-nav-list-item"><a href="works.html">'.$this->text[$lang]['works'].'</a></li>
-                      <li class="main-nav-list-item"><a href="about.html">'.$this->text[$lang]['about'].'</a></li>
-                      <li class="main-nav-list-item"><a href="blog.html">'.$this->text[$lang]['blog'].'</a></li>
+                      <li class="main-nav-list-item"><a href="index">'.$this->text[$lang]['main'].'</a></li>
+                      <li class="main-nav-list-item"><a href="works">'.$this->text[$lang]['works'].'</a></li>
+                      <li class="main-nav-list-item"><a href="about">'.$this->text[$lang]['about'].'</a></li>
+                      <li class="main-nav-list-item"><a href="blog">'.$this->text[$lang]['blog'].'</a></li>
                     </ul>
                   </nav>
                   <div class="curtain-left"></div>
@@ -88,11 +88,11 @@ class Elements{
                       <svg>
                         <use xlink:href="#fb_icon"></use>
                       </svg></a></li>
-                  <li class="social__item"><a href="https://github.com" target="_blank">
+                  <li class="social__item"><a href="https://github.com/alex9110" target="_blank">
                       <svg>
                         <use xlink:href="#git_icon"></use>
                       </svg></a></li>
-                  <li class="social__item"><a href="https://www.linkedin.com" target="_blank">
+                  <li class="social__item"><a href="https://www.linkedin.com/in/aleksandrlychyk/" target="_blank">
                       <svg>
                         <use xlink:href="#in_icon"></use>
                       </svg></a></li>
@@ -116,10 +116,10 @@ class Elements{
         <div class="footer-menu">
           <nav class="footer-nav">
             <ul class="footer-nav__list">
-              <li class="footer-nav__item"><a href="index.html">'.$this->text[$lang]['main'].'</a></li>
-              <li class="footer-nav__item"> <a href="works.html">'.$this->text[$lang]['works'].'</a></li>
-              <li class="footer-nav__item"> <a href="about.html">'.$this->text[$lang]['about'].'</a></li>
-              <li class="footer-nav__item"> <a href="blog.html">'.$this->text[$lang]['blog'].'</a></li>
+              <li class="footer-nav__item"><a href="index">'.$this->text[$lang]['main'].'</a></li>
+              <li class="footer-nav__item"> <a href="works">'.$this->text[$lang]['works'].'</a></li>
+              <li class="footer-nav__item"> <a href="about">'.$this->text[$lang]['about'].'</a></li>
+              <li class="footer-nav__item"> <a href="blog">'.$this->text[$lang]['blog'].'</a></li>
             </ul>
           </nav>
           <div class="footer-social">
