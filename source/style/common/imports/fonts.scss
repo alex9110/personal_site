@@ -1,8 +1,7 @@
 @font-face{
   font-family: Roboto;
   src: local('Roboto-Regular'), /*провериместь ли шрифт в системе*/
-  url('/assets/fonts/roboto/Roboto-Regular.ttf'),/*если нет то подгрузим свой*/ 
-  sans-serif;
+  url('/assets/fonts/roboto/Roboto-Regular.ttf');/*если нет то подгрузим свой*/ 
 }
 @font-face{
   font-family: Roboto-Bold;
