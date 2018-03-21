@@ -6,9 +6,9 @@
   echo $elements->get_svg_sprite();
 
   global $lang;
-  // echo('<pre>');
-  // print_r($articles);
-  // echo('<pre>');
+  $text = [ 'ru'=>['title'=>'Блог', 'title_text'=>'Статьи которые я написал'], 
+
+  'en'=>['title'=>'Blog', 'title_text'=>'Articles I wrote'] ];
  ?>
   <body>
       <?php
@@ -36,8 +36,8 @@
               <div class="index-content-main index-content-main_transparent">
                 <div class="ava ava_bigger"><img class="ava__img" src="/assets/img/ava.png" alt="avatar"/></div>
                 <div class="autor">
-                  <h1 class="autor__name">Блог</h1>
-                  <h3 class="autor__description">Статьи которые я написал</h3>
+                  <h1 class="autor__name"><?php echo $text[$lang]['title']; ?></h1>
+                  <h3 class="autor__description"><?php echo $text[$lang]['title_text']; ?></h3>
                 </div>
               </div>
             </div>
