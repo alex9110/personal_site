@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 03 2017 г., 01:31
--- Версия сервера: 5.5.50
--- Версия PHP: 7.0.8
+-- Время создания: Мар 21 2018 г., 21:56
+-- Версия сервера: 10.0.32-MariaDB-0+deb8u1
+-- Версия PHP: 7.1.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `personal_db`
+-- База данных: `lychyk`
 --
 
 -- --------------------------------------------------------
@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Структура таблицы `admins`
 --
 
-CREATE TABLE IF NOT EXISTS `admins` (
+CREATE TABLE `admins` (
   `id` int(5) NOT NULL,
   `login` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `admins`
@@ -45,12 +45,12 @@ INSERT INTO `admins` (`id`, `login`, `password`) VALUES
 -- Структура таблицы `blog`
 --
 
-CREATE TABLE IF NOT EXISTS `blog` (
+CREATE TABLE `blog` (
   `id` int(10) NOT NULL,
   `title` varchar(200) NOT NULL,
   `data` varchar(100) NOT NULL,
   `article` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `blog`
@@ -67,13 +67,37 @@ INSERT INTO `blog` (`id`, `title`, `data`, `article`) VALUES
 -- Структура таблицы `messages`
 --
 
-CREATE TABLE IF NOT EXISTS `messages` (
+CREATE TABLE `messages` (
   `id` int(9) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
   `status` varchar(15) NOT NULL DEFAULT 'awaiting'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `message`, `status`) VALUES
+(26, 'G', 's@mail.com', 'Ggg', 'awaiting'),
+(25, 'Санька', 'x@mail.ru', 'Привет, мне нужен сайт', 'awaiting'),
+(27, 'G', 's@mail.com', 'Ggg', 'awaiting'),
+(28, 'G', 's@mail.com', 'Ggg', 'awaiting'),
+(29, 'G', 's@mail.com', 'Ggg', 'awaiting'),
+(30, 'G', 's@mail.com', 'Ggg', 'awaiting'),
+(31, 'Александр Лычик', 'cania9110@gmail.com', 'тест', 'awaiting'),
+(32, 'Александр Лычик', 'cania9110@gmail.com', 'hay is a test', 'awaiting'),
+(33, 'Анжела', 'anzelka122@gmail.com', 'Привіт', 'awaiting'),
+(43, 'Саня', 'lychyk9110@gmail.com', 'тест после замены пароля', 'awaiting'),
+(35, 'Санька', 'cania9110@gmail.com', 'http://contactcenterkiev.com/?page_id=884&lang=ru', 'awaiting'),
+(36, 'Александр Лычик', 'cania9110@gmail.com', 'тест тест тест', 'awaiting'),
+(37, 'Александр Лычик', 'cania9110@gmail.com', 'https://rabota.ua/company2870159/vacancy6936898', 'awaiting'),
+(38, 'Саня', 'cania9110@gmail.com', 'Привет это просто тест)))', 'awaiting'),
+(39, 'Test', 'lychyk@gmail.com', 'https://www.facebook.com/serafima.litvinova?ref=br_rs', 'awaiting'),
+(40, 'test', 'test@mail.ru', 'test', 'awaiting'),
+(41, 'Alex', 'cania9110@gmail.com', 'Проверка связи', 'awaiting'),
+(42, 'Vasia', 'secret@gmail.com', 'Test', 'awaiting');
 
 -- --------------------------------------------------------
 
@@ -81,17 +105,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- Структура таблицы `skills`
 --
 
-CREATE TABLE IF NOT EXISTS `skills` (
+CREATE TABLE `skills` (
   `id` int(5) NOT NULL,
   `skills` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `skills`
 --
 
 INSERT INTO `skills` (`id`, `skills`) VALUES
-(1, 'html:90/css:90/JavaScript:91/php:90/mysql:91/node_npm:91/git:91/gulp:91/bower:91');
+(1, 'html:95/css:95/JavaScript:80/php:40/mysql:40/node_npm:40/git:60/gulp:65/bower:85');
 
 -- --------------------------------------------------------
 
@@ -99,23 +123,29 @@ INSERT INTO `skills` (`id`, `skills`) VALUES
 -- Структура таблицы `works`
 --
 
-CREATE TABLE IF NOT EXISTS `works` (
+CREATE TABLE `works` (
   `id` int(10) NOT NULL,
   `image_src` varchar(100) NOT NULL,
   `title_ru` varchar(200) NOT NULL,
   `title_en` varchar(200) NOT NULL,
   `technologies` varchar(200) NOT NULL,
   `url` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `works`
 --
 
 INSERT INTO `works` (`id`, `image_src`, `title_ru`, `title_en`, `technologies`, `url`) VALUES
-(1, 'work_1.png', 'Сайт школы онлайн образования', 'Online school website', 'html, css, javascript', 'https://www.facebook.com/AleksandrLychyk'),
-(3, 'work_2.png', 'Сайт круче первого номер 2', 'The site is steeper than the first number 2', 'html html html', 'https://www.facebook.com/AleksandrLychyk'),
-(4, 'work_0.jpg', 'Интернет магазин ', 'Online shop', 'jquery jquery jquery', 'https://www.facebook.com/AleksandrLychyk');
+(9, 'work59d68b5cb7050.png', 'Страничка фитнес клуба', 'Fitness club page', 'html5 css3 jquery', 'https://alex9110.github.io/fitness/'),
+(8, 'work59d688d0905c3.png', 'целевая страница продажы автомобильных ковриков', 'landing page sales of car mats', 'html5 scc3', 'https://alex9110.github.io/car.mats.lok/'),
+(1, 'work59d3df7cbd1fc.png', 'сайт + cms портфолио фотографа', 'site + cms photographer portfolio', 'JQUERY AJAX PHP MYSQL', 'http://h-nazarenko.ru/'),
+(10, 'work59ff33e6d928b.png', 'Photo wall', 'Photo wall', 'gulp sass java script & jquery', 'https://alex9110.github.io/photo_wall/'),
+(11, 'work59ff34eda0d69.png', 'Landing page', 'Landing page', 'html5 css3', 'https://alex9110.github.io/landing_panto_max/'),
+(15, 'work59ff35a71e76d.png', 'water smile', 'water smile', 'html5 css3 gulp sass', 'https://alex9110.github.io/water_smile/'),
+(3, 'work5a709d77828f3.png', 'Landing Page Imira', 'Landing Page Imira', 'pug scss gulp bower', 'https://alex9110.github.io/imira/'),
+(2, 'work5a70a6dbd6aca.png', 'Landing Page Inflamaya', 'Landing Page Inflamaya', 'html5 css3 java script', 'https://alex9110.github.io/inflamaya/'),
+(16, 'work5a70a77a4274f.png', 'Landing Page CallCenter', 'Landing Page CallCenter', 'pag sass java script', 'https://alex9110.github.io/cont_c/');
 
 --
 -- Индексы сохранённых таблиц
@@ -159,27 +189,27 @@ ALTER TABLE `works`
 -- AUTO_INCREMENT для таблицы `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT для таблицы `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `works`
 --
 ALTER TABLE `works`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
